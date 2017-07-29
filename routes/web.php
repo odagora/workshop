@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('collision', 'PagesController@getCollision');
+Route::get('inspection', 'PagesController@getInspection');
+Route::get('expert', 'PagesController@getExpert');
+Route::get('quality', 'PagesController@getQuality');
+Route::get('confirm', 'PagesController@getConfirm');
+Route::get('print', 'PagesController@getPrint');
+Route::get('config', 'PagesController@getConfig');
+Route::get('profile', 'PagesController@getProfile');
+Route::get('search', 'PagesController@getSearch');
+Route::get('index', 'PagesController@getIndex');
+Route::get('login', 'PagesController@getLogin');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
