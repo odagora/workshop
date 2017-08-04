@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     @include('partials._head')
+    @include('partials._login')
   </head>
   <body>
     <div class="container"> 
