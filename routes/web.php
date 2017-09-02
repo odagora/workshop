@@ -11,6 +11,7 @@
 |
 */
 
+//Pages routes
 Route::get('collision', 'PagesController@getCollision');
 Route::get('inspection', 'PagesController@getInspection');
 Route::get('expert', 'PagesController@getExpert');
@@ -22,6 +23,13 @@ Route::get('profile', 'PagesController@getProfile');
 Route::get('search', 'PagesController@getSearch');
 Route::get('index', 'PagesController@getIndex');
 Route::get('login', 'PagesController@getLogin');
+
+//CRUD routes
+Route::resource('qdocs', 'QdocsController');
+
+//Jquery & Ajax routes for dropdown dependent in forms
+Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@myform'));
+Route::get('qdocs/create/ajax/{id}', array('as'=>'create.ajax', 'uses'=>'DropDownController@myformAjax'));
 
 // Route::get('/', function () {
 //     return view('welcome');
