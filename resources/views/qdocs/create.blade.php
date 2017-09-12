@@ -102,6 +102,138 @@
 			    </div>
 	    	</div>
 	    	<hr>
+	    	<?php include('../storage/php/q_lists.php');?>
+	    	<div class="form-group">
+		    	@foreach($names as $mat=>$name)
+		    		@if($mat < 6)
+			    		<table class="table table-condensed">
+			    			<thead>
+			    				<tr>
+			    					<th class="col-md-4">{{$name}}</th>
+					    			@for($i=1; $i <= count($loptions); $i++)
+					    				<th class="col-md-2 text-center">{{$loptions[$i]}}</th>
+					    			@endfor
+					    		</tr>
+			    			</thead>
+			    			<tbody>
+			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    					<tr>
+			    						<td>{{$list[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($loptions); $j++)
+			    							<td class="col-md-2 text-center">
+			    							{{Form::label('element1', $loptions[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio('name', 'value')}}
+			    							</td>
+			    						@endfor
+			    					</tr>
+			    				@endfor
+			    			</tbody>
+			    		</table>
+			    	@elseif($mat==6)
+			    		<table class="table table-condensed">
+			    			<thead>
+			    				<tr>
+			    					<th class="col-md-4">{{$name}}</th>
+					    			@for($i=1; $i <= count($loptions1); $i++)
+					    				<th class="col-md-2 text-center">{{$loptions1[$i]}}</th>
+					    			@endfor
+					    		</tr>
+			    			</thead>
+			    			<tbody>
+			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    					<tr>
+			    						<td>{{$list[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($loptions1); $j++)
+			    							<td class="col-md-2 text-center">
+			    							{{Form::label('element1', $loptions1[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio('name', 'value')}}
+			    							</td>
+			    						@endfor
+			    					</tr>
+			    				@endfor
+			    			</tbody>
+			    		</table>
+			    	@else
+			    		<table class="table table-condensed">
+			    			<thead>
+			    				<tr>
+			    					<th class="col-md-4">{{$name}}</th>
+					    			@for($i=1; $i <= count($loptions2); $i++)
+					    				<th class="col-md-2 text-center">{{$loptions2[$i]}}</th>
+					    			@endfor
+					    		</tr>
+			    			</thead>
+			    			<tbody>
+			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    					<tr>
+			    						<td>{{$list[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($loptions2); $j++)
+			    							<td class="col-md-2 text-center">
+			    							{{Form::label('element1', $loptions2[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio('name', 'value')}}
+			    							</td>
+			    						@endfor
+			    					</tr>
+			    				@endfor
+			    			</tbody>
+			    		</table>
+			    	@endif
+		    	@endforeach
+		    </div>
+	    	<hr>
+	    	<h3>Semáforo</h3>
+	    	@foreach ($lcomments as $com => $name)
+	    		@if($com < 4)
+		    		<div class="form-group">
+		    			<div class="row">
+		    				<div class="col-md-12">	
+				    			{{Form::label('comment',$name)}}
+				    		</div>
+				    		<div class="col-md-12">	
+				    			{{Form::textarea($comNames[$com], $comVariables[$com], array('class' => 'form-control', 'rows' => '3'))}}
+				    		</div>
+			    		</div>
+		    		</div>
+		    	@else
+		    	<hr>
+		    	<div class="form-group">
+		    			<div class="row">
+		    				<div class="col-md-12">	
+				    			{{Form::label('comment',$name)}}
+				    		</div>
+				    		<div class="col-md-12">	
+				    			{{Form::textarea($comNames[$com], $comVariables[$com], array('class' => 'form-control', 'rows' => '3'))}}
+				    		</div>
+			    		</div>
+		    		</div>
+		    		<hr>
+		    	@endif
+	    	@endforeach
+	    	<div class="form-group">
+	    		<div class="row">
+	    			<div class="col-md-5">	
+				    	{{ Form::label('nextMileage', 'Próximo mantenimiento a los (kms):')}}
+						{{ Form::number('nextMileage', null, array('class' => 'form-control'))}}
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-6">
+						{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
+						<div class="signature-pad-body">
+							<canvas style="touch-action:none">
+						</div>
+						<div class="signature-pad-footer">
+							
+						</div>
+					</div>
+					<div class="col-md-6">
+						{{Form::label('c_signature', 'Firma del cliente:')}}
+					</div>
+				</div>
+			</div>
+
 		{!! Form::close() !!}
 	</div>
 </div>
@@ -132,4 +264,5 @@
         });
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.0/dist/signature_pad.min.js"></script>
 @endsection 
