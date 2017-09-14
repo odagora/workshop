@@ -121,8 +121,8 @@
 			    						<td>{{$list[$mat][$i]}}</td>
 			    						@for($j=1; $j <= count($loptions); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label('element1', $loptions[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio('name', 'value')}}
+			    							{{Form::label($loptions[$j], $loptions[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
@@ -145,8 +145,8 @@
 			    						<td>{{$list[$mat][$i]}}</td>
 			    						@for($j=1; $j <= count($loptions1); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label('element1', $loptions1[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio('name', 'value')}}
+			    							{{Form::label($loptions1[$j], $loptions1[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
@@ -169,8 +169,8 @@
 			    						<td>{{$list[$mat][$i]}}</td>
 			    						@for($j=1; $j <= count($loptions2); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label('element1', $loptions2[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio('name', 'value')}}
+			    							{{Form::label($loptions2[$j], $loptions2[$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
