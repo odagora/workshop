@@ -79,10 +79,10 @@ $list = array(
 				'3' => 'Nivel líquido refrigerante',				
 				'4' => 'Nivel aceite de caja',				
 				'5' => 'Nivel hidráulico de dirección',				
-				'6' => 'Agua limpiabrisas del. y tras',				
-				'7' => 'Fijación y ajuste bornes batería',			
-				'8' => 'Presencia de tapas, obturadores',			
-				'9' => 'Presencia del protector motor'
+				'6' => 'Nivel agua de batería',				
+				'7' => 'Agua limpiabrisas del. y tras',			
+				'8' => 'Fijación y ajuste bornes batería',			
+				'9' => 'Presencia de tapas y protectores'
 			),
 	'5' => array(
 				'1'	=> 'Centrado del timón',		

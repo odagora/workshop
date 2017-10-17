@@ -1,11 +1,20 @@
 @extends('main')
 @section('title', '| Crear un nuevo certificado de control calidad') 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<h1>Crear un nuevo certificado de control calidad</h1>
 		<hr>
-		{!! Form::open(['route' => 'qdocs.store']) !!}
+		{!! Form::open(array('name' => 'qdoc_form' , 'id' => 'qdoc_form' , 'route' => 'qdocs.store')) !!}
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-3">
@@ -65,7 +74,13 @@
 	    		<div class="row">
 	    			<div class="col-md-3">
 	    				{{ Form::label('make', 'Marca:')}}
-			    		{{ Form::select('make', $makes, null, array('placeholder' => 'Seleccione marca', 'class' => 'form-control'))}}	
+			    		{{ Form::select('make', $makes, null, array('placeholder' => 'Seleccione marca', 'class' => 'form-control'))}}
+			    		{{-- <select name="make" class="form-control">
+                    		<option value=""> Seleccione marca</option>
+                    			@foreach ($makes as $key => $value)
+                        		<option value="{{ $value }}">{{ $value }}</option>
+                   			 @endforeach
+                		</select> --}}
 	    			</div>
 	    		</div>
 	    	</div>
@@ -73,7 +88,7 @@
 	    		<div class="row">
 	    			<div class="col-md-3">
 	    				{{ Form::label('type', 'Línea:')}}
-			    		{{ Form::select('type',[''], null, array('class' => 'form-control'))}}	
+			    		{{ Form::select('type',[''], null, array('class' => 'form-control'))}}
 	    			</div>
 	    		</div>
 	    	</div>
@@ -212,8 +227,8 @@
 	    	<div class="form-group">
 	    		<div class="row">
 	    			<div class="col-md-5">	
-				    	{{ Form::label('nextMileage', 'Próximo mantenimiento a los (kms):')}}
-						{{ Form::number('nextMileage', null, array('class' => 'form-control'))}}
+				    	{{ Form::label('n_mileage', 'Próximo mantenimiento a los (kms):')}}
+						{{ Form::number('n_mileage', null, array('class' => 'form-control'))}}
 					</div>
 				</div>
 			</div>
@@ -221,24 +236,47 @@
 				<div class="row">
 					<div class="col-md-6">
 						{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
-						<div class="signature-pad-body">
-							<canvas style="touch-action:none">
-						</div>
-						<div class="signature-pad-footer">
-							
+						<div class="sigPad">
+							<div class="sig sigWrapper">
+								<canvas class="pad" width="350" height="170">
+								{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
+							</div>
+							<div class="sigFooter">
+								<div class="description">Firme arriba</div>
+								<div class="sigActions">
+									<div>
+										<button type="button" class="button-clear">Borrar</button>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="col-md-6">
 						{{Form::label('c_signature', 'Firma del cliente:')}}
+						<div class="sigPad">
+							<div class="sig sigWrapper">
+								<canvas class="pad" width="350" height="170">
+								{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
+							</div>
+							<div class="sigFooter">
+								<div class="description">Firme arriba</div>
+								<div class="sigActions">
+									<div>
+										<button type="button" class="button-clear">Borrar</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-
+			{{Form::submit('Crear Documento', array('class' => 'btn btn-success', 'style' => 'margin-top: 30px;'))}}
 		{!! Form::close() !!}
 	</div>
 </div>
 @endsection
 @section('scripts')
+{{-- Dropdown dependent menus for make and type | Ajax request to avoid page reload --}}
 <script type="text/javascript">
     $(document).ready(function() {
         $('select[name="make"]').on('change', function() {
@@ -249,20 +287,42 @@
                     type: "GET",
                     dataType: "json",
                     success:function(data) {
-
-                        
                         $('select[name="type"]').empty();
                         $.each(data, function(key, value) {
                             $('select[name="type"]').append('<option value="'+ key +'">'+ value +'</option>');
                         });
-
                     }
                 });
-            }else{
+            }
+            else{
                 $('select[name="type"]').empty();
             }
         });
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.0/dist/signature_pad.min.js"></script>
-@endsection 
+{{-- Signature pad javascript calling and options configuration --}}
+<script type="text/javascript">
+	var options = {
+		drawOnly : true,
+		displayOnly : false,
+		clear: '.button-clear',
+		penColour: '#000',
+		output:'.signature',
+		lineTop: 160,
+		lineMargin: 10,
+		validateFields: false
+	};
+	$('.sigPad').signaturePad(options);
+</script>
+{{-- Signature compression before submitting to database--}}
+<script type="text/javascript">
+	$("#qdoc_form").submit(function(event) {
+		var sig = $("#e_signature").val();
+		if (sig.length > 0) {
+			var result = deflateFromJsonSignature(sig);
+		    $("#e_signature").val(result);
+		}
+		return true;
+	 });
+</script>
+@endsection

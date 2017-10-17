@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     @include('partials._head')
+    @include('partials._signature')
   </head>
   <body>
   @include('partials._nav')
