@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Qdocs;
 
-/*Include php file with radio button elements*/
+/*Include php file with matrix names and radio button elements*/
+include(storage_path().'/php/q_lists.php');
 include(storage_path().'/php/q_elements.php');
 
 class QdocsController extends Controller
@@ -55,21 +56,24 @@ class QdocsController extends Controller
             'comment2' => 'max:500',
             'comment3' => 'max:500',
             'comment4' => 'max:500',
-            'n_mileage' => 'required|numeric',
+            'n_mileage' => 'required|numeric|greater_than:mileage',
             'e_signature' => 'required'
         );
 
+         //Validate the data - matrix information
+        $names = matrixNames();
+        $method = 'getMatrix';
+        $arg = 'Elements';
+        foreach ($names as $key => $value) {
+            $matrix[$key] = call_user_func($method.$key.$arg);
+            foreach ($matrix[$key] as $mat => $name) {
+                $data["$name"] = 'required';            
+            }
+        }
+
         $this->validate($request, $data);
 
-        //Validate the data - matrix information
-        // $matrix1 = getMatrix1Elements();
-        // foreach ($matrix1 as $mat => $name) {
-        //     $data['matrix1'][] = array(
-        //         $name => 'required',
-        //     );            
-        // }
-
-        //Store in the database
+        //Store in the database - general information
         $qdocs = new Qdocs;
 
         $qdocs->ordernumber = $request->ordernumber;
@@ -90,10 +94,13 @@ class QdocsController extends Controller
         $qdocs->n_mileage = $request->n_mileage;
         $qdocs->e_signature = $request->e_signature;
 
-        //Matrix information
-        // foreach ($matrix1 as $mat => $name) {
-        //     $qdocs->$name = $request->$name;
-        // }
+        //Store in the database - matrix information
+        foreach ($names as $key => $value) {
+            $matrix[$key] = call_user_func($method.$key.$arg);
+            foreach ($matrix[$key] as $mat => $name) {
+                $qdocs->$name = $request->$name;            
+            }
+        }
 
         $qdocs->save();
 

@@ -1,17 +1,14 @@
 @extends('main')
 @section('title', '| Crear un nuevo certificado de control calidad') 
 @section('content')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<div class="row">
-	<div class="col-md-8 col-md-offset-2">
+{{--Include php file with radio button elements--}}
+<?php include(storage_path().'/php/q_elements.php');?>
+
+{{--Show list of errors--}}
+{{-- @foreach ($errors->all() as $message)
+	<li>{{$message}}</li>    
+@endforeach --}}
+<div class="col-md-8 col-md-offset-2">
 		<h1>Crear un nuevo certificado de control calidad</h1>
 		<hr>
 		{!! Form::open(array('name' => 'qdoc_form' , 'id' => 'qdoc_form' , 'route' => 'qdocs.store')) !!}
@@ -30,6 +27,10 @@
 			    		{{ Form::number('ordernumber', null, array('class' => 'form-control'))}}
 			    	</div>
 			    </div>
+			    @if ($errors->has('ordernumber'))
+					<br>
+					<div class="alert alert-danger" role="alert">{{ $errors->first('ordernumber') }}</div>
+				@endif
 	    	</div>
 	    	<div class="form-group">
 	    		{{ Form::label('e_name', 'Asesor de servicio:')}}
@@ -46,6 +47,13 @@
 					</div>
 				</div>
 			</div>
+			@if ($errors->has('e_firstname'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('e_firstname') }}</div>
+			@endif
+			@if ($errors->has('e_lastname'))
+				<div class="alert alert-danger" role="alert">{{ $errors->first('e_lastname') }}</div>
+			@endif
 			<hr>
 			<div class="form-group">
 	    		{{ Form::label('c_name', 'Cliente:')}}
@@ -62,6 +70,13 @@
 					</div>
 				</div>
 			</div>
+			@if ($errors->has('c_firstname'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('c_firstname') }}</div>
+			@endif
+			@if ($errors->has('c_lastname'))
+				<div class="alert alert-danger" role="alert">{{ $errors->first('c_lastname') }}</div>
+			@endif
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
@@ -70,6 +85,10 @@
 			    	</div>
 			    </div>
 	    	</div>
+	    	@if ($errors->has('email'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('email') }}</div>
+			@endif
 	    	<div class="form-group">
 	    		<div class="row">
 	    			<div class="col-md-3">
@@ -84,6 +103,10 @@
 	    			</div>
 	    		</div>
 	    	</div>
+	    	@if ($errors->has('make'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('make') }}</div>
+			@endif
 	    	<div class="form-group">
 	    		<div class="row">
 	    			<div class="col-md-3">
@@ -92,6 +115,10 @@
 	    			</div>
 	    		</div>
 	    	</div>
+	    	@if ($errors->has('type'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('type') }}</div>
+			@endif
 	    	<div class="form-group">
 				<div class="row">
 					<div class="col-md-3">
@@ -100,6 +127,10 @@
 			    	</div>
 			    </div>
 			</div>
+			@if ($errors->has('model'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('model') }}</div>
+			@endif
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-3">
@@ -108,6 +139,10 @@
 			    	</div>
 			    </div>
 	    	</div>
+	    	@if ($errors->has('license'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('license') }}</div>
+			@endif
 	    	<div class="form-group">
 				<div class="row">
 					<div class="col-md-3">
@@ -116,6 +151,10 @@
 			    	</div>
 			    </div>
 	    	</div>
+	    	@if ($errors->has('mileage'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('mileage') }}</div>
+			@endif
 	    	<hr>
 	    	<?php include('../storage/php/q_lists.php');?>
 	    	<div class="form-group">
@@ -144,6 +183,16 @@
 			    				@endfor
 			    			</tbody>
 			    		</table>
+			    		<?php 
+			    		$method = 'getMatrix';
+			    		$arg = 'Elements';
+			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
+			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
+							<br>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+					   @endif            
 			    	@elseif($mat==6)
 			    		<table class="table table-condensed">
 			    			<thead>
@@ -168,6 +217,14 @@
 			    				@endfor
 			    			</tbody>
 			    		</table>
+			    		<?php 
+			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
+			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
+							<br>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+					   @endif
 			    	@else
 			    		<table class="table table-condensed">
 			    			<thead>
@@ -192,6 +249,14 @@
 			    				@endfor
 			    			</tbody>
 			    		</table>
+			    		<?php 
+			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
+			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
+							<br>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+					   @endif
 			    	@endif
 		    	@endforeach
 		    </div>
@@ -232,13 +297,17 @@
 					</div>
 				</div>
 			</div>
+			@if ($errors->has('n_mileage'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('n_mileage') }}</div>
+			@endif
 			<div class="form-group">
 				<div class="row">
 					<div class="col-md-6">
 						{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
 						<div class="sigPad">
 							<div class="sig sigWrapper">
-								<canvas class="pad" width="350" height="170">
+								<canvas class="pad" width="340" height="170">
 								{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
 							</div>
 							<div class="sigFooter">
@@ -255,7 +324,7 @@
 						{{Form::label('c_signature', 'Firma del cliente:')}}
 						<div class="sigPad">
 							<div class="sig sigWrapper">
-								<canvas class="pad" width="350" height="170">
+								<canvas class="pad" width="340" height="170">
 								{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
 							</div>
 							<div class="sigFooter">
@@ -270,6 +339,10 @@
 					</div>
 				</div>
 			</div>
+			@if ($errors->has('e_signature'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('e_signature') }}</div>
+			@endif
 			{{Form::submit('Crear Documento', array('class' => 'btn btn-success', 'style' => 'margin-top: 30px;'))}}
 		{!! Form::close() !!}
 	</div>

@@ -11,6 +11,16 @@ $names= array(
 	'7' => 'Presión de las llantas (psi)'
 	);
 
+function matrixNames(){	
+	return[	'1' => 'Instrumentos y equipamento',
+			'2' => 'Alumbrado exterior',
+			'3' => 'Presentación del vehículo',
+			'4' => 'Control debajo del capot',
+			'5' => 'Prueba de ruta',
+			'6' => 'Desgaste de las llantas (%)',
+			'7' => 'Presión de las llantas (psi)'];
+	}
+
 //list of options
 $loptions= array(
 	'1' => 'B',
@@ -123,21 +133,6 @@ $elNames = array(
 
 	);
 
-//list of matrices errors names
-$errorNames = array(
-	'1' => @$matrix1Err,
-	'2' => @$matrix2Err,
-	'3' => @$matrix3Err,
-	'4' => @$matrix4Err,
-	'5' => @$matrix5Err,
-	'6' => @$matrix6Err,
-	'7' => @$matrix7Err,
-	'8' => @$matrix8Err,
-	'9' => @$matrix9Err,
-	'10' => @$matrix10Err,
-	'11' => @$matrix11Err
-	);
-
 //list of comments names
 $comNames = array(
 	'1' => 'comment1',
@@ -153,15 +148,6 @@ $comVariables = array(
 	'3' => @$comment3,
 	'4' => @$comment4,
 	'5' => @$comment5
-	);
-
-//list of comments errors names
-$errorNames1 = array(
-	'1' => @$comment1Err,
-	'2' => @$comment2Err,
-	'3' => @$comment3Err,
-	'4' => @$comment4Err,
-	'5' => @$comment5Err
 	);
 
 //list of matrix elements names
