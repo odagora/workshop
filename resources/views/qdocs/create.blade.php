@@ -347,6 +347,7 @@
 		{!! Form::close() !!}
 	</div>
 </div>
+<a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
 @endsection
 @section('scripts')
 {{-- Dropdown dependent menus for make and type | Ajax request to avoid page reload --}}
