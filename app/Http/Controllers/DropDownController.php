@@ -15,7 +15,7 @@ class DropDownController extends Controller
      */
     public function myform()
     {
-        $makes = DB::table("car_make")->pluck("name","id")->all();
+        $makes = DB::table("makes")->pluck("name","id")->all();
         /*Allow select items when validation fails */
         $selectedMake = $this->myformAjax(Input::get('make'));
         return view('qdocs.create', compact('makes', 'selectedMake'));
@@ -28,7 +28,7 @@ class DropDownController extends Controller
      */
     public function myformAjax($id)
     {
-        $types = DB::table("car_type")
+        $types = DB::table("types")
                     ->where("make_id",$id)
                     ->pluck("name","id")->all();
         return json_encode($types);
