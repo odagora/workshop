@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Qdocs;
 
 /*Include php file with matrix names and radio button elements*/
@@ -153,4 +154,5 @@ class QdocsController extends Controller
     {
         //
     }
+
 }

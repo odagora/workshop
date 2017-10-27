@@ -1,7 +1,8 @@
 @extends('main')
 @section('title', '| Crear un nuevo certificado de control calidad') 
 @section('content')
-{{--Include php file with radio button elements--}}
+
+{{-- Include php file with matrix element names--}}
 <?php include(storage_path().'/php/q_elements.php');?>
 
 {{--Show list of errors--}}
@@ -93,13 +94,11 @@
 	    		<div class="row">
 	    			<div class="col-md-3">
 	    				{{ Form::label('make', 'Marca:')}}
-			    		{{ Form::select('make', $makes, null, array('placeholder' => 'Seleccione marca', 'class' => 'form-control'))}}
-			    		{{-- <select name="make" class="form-control">
-                    		<option value=""> Seleccione marca</option>
-                    			@foreach ($makes as $key => $value)
-                        		<option value="{{ $value }}">{{ $value }}</option>
-                   			 @endforeach
-                		</select> --}}
+			    		<select name="make" id="make" class="form-control">
+                    		@foreach ($makes as $make)
+                        		<option value="{{ $make->id }}">{{ $make->name }}</option>
+                   			@endforeach
+                		</select>
 	    			</div>
 	    		</div>
 	    	</div>
@@ -111,7 +110,7 @@
 	    		<div class="row">
 	    			<div class="col-md-3">
 	    				{{ Form::label('type', 'Línea:')}}
-			    		{{ Form::select('type',[''], null, array('class' => 'form-control'))}}
+						{{ Form::select('type', [''],null,  array('class' => 'form-control'))}}
 	    			</div>
 	    		</div>
 	    	</div>
@@ -350,29 +349,47 @@
 <a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
 @endsection
 @section('scripts')
-{{-- Dropdown dependent menus for make and type | Ajax request to avoid page reload --}}
+{{-- Dropdown dependent menus for make and type | Ajax request to avoid page reload and select old values if validation fails --}}
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="make"]').on('change', function() {
-            var makeID = $(this).val();
-            if(makeID) {
-                $.ajax({
-                    url: '/qdocs/create/ajax/'+makeID,
-                    type: "GET",
-                    dataType: "json",
-                    success:function(data) {
-                        $('select[name="type"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="type"]').append('<option value="'+ key +'">'+ value +'</option>');
-                        });
-                    }
-                });
-            }
-            else{
-                $('select[name="type"]').empty();
-            }
-        });
+$(function(){
+    //Get the id for the make and type selected
+    var make_id = '{{ old('make', null) }}';
+    var type_id = '{{ old('type', null) }}';
+
+    //Make selection
+    $('#make').val(make_id).prop('selected', true);
+
+    //Types sync
+    if(make_id){
+    	typeUpdate(make_id);
+    }
+    //Make change
+    $('#make').on('change', function(e){
+    	var make_id = e.target.value;
+    	type_id = false;
+    	typeUpdate(make_id);
+
     });
+
+    //Ajax request for types
+    function typeUpdate(makeId){
+    	$.get('{{ url('types') }}/'+ makeId, function(data){
+    		//Empty type list
+    		$('#type').empty();
+    		//Loop for new list creation
+    		$.each(data, function(index, types){
+    			$('#type').append($('<option>', { 
+                    value: types.id,
+                    text : types.name 
+                }));
+    		});
+    		// If validation fails the previous type is selected
+    		if(type_id){
+    			$('#type').val(type_id).prop('selected', true);
+    		}
+    	});
+    }
+});
 </script>
 {{-- Signature pad javascript calling and options configuration --}}
 <script type="text/javascript">
