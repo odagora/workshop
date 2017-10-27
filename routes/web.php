@@ -27,14 +27,9 @@ Route::get('login', 'PagesController@getLogin');
 //CRUD routes
 Route::resource('qdocs', 'QdocsController');
 
+//Jquery & Ajax routes for dropdown dependent in forms
 Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@makes'));
 Route::get('types/{id}', 'DropDownController@types');
-
-//Jquery & Ajax routes for dropdown dependent in forms
-// Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@myform'));
-// Route::get('qdocs/create/ajax/{id}', array('as'=>'create.ajax', 'uses'=>'DropDownController@myformAjax'));
-
-
 
 // Route::get('/', function () {
 //     return view('welcome');

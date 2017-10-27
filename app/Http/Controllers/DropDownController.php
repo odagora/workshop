@@ -19,8 +19,6 @@ class DropDownController extends Controller
      */
     public function makes()
     {
-        // $makes = DB::table("makes")->pluck("name","id")->all();
-        // /*Allow select items when validation fails */
         $makes = Make::all();
         return view('qdocs.create', compact('makes'));
     }
@@ -36,18 +34,4 @@ class DropDownController extends Controller
         // Get the types fot the selected make 
         return Type::whereMakeId($id)->get();
     } 
-
-       /**
-     * Get Ajax Request and return Data
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function myformAjax($id)
-    // {
-    //     // $types = DB::table("types")
-    //     //             ->where("make_id",$id)
-    //     //             ->pluck("name","id")->all();
-    //     // return json_encode($types);
-    // }
-
 }
