@@ -6,7 +6,9 @@
   </head>
   <body>
   @include('partials._nav')
-    <div class="container"> 
+    <div class="container">
+      <!-- Loads session messages before all content-->
+      @include('partials._messages')
       @yield ('content')
       @include('partials._footer')
     </div> <!-- End of .container -->

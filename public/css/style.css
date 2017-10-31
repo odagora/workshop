@@ -1,0 +1,6 @@
+@media only screen and (max-width: 768px){
+.header-info {
+	padding: 12px;
+	border-bottom: 1px solid #eee;
+}
+}

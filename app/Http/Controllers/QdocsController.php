@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Make;
+use App\Type;
 use App\Qdocs;
+use Session;
 
 /*Include php file with matrix names and radio button elements*/
 include(storage_path().'/php/q_lists.php');
@@ -105,8 +108,10 @@ class QdocsController extends Controller
 
         $qdocs->save();
 
-        //Redirect to another page
+        //Display a flash message on succesfull submit
+        Session::flash('success', 'El documento fue creado de forma exitosa');
 
+        //Redirect to another page
         return redirect()->route('qdocs.show', $qdocs->id); 
     }
 
@@ -118,7 +123,10 @@ class QdocsController extends Controller
      */
     public function show($id)
     {
-        //
+        $qdoc = Qdocs::find($id);
+        $make = Make::find($qdoc->make);
+        $type = Type::find($qdoc->type);
+        return view('qdocs.show', compact('qdoc', 'make', 'type'));
     }
 
     /**

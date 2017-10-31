@@ -346,6 +346,7 @@
 		{!! Form::close() !!}
 	</div>
 </div>
+{{-- Scroll to top button --}}
 <a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
 @endsection
 @section('scripts')
@@ -365,19 +366,19 @@ $(function(){
     }
     //Make change
     $('#make').on('change', function(e){
+    	//Send the make id to typeUpdate function
     	var make_id = e.target.value;
     	type_id = false;
     	typeUpdate(make_id);
-
     });
 
     //Ajax request for types
     function typeUpdate(makeId){
-    	$.get('{{ url('types') }}/'+ makeId, function(data){
+    	$.get('{{ url('types') }}/'+makeId, function(data){
     		//Empty type list
     		$('#type').empty();
     		//Loop for new list creation
-    		$.each(data, function(index, types){
+    		$.each(data, function(id, types){
     			$('#type').append($('<option>', { 
                     value: types.id,
                     text : types.name 
