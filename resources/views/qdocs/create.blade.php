@@ -155,7 +155,7 @@
 				<div class="alert alert-danger" role="alert">{{ $errors->first('mileage') }}</div>
 			@endif
 	    	<hr>
-	    	<?php include('../storage/php/q_lists.php');?>
+	    	<?php include(storage_path().'/php/q_lists.php');?>
 	    	<div class="form-group">
 		    	@foreach($names as $mat=>$name)
 		    		@if($mat < 6)

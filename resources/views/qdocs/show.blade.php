@@ -49,4 +49,131 @@
 		</div>
 	</div>
 </div>
+<div class="row well">
+	<h4 class="text-center text-uppercase"><strong>Puntos de control</strong></h4>
+</div>
+<div class="row well">
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		@foreach($names as $mat=>$name)
+    		@if($mat < 4)
+	    		<table class="table table-condensed">
+	    			<thead>
+	    				<tr>
+	    					<th class="col-md-6">{{$name}}</th>
+			    			@for($i=1; $i <= count($cats[1]); $i++)
+			    				<th class="col-md-2 text-center">{{$cats[1][$i]}}</th>
+			    			@endfor
+			    		</tr>
+	    			</thead>
+	    			<tbody>
+	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
+	    					<tr>
+	    						<td class="col-md-6">{{$items[$mat][$i]}}</td>
+	    						@for($j=1; $j <= count($cats[1]); $j++) 
+	    							<td class="col-md-2 text-center">
+	    							{{Form::label($cats[1][$j], $cats[1][$j], array('style' => 'display:none'))}}
+	    							@php 
+	    							$elem = $elements[$mat][$i];
+	    							$elem = ($qdoc->$elem == $j ? ' checked' : '');
+	    							@endphp
+	    							{{Form::radio($elements[$mat][$i], $j, $elem)}}
+	    							</td>
+	    						@endfor
+	    					</tr>
+	    				@endfor
+	    			</tbody>
+	    		</table>
+	    	@endif
+	    @endforeach
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6">
+		@foreach($names as $mat=>$name)
+    		@if($mat > 3 && $mat < 6)
+	    		<table class="table table-condensed">
+	    			<thead>
+	    				<tr>
+	    					<th class="col-md-6">{{$name}}</th>
+			    			@for($i=1; $i <= count($cats[1]); $i++)
+			    				<th class="col-md-2 text-center">{{$cats[1][$i]}}</th>
+			    			@endfor
+			    		</tr>
+	    			</thead>
+	    			<tbody>
+	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
+	    					<tr>
+	    						<td class="col-md-6">{{$items[$mat][$i]}}</td>
+	    						@for($j=1; $j <= count($cats[1]); $j++) 
+	    							<td class="col-md-2 text-center">
+	    							{{Form::label($cats[1][$j], $cats[1][$j], array('style' => 'display:none'))}}
+	    							@php 
+	    							$elem = $elements[$mat][$i];
+	    							$elem = ($qdoc->$elem == $j ? ' checked' : '');
+	    							@endphp
+	    							{{Form::radio($elements[$mat][$i], $j, $elem)}}
+	    							</td>
+	    						@endfor
+	    					</tr>
+	    				@endfor
+	    			</tbody>
+	    		</table>
+	    	@elseif($mat == 6)
+	    		<table class="table table-condensed">
+	    			<thead>
+	    				<tr>
+	    					<th class="col-md-4">{{$name}}</th>
+			    			@for($i=1; $i <= count($cats[2]); $i++)
+			    				<th class="col-md-2 text-center">{{$cats[2][$i]}}</th>
+			    			@endfor
+			    		</tr>
+	    			</thead>
+	    			<tbody>
+	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
+	    					<tr>
+	    						<td class="col-md-4">{{$items[$mat][$i]}}</td>
+	    						@for($j=1; $j <= count($cats[2]); $j++) 
+	    							<td class="col-md-2 text-center">
+	    							{{Form::label($cats[2][$j], $cats[2][$j], array('style' => 'display:none'))}}
+	    							@php 
+	    							$elem = $elements[$mat][$i];
+	    							$elem = ($qdoc->$elem == $j ? ' checked' : '');
+	    							@endphp
+	    							{{Form::radio($elements[$mat][$i], $j, $elem)}}
+	    							</td>
+	    						@endfor
+	    					</tr>
+	    				@endfor
+	    			</tbody>
+	    		</table>
+	    	@elseif($mat == 7)
+	    		<table class="table table-condensed">
+	    			<thead>
+	    				<tr>
+	    					<th class="col-md-4">{{$name}}</th>
+			    			@for($i=1; $i <= count($cats[3]); $i++)
+			    				<th class="col-md-2 text-center">{{$cats[3][$i]}}</th>
+			    			@endfor
+			    		</tr>
+	    			</thead>
+	    			<tbody>
+	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
+	    					<tr>
+	    						<td class="col-md-4">{{$items[$mat][$i]}}</td>
+	    						@for($j=1; $j <= count($cats[3]); $j++) 
+	    							<td class="col-md-2 text-center">
+	    							{{Form::label($cats[3][$j], $cats[3][$j], array('style' => 'display:none'))}}
+	    							@php 
+	    							$elem = $elements[$mat][$i];
+	    							$elem = ($qdoc->$elem == $j ? ' checked' : '');
+	    							@endphp
+	    							{{Form::radio($elements[$mat][$i], $j, $elem)}}
+	    							</td>
+	    						@endfor
+	    					</tr>
+	    				@endfor
+	    			</tbody>
+	    		</table>
+	    	@endif
+	    @endforeach
+	</div>
+</div>
 @endsection

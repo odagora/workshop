@@ -4,14 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Config;
 use App\Make;
 use App\Type;
 use App\Qdocs;
 use Session;
-
-/*Include php file with matrix names and radio button elements*/
-include(storage_path().'/php/q_lists.php');
-include(storage_path().'/php/q_elements.php');
 
 class QdocsController extends Controller
 {
@@ -32,7 +29,8 @@ class QdocsController extends Controller
      */
     public function create()
     {
-        return view('qdocs.create');
+        $names = Config::get('constants.qdoc_names');
+        return view('qdocs.create')->with(array('names' => $names));
     }
 
     /**
@@ -126,7 +124,11 @@ class QdocsController extends Controller
         $qdoc = Qdocs::find($id);
         $make = Make::find($qdoc->make);
         $type = Type::find($qdoc->type);
-        return view('qdocs.show', compact('qdoc', 'make', 'type'));
+        $names = Config::get('constants.qdoc_names');
+        $items = Config::get('constants.qdoc_items');
+        $cats = Config::get('constants.qdoc_cats');
+        $elements = Config::get('constants.qdoc_elements');
+        return view('qdocs.show', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements'));
     }
 
     /**
