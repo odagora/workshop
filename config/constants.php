@@ -175,6 +175,13 @@ return [
 			'3' => 'm7_el3',
 			'4' => 'm7_el4'
 		]
+	],
+
+	'qdoc_comments' => [
+		'1' => 'Inmediato:',
+		'2' => 'De ser posible:',
+		'3' => 'A prever:',
+		'4' => 'Observaciones:'
 	]
 ];
 ?>

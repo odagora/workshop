@@ -2,13 +2,6 @@
 @section('title', '| Crear un nuevo certificado de control calidad') 
 @section('content')
 
-{{-- Include php file with matrix element names--}}
-<?php include(storage_path().'/php/q_elements.php');?>
-
-{{--Show list of errors--}}
-{{-- @foreach ($errors->all() as $message)
-	<li>{{$message}}</li>    
-@endforeach --}}
 <div class="col-md-8 col-md-offset-2">
 		<h1>Crear un nuevo certificado de control calidad</h1>
 		<hr>
@@ -155,7 +148,6 @@
 				<div class="alert alert-danger" role="alert">{{ $errors->first('mileage') }}</div>
 			@endif
 	    	<hr>
-	    	<?php include(storage_path().'/php/q_lists.php');?>
 	    	<div class="form-group">
 		    	@foreach($names as $mat=>$name)
 		    		@if($mat < 6)
@@ -163,105 +155,103 @@
 			    			<thead>
 			    				<tr>
 			    					<th class="col-md-4">{{$name}}</th>
-					    			@for($i=1; $i <= count($loptions); $i++)
-					    				<th class="col-md-2 text-center">{{$loptions[$i]}}</th>
+					    			@for($i=1; $i <= count($cats[1]); $i++)
+					    				<th class="col-md-2 text-center">{{$cats[1][$i]}}</th>
 					    			@endfor
 					    		</tr>
 			    			</thead>
 			    			<tbody>
-			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 			    					<tr>
-			    						<td>{{$list[$mat][$i]}}</td>
-			    						@for($j=1; $j <= count($loptions); $j++)
+			    						<td>{{$items[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($cats[1]); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label($loptions[$j], $loptions[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
+			    							{{Form::label($cats[1][$j], $cats[1][$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($elements[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
 			    				@endfor
 			    			</tbody>
 			    		</table>
-			    		<?php 
-			    		$method = 'getMatrix';
-			    		$arg = 'Elements';
-			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
-			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
-			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			    		@php
+			    		$m[$mat] = str_replace('_', ' ', $elements[$mat]);
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());
+			    		@endphp
 			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
 							<br>
-							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla "{{$name}}" son requeridos.</div>
 					   @endif            
 			    	@elseif($mat==6)
 			    		<table class="table table-condensed">
 			    			<thead>
 			    				<tr>
 			    					<th class="col-md-4">{{$name}}</th>
-					    			@for($i=1; $i <= count($loptions1); $i++)
-					    				<th class="col-md-2 text-center">{{$loptions1[$i]}}</th>
+					    			@for($i=1; $i <= count($cats[2]); $i++)
+					    				<th class="col-md-2 text-center">{{$cats[2][$i]}}</th>
 					    			@endfor
 					    		</tr>
 			    			</thead>
 			    			<tbody>
-			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 			    					<tr>
-			    						<td>{{$list[$mat][$i]}}</td>
-			    						@for($j=1; $j <= count($loptions1); $j++)
+			    						<td>{{$items[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($cats[2]); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label($loptions1[$j], $loptions1[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
+			    							{{Form::label($cats[2][$j], $cats[2][$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($elements[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
 			    				@endfor
 			    			</tbody>
 			    		</table>
-			    		<?php 
-			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
-			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
-			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			    		@php
+			    		$m[$mat] = str_replace('_', ' ', $elements[$mat]);
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());
+			    		@endphp
 			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
 							<br>
-							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla "{{$name}}" son requeridos.</div>
 					   @endif
 			    	@else
 			    		<table class="table table-condensed">
 			    			<thead>
 			    				<tr>
 			    					<th class="col-md-4">{{$name}}</th>
-					    			@for($i=1; $i <= count($loptions2); $i++)
-					    				<th class="col-md-2 text-center">{{$loptions2[$i]}}</th>
+					    			@for($i=1; $i <= count($cats[3]); $i++)
+					    				<th class="col-md-2 text-center">{{$cats[3][$i]}}</th>
 					    			@endfor
 					    		</tr>
 			    			</thead>
 			    			<tbody>
-			    				@for($i=1; $i <= count($list[$mat]) ; $i++)
+			    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 			    					<tr>
-			    						<td>{{$list[$mat][$i]}}</td>
-			    						@for($j=1; $j <= count($loptions2); $j++)
+			    						<td>{{$items[$mat][$i]}}</td>
+			    						@for($j=1; $j <= count($cats[3]); $j++)
 			    							<td class="col-md-2 text-center">
-			    							{{Form::label($loptions2[$j], $loptions2[$j], array('style' => 'display:none'))}}
-			    							{{Form::radio($matrixNames[$mat][$i], $j)}}
+			    							{{Form::label($cats[3][$j], $cats[3][$j], array('style' => 'display:none'))}}
+			    							{{Form::radio($elements[$mat][$i], $j)}}
 			    							</td>
 			    						@endfor
 			    					</tr>
 			    				@endfor
 			    			</tbody>
 			    		</table>
-			    		<?php 
-			    		$matrix[$mat] = call_user_func($method.$mat.$arg);
-			    		$m[$mat] = str_replace('_', ' ', $matrix[$mat]);	    		
-			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());?>
+			    		@php
+			    		$m[$mat] = str_replace('_', ' ', $elements[$mat]);
+			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());
+			    		@endphp
 			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
 							<br>
-							<div class="alert alert-danger" role="alert">Todos los campos de la tabla {{$name}} son requeridos.</div>
+							<div class="alert alert-danger" role="alert">Todos los campos de la tabla "{{$name}}" son requeridos.</div>
 					   @endif
 			    	@endif
 		    	@endforeach
 		    </div>
 	    	<hr>
 	    	<h3>Semáforo</h3>
-	    	@foreach ($lcomments as $com => $name)
+	    	@foreach ($comments as $com => $name)
 	    		@if($com < 4)
 		    		<div class="form-group">
 		    			<div class="row">
@@ -269,7 +259,7 @@
 				    			{{Form::label('comment',$name)}}
 				    		</div>
 				    		<div class="col-md-12">	
-				    			{{Form::textarea($comNames[$com], $comVariables[$com], array('class' => 'form-control', 'rows' => '3'))}}
+				    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3'))}}
 				    		</div>
 			    		</div>
 		    		</div>
@@ -281,7 +271,7 @@
 				    			{{Form::label('comment',$name)}}
 				    		</div>
 				    		<div class="col-md-12">	
-				    			{{Form::textarea($comNames[$com], $comVariables[$com], array('class' => 'form-control', 'rows' => '3'))}}
+				    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3'))}}
 				    		</div>
 			    		</div>
 		    		</div>

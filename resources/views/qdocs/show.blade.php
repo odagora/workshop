@@ -176,4 +176,6 @@
 	    @endforeach
 	</div>
 </div>
+{{-- Scroll to top button --}}
+<a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
 @endsection

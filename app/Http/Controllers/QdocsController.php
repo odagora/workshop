@@ -29,8 +29,13 @@ class QdocsController extends Controller
      */
     public function create()
     {
+        $makes = Make::all();
         $names = Config::get('constants.qdoc_names');
-        return view('qdocs.create')->with(array('names' => $names));
+        $items = Config::get('constants.qdoc_items');
+        $cats = Config::get('constants.qdoc_cats');
+        $elements = Config::get('constants.qdoc_elements');
+        $comments = Config::get('constants.qdoc_comments');
+        return view('qdocs.create', compact('makes', 'names', 'items', 'cats', 'elements', 'comments'));
     }
 
     /**
@@ -63,12 +68,10 @@ class QdocsController extends Controller
         );
 
          //Validate the data - matrix information
-        $names = matrixNames();
-        $method = 'getMatrix';
-        $arg = 'Elements';
+        $names = Config::get('constants.qdoc_names');
+        $elements = Config::get('constants.qdoc_elements');
         foreach ($names as $key => $value) {
-            $matrix[$key] = call_user_func($method.$key.$arg);
-            foreach ($matrix[$key] as $mat => $name) {
+            foreach ($elements[$key] as $mat => $name) {
                 $data["$name"] = 'required';            
             }
         }
@@ -98,8 +101,7 @@ class QdocsController extends Controller
 
         //Store in the database - matrix information
         foreach ($names as $key => $value) {
-            $matrix[$key] = call_user_func($method.$key.$arg);
-            foreach ($matrix[$key] as $mat => $name) {
+            foreach ($elements[$key] as $mat => $name) {
                 $qdocs->$name = $request->$name;            
             }
         }

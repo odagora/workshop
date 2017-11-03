@@ -31,6 +31,9 @@ Route::resource('qdocs', 'QdocsController');
 Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@makes'));
 Route::get('types/{id}', 'DropDownController@types');
 
+//Data passing to qdocs.create page
+Route::get('qdocs/create', array('as'=>'create', 'uses'=>'QdocsController@create'));
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
