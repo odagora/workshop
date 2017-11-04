@@ -123,6 +123,7 @@ return [
         'c_firstname' => 'Nombre del cliente',
         'c_lastname' => 'Apellido del cliente',
         'email' => 'Email',
+        'phone' => 'Teléfono',
         'make' => 'Marca',
         'type' => 'Línea',
         'model' => 'Modelo',

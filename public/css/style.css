@@ -1,6 +1,24 @@
 @media only screen and (max-width: 768px){
-.header-info {
-	padding: 12px;
+	.header-info {
+		padding: 12px;
+		border-bottom: 1px solid #eee;
+	}
+}
+
+.col-md-4 svg {
+	display: block;
+	margin: auto;
+}
+
+.comments {
+	height: 151px;
 	border-bottom: 1px solid #eee;
 }
+
+.fire {
+	border-bottom: 1px solid #eee;
+}
+
+.sigPad {
+	margin: 0 60px;
 }

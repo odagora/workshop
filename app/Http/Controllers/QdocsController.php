@@ -54,6 +54,7 @@ class QdocsController extends Controller
             'c_firstname' => 'required|max:32|alpha',
             'c_lastname' => 'required|max:32|alpha',
             'email' => 'required|email',
+            'phone' => 'required|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -87,6 +88,7 @@ class QdocsController extends Controller
         $qdocs->c_firstname = $request->c_firstname;
         $qdocs->c_lastname = $request->c_lastname;
         $qdocs->email = $request->email;
+        $qdocs->phone = $request->phone;
         $qdocs->make = $request->make;
         $qdocs->type = $request->type;
         $qdocs->model = $request->model;
@@ -130,7 +132,8 @@ class QdocsController extends Controller
         $items = Config::get('constants.qdoc_items');
         $cats = Config::get('constants.qdoc_cats');
         $elements = Config::get('constants.qdoc_elements');
-        return view('qdocs.show', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements'));
+        $comments = Config::get('constants.qdoc_comments');
+        return view('qdocs.show', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
     }
 
     /**

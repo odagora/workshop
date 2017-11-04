@@ -7,7 +7,6 @@
 <!--[if lt IE 9]><script src="flashcanvas.js"></script><![endif]-->
 <script type="text/javascript" src="{{asset('js/jquery.signaturepad.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/json2.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/sigPadCompression.js')}}"></script>
 
 <!-- Scroll to top feature -->
 <script type="text/javascript">

@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-8">
 			<p class="text-center" style="border-bottom: 1px solid #eee;">{{ $qdoc->c_firstname }} {{ $qdoc->c_lastname }}</p>
-			<p class="text-center" style="border-bottom: 1px solid #eee;">3186515096</p>
+			<p class="text-center" style="border-bottom: 1px solid #eee;">{{$qdoc->phone}}</p>
 			<p class="text-center" style="border-bottom: 1px solid #eee;">{{ $qdoc->email }}</p>
 		</div>
 	</div>
@@ -176,6 +176,115 @@
 	    @endforeach
 	</div>
 </div>
+<div class="row well">
+	<h4 class="text-center text-uppercase"><strong>Importante:</strong></h4>
+	<h4 class="text-center"><strong>Los controles realizados son únicamente sobre los elementos visibles del vehículo y no implican desmontaje alguno, por lo tanto el taller no asume responsabilidad en caso de la no detección de una falla no aparente.</strong></h4>
+</div>
+<div class="row well">
+	<h4 class="text-center"><strong>Llamamos la atención sobre los siguientes trabajos pendientes de realizar:</strong></h4>
+</div>
+<div class="row well">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="col-xs-4 col-sm-4 col-md-4">
+			<h4 class="text-center"><strong>Semáforo</strong></h4>
+		</div>
+		<div class="col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-center"><strong>Comentarios</strong></h4>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="fire col-xs-4 col-sm-4 col-md-4">
+			<svg>
+				<circle cx="50%" cy="50%" r="50" stroke="red" stroke-width="3" fill="red" />
+				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">Inmediato</text>
+			</svg>
+		</div>
+		<div class="comments col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-justify">{{$qdoc->comment1}}</h4>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="fire col-xs-4 col-sm-4 col-md-4">
+			<svg>
+				<circle cx="50%" cy="50%" r="50" stroke="yellow" stroke-width="3" fill="yellow" />
+				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">De ser posible</text>
+			</svg>
+		</div>
+		<div class="comments col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-justify">{{$qdoc->comment2}}</h4>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="fire col-xs-4 col-sm-4 col-md-4">
+			<svg>
+				<circle cx="50%" cy="50%" r="50" stroke="green" stroke-width="3" fill="green" />
+				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">A prever</text>
+			</svg>
+		</div>
+		<div class="comments col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-justify">{{$qdoc->comment3}}</h4>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="comments col-xs-4 col-sm-4 col-md-4">
+			<h4 class="text-center"><strong>Observaciones:</strong></h4>
+		</div>
+		<div class="comments col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-justify">{{$qdoc->comment4}}</h4>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-6 col-md-6 well">
+		<h4 class="text-center"><strong>Conformidad factura/trabajos:</strong></h4>
+		<div class="sigPad" id="sig-employee">
+			<div class="sig sigWrapper">
+				<canvas class="pad" width="415" height="170">
+				{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
+			</div>
+			<div class="sigFooter">
+				<div class="description">Firma del taller</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-6 col-md-6 well">
+		<div class="col-xs-8 col-sm-8 col-md-8">
+			<h4 class="text-center"><strong>Próximo mantenimiento a los:</strong></h4>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4">
+			<h4 class="text-center"><strong>{{number_format($qdoc->n_mileage,0,",",".")}} kms</strong></h4>
+		</div>
+		<div class="sigPad" id="sig-client">
+			<div class="sig sigWrapper">
+				<canvas class="pad" width="415" height="170">
+				{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
+			</div>
+			<div class="sigFooter">
+				<div class="description">Firma del cliente</div>
+			</div>
+		</div>
+	</div>
+</div>
 {{-- Scroll to top button --}}
 <a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
+@endsection
+@section('scripts')
+{{-- Signature pad javascript calling and options configuration --}}
+<script type="text/javascript">
+	$(function(){
+		var options = {
+			drawOnly : false,
+			displayOnly : true,
+			penColour: '#000',
+			bgColour: '#f5f5f5',
+			output:'.signature',
+			lineTop: 160,
+			lineMargin: 10,
+			validateFields: false
+		};
+		//Esccaping JSON signature data from database
+		var sigpad_data = {!! $qdoc->e_signature !!};
+		$('#sig-employee').signaturePad(options).regenerate(sigpad_data);
+	});
+</script>
 @endsection

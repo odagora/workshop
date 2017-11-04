@@ -83,6 +83,18 @@
 				<br>
 				<div class="alert alert-danger" role="alert">{{ $errors->first('email') }}</div>
 			@endif
+			<div class="form-group">
+				<div class="row">
+					<div class="col-md-3">
+			    		{{ Form::label('phone', 'Teléfono:')}}
+			    		{{ Form::number('phone', null, array('class' => 'form-control'))}}
+		    	</div>
+		    </div>
+		    @if ($errors->has('phone'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('phone') }}</div>
+			@endif
+	    	</div>
 	    	<div class="form-group">
 	    		<div class="row">
 	    			<div class="col-md-3">
@@ -294,7 +306,7 @@
 				<div class="row">
 					<div class="col-md-6">
 						{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
-						<div class="sigPad">
+						<div class="sigPad" id="sig-employee">
 							<div class="sig sigWrapper">
 								<canvas class="pad" width="340" height="170">
 								{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
@@ -311,7 +323,7 @@
 					</div>
 					<div class="col-md-6">
 						{{Form::label('c_signature', 'Firma del cliente:')}}
-						<div class="sigPad">
+						<div class="sigPad" id="sig-client">
 							<div class="sig sigWrapper">
 								<canvas class="pad" width="340" height="170">
 								{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
@@ -394,17 +406,6 @@ $(function(){
 		lineMargin: 10,
 		validateFields: false
 	};
-	$('.sigPad').signaturePad(options);
-</script>
-{{-- Signature compression before submitting to database--}}
-<script type="text/javascript">
-	$("#qdoc_form").submit(function(event) {
-		var sig = $("#e_signature").val();
-		if (sig.length > 0) {
-			var result = deflateFromJsonSignature(sig);
-		    $("#e_signature").val(result);
-		}
-		return true;
-	 });
+	$('#sig-employee').signaturePad(options);
 </script>
 @endsection
