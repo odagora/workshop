@@ -100,6 +100,7 @@ class QdocsController extends Controller
         $qdocs->comment4 = $request->comment4;
         $qdocs->n_mileage = $request->n_mileage;
         $qdocs->e_signature = $request->e_signature;
+        $qdocs->c_signature = $request->c_signature;
 
         //Store in the database - matrix information
         foreach ($names as $key => $value) {

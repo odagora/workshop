@@ -309,7 +309,7 @@
 						<div class="sigPad" id="sig-employee">
 							<div class="sig sigWrapper">
 								<canvas class="pad" width="340" height="170">
-								{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
+								{{ Form::hidden('e_signature', null, array('class' => 'e_signature'))}}
 							</div>
 							<div class="sigFooter">
 								<div class="description">Firme arriba</div>
@@ -326,7 +326,7 @@
 						<div class="sigPad" id="sig-client">
 							<div class="sig sigWrapper">
 								<canvas class="pad" width="340" height="170">
-								{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
+								{{ Form::hidden('c_signature', null, array('class' => 'c_signature'))}}
 							</div>
 							<div class="sigFooter">
 								<div class="description">Firme arriba</div>
@@ -401,11 +401,23 @@ $(function(){
 		displayOnly : false,
 		clear: '.button-clear',
 		penColour: '#000',
-		output:'.signature',
+		output:'.e_signature',
 		lineTop: 160,
 		lineMargin: 10,
 		validateFields: false
 	};
 	$('#sig-employee').signaturePad(options);
+
+	var options1 = {
+		drawOnly : true,
+		displayOnly : false,
+		clear: '.button-clear',
+		penColour: '#000',
+		output:'.c_signature',
+		lineTop: 160,
+		lineMargin: 10,
+		validateFields: false
+	};
+	$('#sig-client').signaturePad(options1);
 </script>
 @endsection

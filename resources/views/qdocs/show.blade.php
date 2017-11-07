@@ -277,14 +277,17 @@
 			displayOnly : true,
 			penColour: '#000',
 			bgColour: '#f5f5f5',
-			output:'.signature',
 			lineTop: 160,
 			lineMargin: 10,
 			validateFields: false
 		};
-		//Esccaping JSON signature data from database
+
+		//Escaping JSON signature data from database
 		var sigpad_data = {!! $qdoc->e_signature !!};
 		$('#sig-employee').signaturePad(options).regenerate(sigpad_data);
+		//Get second signature only if it exists
+		var sigpad_data1 = {!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!};
+		$('#sig-client').signaturePad(options).regenerate(sigpad_data1);
 	});
 </script>
 @endsection
