@@ -162,7 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -177,6 +176,14 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        /*
+         * Form Builder Provider
+         */
+        Collective\Html\HtmlServiceProvider::class,
+        /*
+         * Inverse Database Seeder Provider    
+         */
+        Orangehill\Iseed\IseedServiceProvider::class
 
     ],
 
