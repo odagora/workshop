@@ -19,7 +19,8 @@ class QdocsController extends Controller
      */
     public function index()
     {
-        //
+        $qdocs = Qdocs::all();
+        return view('qdocs.index')->withQdocs($qdocs);
     }
 
     /**

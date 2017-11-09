@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', '| Certificado de control calidad')
+@section('title', '| Certificado de Control Calidad')
 @section('stylesheets')
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 @endsection
@@ -286,7 +286,7 @@
 		var sigpad_data = {!! $qdoc->e_signature !!};
 		$('#sig-employee').signaturePad(options).regenerate(sigpad_data);
 		//Get second signature only if it exists
-		var sigpad_data1 = {!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!};
+		var sigpad_data1 = '{!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!}';
 		$('#sig-client').signaturePad(options).regenerate(sigpad_data1);
 	});
 </script>

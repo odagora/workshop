@@ -1,9 +1,9 @@
 @extends('main')
 @section('title', '| Crear un nuevo certificado de control calidad') 
 @section('content')
-
-<div class="col-md-8 col-md-offset-2">
-		<h1>Crear un nuevo certificado de control calidad</h1>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1 class="text-center">Crear un nuevo certificado de control calidad</h1>
 		<hr>
 		{!! Form::open(array('name' => 'qdoc_form' , 'id' => 'qdoc_form' , 'route' => 'qdocs.store')) !!}
 			<div class="form-group">

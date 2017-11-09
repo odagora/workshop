@@ -1,3 +1,7 @@
+/*
+For show.blade.php
+ */
+
 @media only screen and (max-width: 768px){
 	.header-info {
 		padding: 12px;
@@ -21,4 +25,32 @@
 
 .sigPad {
 	margin: 0 60px;
+}
+
+/*
+For index.blade.php
+ */
+
+.btn-h1-spacing {
+	margin-top: 18px;
+}
+
+@media only screen and (max-width: 768px){
+	.index-header {
+		text-align: center;
+	}
+
+	.btn-block {
+		display: inline-block;
+		width: auto;
+	}
+
+	.btn-h1-spacing {
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	.index-button {
+		text-align: center;
+	}
 }
