@@ -1,37 +1,80 @@
 @extends('main')
 @section('title', '| Home')
-@section('content')      
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <div class="col-md-12">
-        <h3><span class="label label-default text-uppercase">Control calidad</span></h3>
+@section('stylesheets')
+@section('content')
+<div class="row well">
+  <div class="col-xs-12 col-sm-12 col-md-12 main-title">
+    <h1 class="text-center text-uppercase">Gestión documentos e información taller</h1>
+  </div>
+</div> 
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12">
+      <hr>
+  </div>
+</div>       
+<div class="row main-index">
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">
+        <h3 class="text-uppercase">Calidad</h3>
       </div>
-      <div class="col-md-12 px-2">
-        <a href="quality"><img src="{{asset('img/list.png')}}" class="img-responsive center-block"></a>
+      <div class="col-md-12 main-index-image">
+        <a href="qdocs"><img src="{{asset('img/list.png')}}" class="img-responsive center-block"></a>
       </div>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3><span class="label label-default text-uppercase">Peritajes</span></h3> 
-      <a href="expert"><img src="{{asset('img/car-inspection.png')}}" class="img-responsive center-block"></a>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3><span class="label label-default text-uppercase">Inspecciones visuales</span></h3> 
-      <a href="inspection"><img src="{{asset('img/car-repair-check.png')}}" class="img-responsive center-block"></a>
+    </div>  
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">
+        <h3 class="text-uppercase">Peritaje</h3>
+      </div>
+      <div class="col-md-12 main-index-image"> 
+        <a href="edocs"><img src="{{asset('img/car-inspection.png')}}" class="img-responsive center-block"></a>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <h3><span class="label label-default text-uppercase">Colisión exprés</span></h3> 
-      <a href="collision"><img src="{{asset('img/car-painting.png')}}" class="img-responsive center-block"></a>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3><span class="label label-default text-uppercase">Fotos OT</span></h3> 
-      <a href="photo"><img src="{{asset('img/photo-camera.png')}}" class="img-responsive center-block"></a>
-    </div>
-    <div class="col-md-4 text-center">
-      <h3><span class="label label-default text-uppercase">Precios OM</span></h3> 
-      <a href="price"><img src="{{asset('img/label.png')}}" class="img-responsive center-block"></a>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">  
+        <h3 class="text-uppercase">Inspección</h3>
+      </div> 
+      <div class="col-md-12 main-index-image">  
+        <a href="idocs"><img src="{{asset('img/car-repair-check.png')}}" class="img-responsive center-block"></a>
+      </div>
     </div>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">  
+        <h3 class="text-uppercase">Colisión</h3>
+      </div> 
+      <div class="col-md-12 main-index-image">  
+        <a href="cdocs"><img src="{{asset('img/car-painting.png')}}" class="img-responsive center-block"></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row main-index">
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">  
+        <h3 class="text-uppercase">Fotos OT</span></h3>
+      </div> 
+      <div class="col-md-12 main-index-image">
+        <a href="photo"><img src="{{asset('img/photo-camera.png')}}" class="img-responsive center-block"></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">
+        <h3 class="text-uppercase">Precios OM</h3>
+      </div> 
+      <div class="col-md-12 main-index-image">
+        <a href="price"><img src="{{asset('img/label.png')}}" class="img-responsive center-block"></a>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
   

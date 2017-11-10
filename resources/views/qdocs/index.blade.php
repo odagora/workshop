@@ -1,8 +1,5 @@
 @extends('main')
 @section('title', '| Certificados de Control Calidad')
-@section('stylesheets')
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
-@endsection
 @section('content')
 <div class="row">
 	<div class="col-xs-12 col-sm-9 col-md-10 index-header">

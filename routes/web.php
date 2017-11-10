@@ -12,10 +12,6 @@
 */
 
 //Pages routes
-Route::get('collision', 'PagesController@getCollision');
-Route::get('inspection', 'PagesController@getInspection');
-Route::get('expert', 'PagesController@getExpert');
-Route::get('quality', 'PagesController@getQuality');
 Route::get('confirm', 'PagesController@getConfirm');
 Route::get('print', 'PagesController@getPrint');
 Route::get('config', 'PagesController@getConfig');

@@ -1,7 +1,41 @@
 /*
+MAIN PAGES
+ */
+.main-index {
+	margin-bottom: 50px;
+}
+
+.main-index-title {
+	margin-bottom: 50px;
+}
+
+.main-index-image {
+	margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 400px){
+	.main-title h1 {
+		font-size: 23px;
+	}
+
+	.main-index {
+		margin-bottom: 25px;
+	}
+}
+
+@media only screen and (min-width: 400px) and (max-width: 768px){
+	.main-title h1 {
+		font-size: 30px;
+	}
+}
+
+
+/*
+QDOCS PAGES
+ */
+/*
 For show.blade.php
  */
-
 @media only screen and (max-width: 768px){
 	.header-info {
 		padding: 12px;
@@ -30,7 +64,6 @@ For show.blade.php
 /*
 For index.blade.php
  */
-
 .btn-h1-spacing {
 	margin-top: 18px;
 }
