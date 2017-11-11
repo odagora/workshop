@@ -1,5 +1,8 @@
 @extends('main')
 @section('title', '| Certificado de Control Calidad')
+@section('stylesheets')
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+@endsection
 @section('content')
 <div class="row">
 	<h2 class="text-center text-uppercase">Certificado de Control Calidad</h2>
@@ -260,6 +263,16 @@
 			</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-md-4 text-center">
+			<div class="col-md-6">
+				{!! Html::linkRoute('qdocs.edit', 'Editar', array($qdoc->id), array('class' => 'btn btn-warning btn-block')) !!}
+			</div>
+			<div class="col-md-6">
+				{!! Html::linkRoute('qdocs.destroy', 'Anular', array($qdoc->id), array('class' => 'btn btn-danger btn-block')) !!}
+			</div>
+		</div>
+	</div>
 </div>
 {{-- Scroll to top button --}}
 <a class="scrollToTop" id="myBtn" title="Go to top"><i class="fa fa-arrow-circle-up fa-4x" aria-hidden="true"></i></a>
@@ -283,7 +296,9 @@
 		$('#sig-employee').signaturePad(options).regenerate(sigpad_data);
 		//Get second signature only if it exists
 		var sigpad_data1 = '{!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!}';
-		$('#sig-client').signaturePad(options).regenerate(sigpad_data1);
+		if(sigpad_data1 !== ''){
+			$('#sig-client').signaturePad(options).regenerate(sigpad_data1);
+		}
 	});
 </script>
 @endsection

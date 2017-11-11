@@ -146,7 +146,16 @@ class QdocsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $qdoc = Qdocs::find($id);
+        $make_id = Make::find($qdoc->make);
+        $type = Type::find($qdoc->type);
+        $makes = Make::all();
+        $names = Config::get('constants.qdoc_names');
+        $items = Config::get('constants.qdoc_items');
+        $cats = Config::get('constants.qdoc_cats');
+        $elements = Config::get('constants.qdoc_elements');
+        $comments = Config::get('constants.qdoc_comments');
+        return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
     }
 
     /**
