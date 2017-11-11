@@ -1,8 +1,5 @@
 @extends('main')
 @section('title', '| Certificado de Control Calidad')
-@section('stylesheets')
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
-@endsection
 @section('content')
 <div class="row">
 	<h2 class="text-center text-uppercase">Certificado de Control Calidad</h2>
@@ -236,7 +233,7 @@
 <div class="row">
 	<div class="col-xs-12 col-sm-6 col-md-6 well">
 		<h4 class="text-center"><strong>Conformidad factura/trabajos:</strong></h4>
-		<div class="sigPad" id="sig-employee">
+		<div class="showSig" id="sig-employee">
 			<div class="sig sigWrapper">
 				<canvas class="pad" width="415" height="170">
 				{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
@@ -253,7 +250,7 @@
 		<div class="col-xs-4 col-sm-4 col-md-4">
 			<h4 class="text-center"><strong>{{number_format($qdoc->n_mileage,0,",",".")}} kms</strong></h4>
 		</div>
-		<div class="sigPad" id="sig-client">
+		<div class="showSig" id="sig-client">
 			<div class="sig sigWrapper">
 				<canvas class="pad" width="415" height="170">
 				{{ Form::hidden('c_signature', null, array('class' => 'signature'))}}
@@ -292,12 +289,12 @@
 		};
 
 		//Escaping JSON signature data from database
-		var sigpad_data = {!! $qdoc->e_signature !!};
-		$('#sig-employee').signaturePad(options).regenerate(sigpad_data);
+		var showSig_data = {!! $qdoc->e_signature !!};
+		$('#sig-employee').signaturePad(options).regenerate(showSig_data);
 		//Get second signature only if it exists
-		var sigpad_data1 = '{!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!}';
-		if(sigpad_data1 !== ''){
-			$('#sig-client').signaturePad(options).regenerate(sigpad_data1);
+		var showSig_data1 = '{!! ($qdoc->c_signature !== null ? $qdoc->c_signature : '') !!}';
+		if(showSig_data1 !== ''){
+			$('#sig-client').signaturePad(options).regenerate(showSig_data1);
 		}
 	});
 </script>

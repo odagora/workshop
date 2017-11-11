@@ -304,11 +304,11 @@
 			@endif
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-xs-6 col-sm-6 col-md-6 signature">
 						{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
 						<div class="sigPad" id="sig-employee">
 							<div class="sig sigWrapper">
-								<canvas class="pad" width="340" height="170">
+								<canvas class="pad" width="280" height="170">
 								{{ Form::hidden('e_signature', null, array('class' => 'e_signature'))}}
 							</div>
 							<div class="sigFooter">
@@ -321,11 +321,11 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-xs-6 col-sm-6 col-md-6 signature">
 						{{Form::label('c_signature', 'Firma del cliente:')}}
 						<div class="sigPad" id="sig-client">
 							<div class="sig sigWrapper">
-								<canvas class="pad" width="340" height="170">
+								<canvas class="pad" width="280" height="170">
 								{{ Form::hidden('c_signature', null, array('class' => 'c_signature'))}}
 							</div>
 							<div class="sigFooter">

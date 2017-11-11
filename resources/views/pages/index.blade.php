@@ -1,6 +1,5 @@
 @extends('main')
 @section('title', '| Home')
-@section('stylesheets')
 @section('content')
 <div class="row well">
   <div class="col-xs-12 col-sm-12 col-md-12 main-title">

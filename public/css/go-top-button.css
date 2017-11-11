@@ -8,3 +8,11 @@
   cursor: pointer;
   padding: 15px;
 }
+
+@media only screen and (max-width: 480px) {
+	#myBtn {
+		padding: 0;
+		bottom: 10px;
+		right: 10px;
+	}
+}
