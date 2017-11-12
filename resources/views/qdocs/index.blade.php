@@ -33,7 +33,7 @@
 					<td class="text-center">{{number_format($qdoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{$qdoc->ordernumber}}</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($qdoc->created_at))}}</td>
-					<td class="text-center"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info btn-sm">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-danger btn-sm">Editar</a></td>
+					<td class="text-center"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info btn-sm">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-warning btn-sm">Editar</a></td>
 				</tr>
 				@endforeach
 			</tbody>

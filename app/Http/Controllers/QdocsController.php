@@ -233,7 +233,7 @@ class QdocsController extends Controller
         $qdocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'El documento fue modificado de forma exitosa');
+        Session::flash('success', 'El certificado de control calidad fue modificado de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('qdocs.show', $qdocs->id); 
@@ -247,7 +247,12 @@ class QdocsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $qdocs = Qdocs::find($id);
+        $qdocs->delete();
+
+        Session::flash('success', 'El certificado de control calidad fue eliminado de forma exitosa');
+
+        return redirect()->route('qdocs.index');
     }
 
 }

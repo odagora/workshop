@@ -266,7 +266,9 @@
 				{!! Html::linkRoute('qdocs.edit', 'Editar', array($qdoc->id), array('class' => 'btn btn-warning btn-block')) !!}
 			</div>
 			<div class="col-md-6">
-				{!! Html::linkRoute('qdocs.destroy', 'Anular', array($qdoc->id), array('class' => 'btn btn-danger btn-block')) !!}
+				{!! Form::open(array('route' => ['qdocs.destroy', $qdoc->id], 'method' => 'DELETE')) !!}
+					{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
+				{!! Form::close() !!}	
 			</div>
 		</div>
 	</div>
