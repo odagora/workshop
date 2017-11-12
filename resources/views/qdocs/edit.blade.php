@@ -5,7 +5,7 @@
 	<div class="col-md-8 col-md-offset-2">
 		<h1 class="text-center">Certificado de control calidad</h1>
 		<hr>
-		{!! Form::model($qdoc, ['route' => ['qdocs.update', $qdoc->id]]) !!}
+		{!! Form::model($qdoc, ['route' => ['qdocs.update', $qdoc->id], 'method' => 'PUT']) !!}
 		<div class="form-group">
 			<div class="row">
 				<div class="col-md-3">
@@ -340,7 +340,7 @@
 <div class="row ">
 	<div class="col-xs-6 col-sm-6 col-md-4 col-md-offset-2 edit-buttons">
 		<div class="col-xs-6 col-sm-6 col-md-6">
-			{!! Html::linkRoute('qdocs.edit', 'Cancelar', array($qdoc->id), array('class' => 'btn btn-danger btn-block edit-buttons', 'style' => 'margin-top: 30px;')) !!}
+			{!! Html::linkRoute('qdocs.show', 'Cancelar', array($qdoc->id), array('class' => 'btn btn-danger btn-block edit-buttons', 'style' => 'margin-top: 30px;')) !!}
 		</div>
 		<div class="col-xs-6 col-sm-6 col-md-6">
 			{{ Form::submit('Guardar', array('class' => 'btn btn-success btn-block', 'style' => 'margin-top: 30px;')) }}

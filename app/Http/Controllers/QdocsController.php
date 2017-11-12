@@ -167,7 +167,76 @@ class QdocsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validate the data - general information
+        $data = array(
+            'ordernumber' => 'required|integer',
+            'e_firstname' => 'required|max:32|alpha',
+            'e_lastname' => 'required|max:32|alpha',
+            'c_firstname' => 'required|max:32|alpha',
+            'c_lastname' => 'required|max:32|alpha',
+            'email' => 'required|email',
+            'phone' => 'required|numeric',
+            'make' => 'required',
+            'type' => 'required|not_in:0',
+            'model' => 'required|max:10|digits:4',
+            'license' => 'required|max:6|alpha_num',
+            'mileage' => 'required|numeric',
+            'comment1' => 'max:500',
+            'comment2' => 'max:500',
+            'comment3' => 'max:500',
+            'comment4' => 'max:500',
+            'n_mileage' => 'required|numeric|greater_than:mileage',
+            'e_signature' => 'required'
+        );
+
+        //Validate the data - matrix information
+        $names = Config::get('constants.qdoc_names');
+        $elements = Config::get('constants.qdoc_elements');
+        foreach ($names as $key => $value) {
+            foreach ($elements[$key] as $mat => $name) {
+                $data["$name"] = 'required';            
+            }
+        }
+
+        $this->validate($request, $data);
+
+        //Save the data to the database - general information
+        $qdocs = Qdocs::find($id);
+
+        $qdocs->ordernumber = $request->input('ordernumber');
+        $qdocs->e_firstname = $request->input('e_firstname');
+        $qdocs->e_lastname = $request->input('e_lastname');
+        $qdocs->c_firstname = $request->input('c_firstname');
+        $qdocs->c_lastname = $request->input('c_lastname');
+        $qdocs->email = $request->input('email');
+        $qdocs->phone = $request->input('phone');
+        $qdocs->make = $request->input('make');
+        $qdocs->type = $request->input('type');
+        $qdocs->model = $request->input('model');
+        $qdocs->license = $request->input('license');
+        $qdocs->mileage = $request->input('mileage');
+        $qdocs->comment1 = $request->input('comment1');
+        $qdocs->comment2 = $request->input('comment2');
+        $qdocs->comment3 = $request->input('comment3');
+        $qdocs->comment4 = $request->input('comment4');
+        $qdocs->n_mileage = $request->input('n_mileage');
+        $qdocs->e_signature = $request->input('e_signature');
+        $qdocs->c_signature = $request->input('c_signature');
+
+        //Store in the database - matrix information
+        foreach ($names as $key => $value) {
+            foreach ($elements[$key] as $mat => $name) {
+                $qdocs->$name = $request->input($name);            
+            }
+        }
+
+        $qdocs->save();
+
+        //Display a flash message on succesfull submit
+        Session::flash('success', 'El documento fue modificado de forma exitosa');
+
+        //Redirect to another page
+        return redirect()->route('qdocs.show', $qdocs->id); 
     }
 
     /**
