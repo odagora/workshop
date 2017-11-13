@@ -38,6 +38,9 @@
 				@endforeach
 			</tbody>
 		</table>
+		<div class="text-center">
+			{!! $qdocs->links(); !!}
+		</div>
 	</div>
 </div>	
 @endsection

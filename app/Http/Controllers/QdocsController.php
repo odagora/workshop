@@ -19,7 +19,7 @@ class QdocsController extends Controller
      */
     public function index()
     {
-        $qdocs = Qdocs::all();
+        $qdocs = Qdocs::orderBy('id', 'desc')->paginate(5);
         return view('qdocs.index')->withQdocs($qdocs);
     }
 
