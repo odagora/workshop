@@ -174,41 +174,77 @@ class QdocsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //Validate the data - general information
-        $data = array(
-            'ordernumber' => 'required|integer',
-            'e_firstname' => 'required|max:32|alpha',
-            'e_lastname' => 'required|max:32|alpha',
-            'c_firstname' => 'required|max:32|alpha',
-            'c_lastname' => 'required|max:32|alpha',
-            'email' => 'required|email',
-            'phone' => 'required|numeric',
-            'make' => 'required',
-            'type' => 'required|not_in:0',
-            'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
-            'mileage' => 'required|numeric',
-            'comment1' => 'max:500',
-            'comment2' => 'max:500',
-            'comment3' => 'max:500',
-            'comment4' => 'max:500',
-            'n_mileage' => 'required|numeric|greater_than:mileage',
-            'e_signature' => 'required'
-        );
+        $qdocs = Qdocs::find($id);
 
-        //Validate the data - matrix information
-        $names = Config::get('constants.qdoc_names');
-        $elements = Config::get('constants.qdoc_elements');
-        foreach ($names as $key => $value) {
-            foreach ($elements[$key] as $mat => $name) {
-                $data["$name"] = 'required';            
+        //Validate the data - general information
+        //Check if ordernumber has been changed to verify if it's value is still unique
+        if ($request->input('ordernumber') == $qdocs->ordernumber) {
+                $data = array(
+                'e_firstname' => 'required|max:32|alpha',
+                'e_lastname' => 'required|max:32|alpha',
+                'c_firstname' => 'required|max:32|alpha',
+                'c_lastname' => 'required|max:32|alpha',
+                'email' => 'required|email',
+                'phone' => 'required|numeric',
+                'make' => 'required',
+                'type' => 'required|not_in:0',
+                'model' => 'required|max:10|digits:4',
+                'license' => 'required|max:6|alpha_num',
+                'mileage' => 'required|numeric',
+                'comment1' => 'max:500',
+                'comment2' => 'max:500',
+                'comment3' => 'max:500',
+                'comment4' => 'max:500',
+                'n_mileage' => 'required|numeric|greater_than:mileage',
+                'e_signature' => 'required'
+            );
+
+            //Validate the data - matrix information
+            $names = Config::get('constants.qdoc_names');
+            $elements = Config::get('constants.qdoc_elements');
+            foreach ($names as $key => $value) {
+                foreach ($elements[$key] as $mat => $name) {
+                    $data["$name"] = 'required';            
+                }
             }
+
+            $this->validate($request, $data);
+        }
+        else {
+                $data = array(
+                'ordernumber' => 'required|integer|unique:qdocs',
+                'e_firstname' => 'required|max:32|alpha',
+                'e_lastname' => 'required|max:32|alpha',
+                'c_firstname' => 'required|max:32|alpha',
+                'c_lastname' => 'required|max:32|alpha',
+                'email' => 'required|email',
+                'phone' => 'required|numeric',
+                'make' => 'required',
+                'type' => 'required|not_in:0',
+                'model' => 'required|max:10|digits:4',
+                'license' => 'required|max:6|alpha_num',
+                'mileage' => 'required|numeric',
+                'comment1' => 'max:500',
+                'comment2' => 'max:500',
+                'comment3' => 'max:500',
+                'comment4' => 'max:500',
+                'n_mileage' => 'required|numeric|greater_than:mileage',
+                'e_signature' => 'required'
+            );
+
+            //Validate the data - matrix information
+            $names = Config::get('constants.qdoc_names');
+            $elements = Config::get('constants.qdoc_elements');
+            foreach ($names as $key => $value) {
+                foreach ($elements[$key] as $mat => $name) {
+                    $data["$name"] = 'required';            
+                }
+            }
+
+            $this->validate($request, $data);
         }
 
-        $this->validate($request, $data);
-
         //Save the data to the database - general information
-        $qdocs = Qdocs::find($id);
 
         $qdocs->ordernumber = $request->input('ordernumber');
         $qdocs->e_firstname = $request->input('e_firstname');
