@@ -2,13 +2,21 @@
 @section('title', '| Certificados de Control Calidad')
 @section('content')
 <div class="row">
-	<div class="col-xs-12 col-sm-9 col-md-10 index-header">
+	<div class="col-xs-12 col-sm-12 col-md-12 index-header text-center">
 		<h1>Certificados de Control Calidad</h1>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-md-2 index-button">
 		<a href="{{ route('create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Crear certificado</a>
 	</div>
-	<div class="col-md-12">
+	<div class="col-xs-12 col-sm-9 col-md-10">
+		{!! Form::open(array('method' => 'GET' , 'url' => 'qdocs' ,'class' => 'navbar-form navbar-right search-group' , 'role' => 'search')) !!}
+	        <div class="form-group search-items">
+	         	<input type="text" name="search" class="form-control input-lg" placeholder="Buscar">
+	         	<button type="submit" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+	        </div>    	
+      	{!! Form::close() !!}
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
 		<hr>
 	</div>
 </div>

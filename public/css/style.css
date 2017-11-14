@@ -41,6 +41,10 @@ For index.blade.php
 	margin-top: 18px;
 }
 
+.search-group {
+	margin-top: 18px;
+}
+
 @media only screen and (max-width: 768px){
 	.index-header {
 		text-align: center;
@@ -52,13 +56,22 @@ For index.blade.php
 	}
 
 	.btn-h1-spacing {
-		margin-top: 0;
-		margin-bottom: 20px;
+		margin-bottom: 18px;
 	}
 
 	.index-button {
 		text-align: center;
 	}
+
+	.search-items {
+		display: inline-flex;
+	}
+
+	.search-group {
+		margin-top: 0;
+		text-align: center;
+	}
+
 }
 
 /*

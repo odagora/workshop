@@ -19,8 +19,15 @@ class QdocsController extends Controller
      */
     public function index()
     {
-        $qdocs = Qdocs::orderBy('id', 'desc')->paginate(5);
-        return view('qdocs.index')->withQdocs($qdocs);
+        $search = \Request::get('search');
+        if(is_null($search)){
+           $qdocs = Qdocs::orderBy('id', 'desc')->paginate(5); 
+        }
+        else{
+           $qdocs = Qdocs::where('id', 'like', '%'.$search.'%')->orwhere('c_firstname', 'like', '%'.$search.'%')->orwhere('c_lastname', 'like', '%'.$search.'%')->orwhere('license', 'like', '%'.$search.'%')->orwhere('ordernumber', 'like', '%'.$search.'%')->paginate(5); 
+        }
+
+        return view('qdocs.index', compact('qdocs'));
     }
 
     /**
