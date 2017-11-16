@@ -16,7 +16,6 @@ Route::get('confirm', 'PagesController@getConfirm');
 Route::get('print', 'PagesController@getPrint');
 Route::get('config', 'PagesController@getConfig');
 Route::get('profile', 'PagesController@getProfile');
-Route::get('search', 'PagesController@getSearch');
 Route::get('index', 'PagesController@getIndex');
 Route::get('login', 'PagesController@getLogin');
 
@@ -33,3 +32,7 @@ Route::get('qdocs/create', array('as'=>'create', 'uses'=>'QdocsController@create
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

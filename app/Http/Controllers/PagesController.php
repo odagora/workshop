@@ -17,16 +17,6 @@ class PagesController extends Controller {
 		return view('pages.index');
 	}
 
-	public function getSearch() {
-		$first = 'Daniel';
-		$last = 'González';
-		$fullname = $first.' '.$last;
-		$email = 'dgonzalez@servitalleres.com';
-		$data['fullname']=$fullname;
-		$data['email']=$email;
-		return view('pages.search')->withData($data);
-	}
-
 	public function getProfile() {
 		return view('pages.profile');
 	}
