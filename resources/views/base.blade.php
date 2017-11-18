@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     @include('partials._head')
-    @include('partials._login')
+    @include('partials._signature')
   </head>
   <body>
     <div class="container"> 

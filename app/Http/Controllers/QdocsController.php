@@ -134,6 +134,7 @@ class QdocsController extends Controller
      */
     public function show($id)
     {
+        //Show all view in blade page
         $qdoc = Qdocs::find($id);
         $make = Make::find($qdoc->make);
         $type = Type::find($qdoc->type);

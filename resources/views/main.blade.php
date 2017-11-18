@@ -5,7 +5,7 @@
     @include('partials._signature')
   </head>
   <body>
-  @include('partials._nav')
+    @include('partials._nav')
     <div class="container">
       <!-- Loads session messages before all content-->
       @include('partials._messages')

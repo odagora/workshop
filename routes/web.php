@@ -29,6 +29,9 @@ Route::get('types/{id}', 'DropDownController@types');
 //Data passing to qdocs.create page
 Route::get('qdocs/create', array('as'=>'create', 'uses'=>'QdocsController@create'));
 
+//Snappy pdfcreator routes
+Route::get('qdocs/{qdoc}/pdf', 'PdfController@getQdocsPdf');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

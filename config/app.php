@@ -183,7 +183,11 @@ return [
         /*
          * Inverse Database Seeder Provider    
          */
-        Orangehill\Iseed\IseedServiceProvider::class
+        Orangehill\Iseed\IseedServiceProvider::class,
+        /*
+         * Laravel Snappy with wkhtmltopdf
+         */
+        Barryvdh\Snappy\ServiceProvider::class
 
     ],
 
@@ -235,7 +239,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
     ],
 
 ];
