@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', '| Certificado de Control Calidad')
+@section('title', '| Certificado de Control Calidad '.'No. '.$qdoc->id)
 @section('content')
 <div class="row">
 	<div class="col-xs-6 col-sm-6 col-md-6 text-left">

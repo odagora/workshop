@@ -1,8 +1,8 @@
 @extends('main')
-@section('title', '| Certificado de Control Calidad')
+@section('title', '| Certificado de Control Calidad '.'No. '.$qdoc->id)
 @section('content')
 <div class="row">
-	<h2 class="text-center text-uppercase">Certificado de Control Calidad</h2>
+	<h2 class="text-center text-uppercase">Certificado de Control Calidad # {{$qdoc->id}}</h2>
 	<hr>
 </div>
 <div class="row well">
