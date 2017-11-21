@@ -113,7 +113,7 @@ For show.blade.php
 }
 
 .comments {
-	height: 151px;
+	height: 121px;
 	border-bottom: 1px solid #eee;
 }
 
@@ -124,3 +124,28 @@ For show.blade.php
 .showSig {
 	margin: 0 60px;
 }
+
+/*
+For pdf.blade.php
+ */
+
+body.body-pdf {
+	font-size: 11px;
+}
+
+.doc-number {
+	font-size: 23px;
+}
+
+.table-compact>tbody>tr>td {
+	padding: 0 0 0 5px;
+}
+
+.svg-text {
+	font-size: 14px;
+}
+
+.sig-pdf {
+	margin: 0 15px;
+}
+

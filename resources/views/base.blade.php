@@ -4,7 +4,7 @@
     @include('partials._head')
     @include('partials._signature')
   </head>
-  <body>
+  <body class="body-pdf">
     <div class="container"> 
       @yield ('content')
     </div> <!-- End of .container -->

@@ -22,8 +22,8 @@ class PdfController extends Controller
         $cats = Config::get('constants.qdoc_cats');
         $elements = Config::get('constants.qdoc_elements');
         $comments = Config::get('constants.qdoc_comments');
-		// return \PDF::loadView('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'))->setPaper('Letter')->stream('qdoc.pdf');
-		return view('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
+		return \PDF::loadView('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'))->setPaper('Letter')->setOption('margin-left', 6)->setOption('margin-right', 6)->stream('qdoc.pdf');
+		// return view('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
 	}
 
 }
