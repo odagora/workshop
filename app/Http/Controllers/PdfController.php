@@ -25,8 +25,14 @@ class PdfController extends Controller
                 $comments = Config::get('constants.qdoc_comments');
                 $date = date('dmY', strtotime($qdoc->created_at));
                 $filename = $qdoc->id.'_'.$qdoc->license.'_'.$date.'.pdf';
-        	return \PDF::loadView('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'))->setPaper('Letter')->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2)->setOption('footer-left', "[doctitle] | Impreso el: [date]")->setOption('footer-right', "Pagina [page] de [toPage]")->setOption('footer-font-size', 7)->download($filename);
-        	// return view('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
+                $path = storage_path('static/'.$filename);
+        	$pdf = \PDF::loadView('qdocs.pdf', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'))->setPaper('Letter')->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2)->setOption('footer-left', "[doctitle] | Impreso el: [date]")->setOption('footer-right', "Pagina [page] de [toPage]")->setOption('footer-font-size', 7);
+
+                //Save file to storage folder
+                $pdf->save($path, true);
+
+                //Download file saved in storage
+                return \Response::download($path);
         }
 
 }
