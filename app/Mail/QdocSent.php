@@ -16,9 +16,11 @@ class QdocSent extends Mailable
      *
      * @return void
      */
-    public function __construct($content)
+    public function __construct($subject, $content, $attachment)
     {
+        $this->subject = $subject;
         $this->content = $content;
+        $this->attachment = $attachment;
     }
 
     /**
@@ -29,6 +31,8 @@ class QdocSent extends Mailable
     public function build()
     {
         return $this->markdown('emails.qdocs.sent')
-            ->with('content',$this->content);;
+            ->subject($this->subject)
+            ->with('content',$this->content)
+            ->attach($this->attachment);
     }
 }
