@@ -174,7 +174,7 @@ class QdocsController extends Controller
         else{
            Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.' no se puede editar ya que se encuentra cancelado');
 
-            return redirect()->route('qdocs.index'); 
+            return redirect()->back(); 
         }
     }
 
@@ -325,7 +325,7 @@ class QdocsController extends Controller
         if ($qdocs->status == 'cancelled') {
             Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'ya se encuentra cancelado');
 
-            return redirect()->route('qdocs.index');
+            return redirect()->back();
         }
         else {
             $qdocs->status = 'cancelled';
@@ -334,7 +334,7 @@ class QdocsController extends Controller
 
             Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'fue cancelado de forma exitosa');
 
-            return redirect()->route('qdocs.index');
+            return redirect()->back();
         }
     }
 }
