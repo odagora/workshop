@@ -166,7 +166,16 @@ class QdocsController extends Controller
         $cats = Config::get('constants.qdoc_cats');
         $elements = Config::get('constants.qdoc_elements');
         $comments = Config::get('constants.qdoc_comments');
-        return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
+
+        //Check if document is not cancelled
+        if ($qdoc->status ==! 'cancelled') {
+            return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
+        }
+        else{
+           Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.' no se puede editar ya que se encuentra cancelado');
+
+            return redirect()->route('qdocs.index'); 
+        }
     }
 
     /**
