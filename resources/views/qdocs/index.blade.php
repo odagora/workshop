@@ -41,7 +41,7 @@
 					<td class="text-center">{{number_format($qdoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{$qdoc->ordernumber}}</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($qdoc->created_at))}}</td>
-					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('/qdocs/'.$qdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('/qdocs/'.$qdoc->id.'/mail')}}" class="btn btn-primary btn-sm" onclick="mailMessage('{{$qdoc->email}}');">Enviar</a> <a href="" class="btn btn-danger">Anular</a></div></td>
+					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('/qdocs/'.$qdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('/qdocs/'.$qdoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$qdoc->email}}');">Enviar</a> <a href="{{url('/qdocs/'.$qdoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$qdoc->id}}');">Anular</a></div></td>
 				</tr>
 				@endforeach
 			</tbody>
@@ -56,6 +56,15 @@
 <script type="text/javascript">
 	function mailMessage(email){
 		msg = confirm('Desea enviar el documento al correo'+ ' ' + email + '?');
+		if(!msg){
+			event.preventDefault();
+			window.location.href;
+		}
+	}
+</script>
+<script type="text/javascript">
+	function cancelMessage(doc){
+		msg = confirm('Desea anular el certificado de control calidad No.'+' '+ doc + '?');
 		if(!msg){
 			event.preventDefault();
 			window.location.href;

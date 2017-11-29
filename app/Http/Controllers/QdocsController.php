@@ -117,6 +117,9 @@ class QdocsController extends Controller
             }
         }
 
+        //Store status on submit
+        $qdocs->status = 'ok';
+
         $qdocs->save();
 
         //Display a flash message on succesfull submit
@@ -277,7 +280,7 @@ class QdocsController extends Controller
         $qdocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'El certificado de control calidad fue modificado de forma exitosa');
+        Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'fue modificado de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('qdocs.show', $qdocs->id); 
@@ -294,9 +297,35 @@ class QdocsController extends Controller
         $qdocs = Qdocs::find($id);
         $qdocs->delete();
 
-        Session::flash('success', 'El certificado de control calidad fue eliminado de forma exitosa');
+        Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.' fue eliminado de forma exitosa');
 
         return redirect()->route('qdocs.index');
     }
 
+    /**
+     * Cancel the specified resource from storage
+     *
+     * @param  int $id
+     * @return  \Illuminate\Http\Response
+     */
+    public function cancel($id)
+    {
+        $qdocs = Qdocs::find($id);
+
+        //Check for resource status
+        if ($qdocs->status == 'cancelled') {
+            Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'ya se encuentra cancelado');
+
+            return redirect()->route('qdocs.index');
+        }
+        else {
+            $qdocs->status = 'cancelled';
+
+            $qdocs->save();
+
+            Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'fue cancelado de forma exitosa');
+
+            return redirect()->route('qdocs.index');
+        }
+    }
 }

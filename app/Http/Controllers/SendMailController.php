@@ -48,12 +48,21 @@ class SendMailController extends Controller
             $this->printQdocsPdf($id)->save($path, true);
         }
         
-        Mail::to($receiverAddress)->send(new QdocSent($subject, $content, $attachment));
+        //Check if document is not cancelled
+        if($qdoc->status ==! 'cancelled'){
+            Mail::to($receiverAddress)->send(new QdocSent($subject, $content, $attachment));
 
-        //Display a flash message on succesfull submit
-        Session::flash('success', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.'fue enviado de forma exitosa');
+            //Display a flash message on succesfull submit
+            Session::flash('success', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.'fue enviado de forma exitosa');
 
-        //Redirect to current page
-        return redirect()->back(); 
+            //Redirect to current page
+            return redirect()->back();
+        }
+        else{
+            Session::flash('danger', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.'está cancelado y no puede ser enviado');
+
+            //Redirect to current page
+            return redirect()->back();
+        } 
     }
 }

@@ -2,7 +2,7 @@
 @section('title', '| Certificado de Control Calidad '.'No. '.$qdoc->id)
 @section('content')
 <div class="row">
-	<h2 class="text-center text-uppercase">Certificado de Control Calidad # {{$qdoc->id}}</h2>
+	<h2 class="text-center text-uppercase">Certificado de Control Calidad # {{$qdoc->id}} @if($qdoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>
 	<hr>
 </div>
 <div class="row well">
