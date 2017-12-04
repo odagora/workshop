@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '| Gestión Documentos e Información Taller')
 @section('content')
 <div class="container">
     <div class="row">

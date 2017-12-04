@@ -23,8 +23,7 @@ Route::get('login', 'PagesController@getLogin');
 Route::resource('qdocs', 'QdocsController');
 
 //CRUD added method to cancel docs
-Route::get('qdocs/{qdoc}/cancel', 'QdocsController@cancel');
-Route::resource('cancel', 'QdocsController');
+Route::get('qdocs/{qdoc}/cancel', array('as'=>'qdocs.cancel', 'uses'=>'QdocsController@cancel'));
 
 //Jquery & Ajax routes for dropdown dependent in forms
 Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@makes'));
@@ -39,9 +38,9 @@ Route::get('qdocs/{qdoc}/pdf', array('as'=>'qdocs.pdf', 'uses'=>'PdfController@g
 //CRUD Mail route
 Route::get('qdocs/{qdoc}/mail', array('as'=>'qdocs.mail','uses'=>'SendMailController@qdocSendMail'));
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('auth.login');
+});
 
 Auth::routes();
 

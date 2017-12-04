@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app()->getLocale() }}">
   <head>
     @include('partials._head')
     @include('partials._signature')
@@ -9,6 +9,9 @@
     <div class="container">
       <!-- Loads session messages before all content-->
       @include('partials._messages')
+
+      {{ Auth::check() ? "Logged In" : "Logged Out" }}
+
       @yield ('content')
       @include('partials._footer')
     </div> <!-- End of .container -->

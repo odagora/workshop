@@ -8,7 +8,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="#">Servitalleres</a>
+<a class="navbar-brand" href="{{ url('/') }}"><img src="{{asset('img/logo-172x22.png')}}" alt="Logo Servitalleres"></a>
 </div>
 
 <!-- Collect the nav links, forms, and other content for toggling -->
