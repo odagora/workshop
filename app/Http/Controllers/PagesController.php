@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 class PagesController extends Controller {
 
-	public function getLogin() {
-		# process variable data or params
-		# talk to the model
-		# receive from the model
-		# compile or process data from the model if needed
-		# pass that data to the correct view
-		return view('pages.login');
+	public function __construct() {
+		$this->middleware('auth');
 	}
 
 	public function getIndex() {
@@ -23,30 +18,6 @@ class PagesController extends Controller {
 
 	public function getConfig() {
 		return view('pages.config');
-	}
-
-	public function getQuality() {
-		return view('pages.quality');
-	}
-
-	public function getExpert() {
-		return view('pages.expert');
-	}
-
-	public function getInspection() {
-		return view('pages.inspection');
-	}
-
-	public function getCollision() {
-		return view('pages.collision');
-	}
-
-	public function getPrint() {
-		return view('pages.print');
-	}
-
-	public function getConfirm() {
-		return view('pages.confirm');
 	}
 }
 

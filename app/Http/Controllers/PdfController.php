@@ -11,6 +11,11 @@ class PdfController extends Controller
 {
         use PdfRepository;
     
+        public function __construct()
+        {
+                $this->middleware('auth');
+        }
+
         public function getQdocsPdf ($id)
         {
                 $qdoc = Qdocs::find($id);

@@ -12,12 +12,9 @@
 */
 
 //Pages routes
-Route::get('confirm', 'PagesController@getConfirm');
-Route::get('print', 'PagesController@getPrint');
 Route::get('config', 'PagesController@getConfig');
 Route::get('profile', 'PagesController@getProfile');
 Route::get('index', 'PagesController@getIndex');
-Route::get('login', 'PagesController@getLogin');
 
 //CRUD routes
 Route::resource('qdocs', 'QdocsController');

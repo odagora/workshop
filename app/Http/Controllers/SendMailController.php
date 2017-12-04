@@ -17,6 +17,11 @@ class SendMailController extends Controller
     
     use PdfRepository;
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Show the application sendMail.
      *

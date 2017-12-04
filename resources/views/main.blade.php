@@ -10,8 +10,6 @@
       <!-- Loads session messages before all content-->
       @include('partials._messages')
 
-      {{ Auth::check() ? "Logged In" : "Logged Out" }}
-
       @yield ('content')
       @include('partials._footer')
     </div> <!-- End of .container -->
