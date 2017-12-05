@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.main')
 @section('title', '| Gestión Documentos e Información Taller')
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3" style="padding-top: 60px;">
             <div class="panel panel-default">
-                <div class="panel-heading">Ingresar</div>
+                <div class="panel-heading text-center"><img src="{{asset('img/logo.png')}}" alt="Logo Servitalleres"></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
