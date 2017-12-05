@@ -28,7 +28,23 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if (Auth::guest())
+                            &nbsp;
+                        @else
+                            <li class="{{Request::is('home') ? "active" :""}}"><a href="{{ url('/home') }}">Inicio</a></li>
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Secciones<span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><a href="../qdocs">Control Calidad</a></li>
+                                <li><a href="../edocs">Peritajes</a></li>
+                                <li><a href="../idocs">Inspecciones Visuales</a></li>
+                                <li><a href="../cdocs">Cotizaciones Colisión</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="../photo">Fotos OR</a></li>
+                                <li><a href="../price">Precios MO</a></li>
+                              </ul>
+                            </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
