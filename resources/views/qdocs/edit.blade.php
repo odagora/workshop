@@ -376,7 +376,7 @@ $(function(){
 
     //Ajax request for types
     function typeUpdate(makeId){
-    	$.get('{{ url('types') }}/'+makeId, function(data){
+    	$.get('{{ url('app/types') }}/'+makeId, function(data){
     		//Empty type list
     		$('#type').empty();
     		//Loop for new list creation

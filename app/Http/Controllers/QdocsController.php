@@ -174,7 +174,7 @@ class QdocsController extends Controller
         $comments = Config::get('constants.qdoc_comments');
 
         //Check if document is not cancelled
-        if ($qdoc->status ==! 'cancelled') {
+        if ($qdoc->status == 'ok') {
             return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
         }
         else{

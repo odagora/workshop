@@ -188,7 +188,7 @@
 			    		</table>
 			    		@php
 			    		$m[$mat] = str_replace('_', ' ', $elements[$mat]);
-			    		$e[$mat] = str_replace(' es requerido.', '',$errors->all());
+			    		$e[$mat] = str_replace(' es requerido.', '', $errors->all());
 			    		@endphp
 			           @if(count(array_intersect($m[$mat], $e[$mat])) > 0)
 							<br>
@@ -376,7 +376,7 @@ $(function(){
 
     //Ajax request for types
     function typeUpdate(makeId){
-    	$.get('{{ url('types') }}/'+makeId, function(data){
+    	$.get('{{ url('app/types') }}/'+makeId, function(data){
     		//Empty type list
     		$('#type').empty();
     		//Loop for new list creation

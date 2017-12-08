@@ -45,7 +45,7 @@ class MailResetPasswordToken extends Notification
         return (new MailMessage)
                     ->subject('Correo Cambio de Contraseña')
                     ->line('Estás recibiendo este email debido a que recibimos una petición de cambio de contraseña para tu cuenta.')
-                    ->action('Cambiar Contraseña', url('password/reset', $this->token))
+                    ->action('Cambiar Contraseña', url('app/password/reset', $this->token))
                     ->line('Si no solicitaste un cambio de contraseña, no es necesario ninguna acción adicional de tu parte.');
     }
 
