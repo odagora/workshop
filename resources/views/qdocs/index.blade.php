@@ -6,7 +6,7 @@
 		<h1>Certificados de Control Calidad</h1>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-md-2 index-button">
-		<a href="{{ route('create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Crear certificado</a>
+		<a href="{{ route('qdocs.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Crear certificado</a>
 	</div>
 	<div class="col-xs-12 col-sm-9 col-md-10">
 		{!! Form::open(array('method' => 'GET' , 'url' => 'app/qdocs' ,'class' => 'navbar-form navbar-right search-group' , 'role' => 'search')) !!}

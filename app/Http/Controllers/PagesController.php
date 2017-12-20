@@ -12,12 +12,8 @@ class PagesController extends Controller {
 		return view('pages.index');
 	}
 
-	public function getProfile() {
-		return view('pages.profile');
-	}
-
-	public function getConfig() {
-		return view('pages.config');
+	public function getAdmin() {
+		return view('pages.admin');
 	}
 }
 

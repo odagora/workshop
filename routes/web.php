@@ -13,22 +13,26 @@
 
 Route::prefix('app')->group(function(){
 	//Pages routes
-	Route::get('config', 'PagesController@getConfig');
-	Route::get('profile', 'PagesController@getProfile');
-	Route::get('index', 'PagesController@getIndex');
+	Route::get('index', array('as' => 'index', 'uses' => 'PagesController@getIndex'));
+	Route::get('admin', array('as' => 'admin', 'uses' => 'PagesController@getAdmin'));
 
-	//CRUD routes
+	Route::prefix('admin')->group(function(){
+		//CRUD users routes
+		Route::resource('users', 'UserController', array('only' => ['index', 'edit', 'update', 'destroy']));
+	});
+	
+	//CRUD documents routes
 	Route::resource('qdocs', 'QdocsController');
 
 	//CRUD added method to cancel docs
 	Route::get('qdocs/{qdoc}/cancel', array('as'=>'qdocs.cancel', 'uses'=>'QdocsController@cancel'));
 
 	//Jquery & Ajax routes for dropdown dependent in forms
-	Route::get('qdocs/create', array('as'=>'create', 'uses'=>'DropDownController@makes'));
+	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'DropDownController@makes'));
 	Route::get('types/{id}', 'DropDownController@types');
 
 	//Data passing to qdocs.create page
-	Route::get('qdocs/create', array('as'=>'create', 'uses'=>'QdocsController@create'));
+	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'QdocsController@create'));
 
 	//Snappy pdfcreator route
 	Route::get('qdocs/{qdoc}/pdf', array('as'=>'qdocs.pdf', 'uses'=>'PdfController@getQdocsPdf'));
@@ -41,9 +45,9 @@ Route::prefix('app')->group(function(){
 
 	})->name('root');
 
-Auth::routes();
+	Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/home', 'HomeController@index')->name('home');
 });
 
 //Redirects for login and logout

@@ -1,4 +1,13 @@
 /*
+MAIN NAVIGATION
+ */
+@media only screen and (min-width: 768px){
+	.navbar-header {
+		padding-left: 15px;
+	}
+}
+
+/*
 MAIN PAGES
  */
 .main-index {
@@ -149,3 +158,45 @@ body.body-pdf {
 	margin: 0 15px;
 }
 
+/*
+For users admin pages
+ */
+/*
+INDEX PAGE
+ */
+.users-button {
+	float: right;
+}
+
+@media only screen and (max-width: 768px){
+	.users-button {
+		text-align: center;
+	}
+
+}
+
+.btn-group-xs>form>.btn {
+	padding: 1px 5px;
+	font-size: 12px;
+	line-height: 1.5;
+	border-radius: 3px;
+}
+
+.btn-group-xs>form {
+	display: -webkit-inline-box;
+	display: inline-block;
+}
+/*
+EDIT USER PAGE
+ */
+.password-options .option {
+	padding: 7px 0 0;
+}
+
+.password-options .option span {
+	padding-left: 5px;
+}
+
+#manual-password {
+	display: none;
+}
