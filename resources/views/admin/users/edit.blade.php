@@ -34,6 +34,17 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            {{ Form::label('roles', null, array('class' => 'col-md-4 control-label'))}}
+                            <div class="col-md-6 roles-options">
+                                <div class="col-md-12 option">
+                                   <input type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : ''}} name="role_admin"><span>Administrador</span> 
+                                </div>
+                                 <div class="col-md-12 option">
+                                     <input type="checkbox" {{ $user->hasRole('User') ? 'checked' : ''}} name="role_user"><span>Usuario</span>
+                                 </div> 
+                            </div>
+                        </div>
+                        <div class="form-group">
                             {{ Form::label('password', null, array('class' => 'col-md-4 control-label'))}}
                             <div class="col-md-6 password-options">
                                 <div class="col-md-12 option">

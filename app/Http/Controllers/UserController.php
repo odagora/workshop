@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 use App\Mail\MailAutoPassword;
 use Session;
 use Hash;
@@ -57,6 +58,17 @@ class UserController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
+
+        //Roles assign
+        $user->roles()->detach();
+        if ($request['role_user']) {
+            $user->roles()->attach(Role::where('name', 'User')->first());
+        }
+        if ($request['role_admin']) {
+            $user->roles()->attach(Role::where('name', 'Admin')->first());
+        }
+
+        //Password change in all options available
         if ($request->pass == "auto") {
             $length = 10;
             $keyspace = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';

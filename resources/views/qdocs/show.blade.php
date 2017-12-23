@@ -265,11 +265,13 @@
 			<div class="col-md-6">
 				{!! Html::linkRoute('qdocs.edit', 'Editar', array($qdoc->id), array('class' => 'btn btn-warning btn-block')) !!}
 			</div>
-			<div class="col-md-6">
-				{!! Form::open(array('route' => ['qdocs.destroy', $qdoc->id], 'method' => 'DELETE')) !!}
-					{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
-				{!! Form::close() !!}	
-			</div>
+			@if (Auth::user()->hasRole('Admin'))
+				<div class="col-md-6">
+					{!! Form::open(array('route' => ['qdocs.destroy', $qdoc->id], 'method' => 'DELETE')) !!}
+						{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
+					{!! Form::close() !!}	
+				</div>
+			@endif
 		</div>
 	</div>
 </div>

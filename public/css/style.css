@@ -189,11 +189,13 @@ INDEX PAGE
 /*
 EDIT USER PAGE
  */
-.password-options .option {
+.password-options .option,
+.roles-options .option {
 	padding: 7px 0 0;
 }
 
-.password-options .option span {
+.password-options .option span,
+.roles-options .option span {
 	padding-left: 5px;
 }
 

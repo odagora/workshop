@@ -17,7 +17,8 @@
 				<th class="text-center">Nombre</th>
 				<th class="text-center">Email</th>
 				<th class="text-center">Fecha de Creación</th>
-				<th class="text-center">Roles</th>
+				<th class="text-center">Administrador</th>
+				<th class="text-center">Usuario</th>
 				<th class="text-center">Opciones</th>
 			</thead>
 			<tbody>
@@ -27,7 +28,8 @@
 						<td class="text-center">{{$user->name}}</td>
 						<td class="text-center">{{$user->email}}</td>
 						<td class="text-center">{{$user->created_at->toFormattedDateString()}}</td>
-						<td class="text-center"></td>
+						<td class="text-center"><input type="checkbox" {{ $user->hasRole('Admin') ? 'checked' : ''}} name="role_admin"></td>
+						<td class="text-center"><input type="checkbox" {{ $user->hasRole('User') ? 'checked' : ''}} name="role_user"></td>
 						<td class="text-center">
 							<div class="button-group btn-group-xs" role="group">
 								<a href="{{route('users.edit', $user->id)}}" class="btn btn-warning">Editar</a> {!! Form::open(array('route' => ['users.destroy', $user->id], 'method' => 'DELETE')) !!}
