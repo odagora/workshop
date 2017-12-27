@@ -23,22 +23,28 @@ Route::prefix('app')->group(function(){
 	
 	//CRUD documents routes
 	Route::resource('qdocs', 'QdocsController');
+	Route::resource('edocs', 'EdocsController');
 
 	//CRUD added method to cancel docs
 	Route::get('qdocs/{qdoc}/cancel', array('as'=>'qdocs.cancel', 'uses'=>'QdocsController@cancel'));
+	Route::get('edocs/{edoc}/cancel', array('as'=>'edocs.cancel', 'uses'=>'EdocsController@cancel'));
 
 	//Jquery & Ajax routes for dropdown dependent in forms
 	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'DropDownController@makes'));
+	Route::get('edocs/create', array('as'=>'edocs.create', 'uses'=>'DropDownController@makes'));
 	Route::get('types/{id}', 'DropDownController@types');
 
-	//Data passing to qdocs.create page
+	//Data passing to resource create pages
 	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'QdocsController@create'));
+	Route::get('edocs/create', array('as'=>'edocs.create', 'uses'=>'EdocsController@create'));
 
-	//Snappy pdfcreator route
-	Route::get('qdocs/{qdoc}/pdf', array('as'=>'qdocs.pdf', 'uses'=>'PdfController@getQdocsPdf'));
+	//Snappy pdfcreator routes
+	Route::get('qdocs/{qdoc}/pdf', array('as'=>'qdocs.pdf', 'uses'=>'QdocsPdfController@getQdocsPdf'));
+	Route::get('edocs/{edoc}/pdf', array('as'=>'edocs.pdf', 'uses'=>'EdocsPdfController@getEdocsPdf'));
 
 	//CRUD Mail route
-	Route::get('qdocs/{qdoc}/mail', array('as'=>'qdocs.mail','uses'=>'SendMailController@qdocSendMail'));
+	Route::get('qdocs/{qdoc}/mail', array('as'=>'qdocs.mail','uses'=>'QdocsSendMailController@qdocSendMail'));
+	Route::get('edocs/{edoc}/mail', array('as'=>'edocs.mail','uses'=>'EdocsSendMailController@edocSendMail'));
 
 	Route::get('/', function () {
 	    return view('auth.login');

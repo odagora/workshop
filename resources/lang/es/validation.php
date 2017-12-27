@@ -122,6 +122,7 @@ return [
         'e_lastname' => 'Apellido del asesor',
         'c_firstname' => 'Nombre del cliente',
         'c_lastname' => 'Apellido del cliente',
+        'id_number' => 'Cédula del cliente',
         'email' => 'Email',
         'phone' => 'Teléfono',
         'make' => 'Marca',

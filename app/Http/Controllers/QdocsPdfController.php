@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\PdfRepository;
+use App\Repositories\QdocsPdfRepository;
 use App\Qdocs;
 
-class PdfController extends Controller
+class QdocsPdfController extends Controller
 {
-        use PdfRepository;
+        use QdocsPdfRepository;
     
         public function __construct()
         {

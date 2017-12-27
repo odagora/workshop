@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\PdfController;
-use App\Repositories\PdfRepository;
+use App\Http\Controllers\QdocsPdfController;
+use App\Repositories\QdocsPdfRepository;
 use App\Mail\QdocSent;
 use App\Make;
 use App\Type;
@@ -12,10 +12,10 @@ use App\Qdocs;
 use Mail;
 use Session;
 
-class SendMailController extends Controller
+class QdocsSendMailController extends Controller
 {
     
-    use PdfRepository;
+    use QdocsPdfRepository;
 
     public function __construct()
     {
@@ -54,7 +54,7 @@ class SendMailController extends Controller
         }
         
         //Check if document is not cancelled
-        if($qdoc->status ==! 'cancelled'){
+        if($qdoc->status == 'ok'){
             Mail::to($receiverAddress)->send(new QdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
