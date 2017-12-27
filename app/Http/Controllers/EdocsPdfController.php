@@ -29,17 +29,7 @@ class EdocsPdfController extends Controller
                 //Save file to storage folder
                 $this->printEdocsPdf($id)->save($path, true);
 
-                $make = Make::find($edoc->make);
-                $type = Type::find($edoc->type);
-                $names = Config::get('constants.edoc_names');
-                $items = Config::get('constants.edoc_items');
-                $cats = Config::get('constants.edoc_cats');
-                $elements = Config::get('constants.edoc_elements');
-                $comments = Config::get('constants.edoc_comments');
-
                 //Download file saved in storage
                 return \Response::download($path);
-                
-                // return view('edocs.pdf', compact('edoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
         }
 }
