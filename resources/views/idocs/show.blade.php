@@ -1,8 +1,8 @@
 @extends('main')
-@section('title', '| Informe de Inspección Visual '.'No. '.$idoc->id)
+@section('title', '| Inspección Visual de Mecánica y Colisión '.'No. '.$idoc->id)
 @section('content')
 <div class="row">
-	<h2 class="text-center text-uppercase">Informe de Inspección Visual # {{$idoc->id}} @if($idoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>
+	<h2 class="text-center text-uppercase">Inspección Visual de Mecánica y Colisión # {{$idoc->id}} @if($idoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>
 	<hr>
 </div>
 <div class="row well">
