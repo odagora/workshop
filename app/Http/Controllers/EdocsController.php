@@ -73,14 +73,14 @@ class EdocsController extends Controller
             'model' => 'required|max:10|digits:4',
             'license' => 'required|max:6|alpha_num',
             'mileage' => 'required|numeric',
-            'comment1' => 'max:500',
-            'comment2' => 'max:500',
-            'comment3' => 'max:500',
-            'comment4' => 'max:500',
-            'comment5' => 'max:500',
-            'comment6' => 'max:500',
-            'comment7' => 'max:500',
-            'comment8' => 'max:500',
+            'comment1' => 'max:400',
+            'comment2' => 'max:400',
+            'comment3' => 'max:400',
+            'comment4' => 'max:400',
+            'comment5' => 'max:400',
+            'comment6' => 'max:400',
+            'comment7' => 'max:400',
+            'comment8' => 'max:400',
             'e_signature' => 'required'
         );
 
