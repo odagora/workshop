@@ -45,7 +45,7 @@ return [
     'image'                => ':attribute debe ser una imagen.',
     'in'                   => ':attribute seleccionado(a) es inválido(a).',
     'in_array'             => 'El  :attribute no existe en :other.',
-    'integer'              => ':attribute debe ser un entero.',
+    'integer'              => ':attribute debe ser un número entero (sin puntos ni comas).',
     'ip'                   => ':attribute debe ser una dirección IP válida.',
     'ipv4'                 => ':attribute debe ser una dirección IPv4 válida.',
     'ipv6'                 => 'The :attribute debe ser una dirección IPv6 válida.',
@@ -132,8 +132,12 @@ return [
         'mileage' => 'Kilometraje',
         'n_mileage' => 'Próximo kilometraje',
         'e_signature' => 'Firma del asesor de servicio',
-        'password' => 'Contraseña'
-
+        'password' => 'Contraseña',
+        'description' => 'Piezas a intervenir',
+        'price' => 'Costo de la reparación',
+        'time' => 'Tiempo de entrega',
+        'validity_time' => 'Validez de la cotización',
+        'observations' => 'Observaciones'
     ],
 
 ];

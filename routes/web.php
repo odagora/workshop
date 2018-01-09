@@ -25,32 +25,38 @@ Route::prefix('app')->group(function(){
 	Route::resource('qdocs', 'QdocsController');
 	Route::resource('edocs', 'EdocsController');
 	Route::resource('idocs', 'IdocsController');
+	Route::resource('cdocs', 'CdocsController');
 
 	//CRUD added method to cancel docs
 	Route::get('qdocs/{qdoc}/cancel', array('as'=>'qdocs.cancel', 'uses'=>'QdocsController@cancel'));
 	Route::get('edocs/{edoc}/cancel', array('as'=>'edocs.cancel', 'uses'=>'EdocsController@cancel'));
 	Route::get('idocs/{idoc}/cancel', array('as'=>'idocs.cancel', 'uses'=>'IdocsController@cancel'));
+	Route::get('cdocs/{cdoc}/cancel', array('as'=>'cdocs.cancel', 'uses'=>'CdocsController@cancel'));
 
 	//Jquery & Ajax routes for dropdown dependent in forms
 	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'DropDownController@makes'));
 	Route::get('edocs/create', array('as'=>'edocs.create', 'uses'=>'DropDownController@makes'));
 	Route::get('idocs/create', array('as'=>'idocs.create', 'uses'=>'DropDownController@makes'));
+	Route::get('cdocs/create', array('as'=>'cdocs.create', 'uses'=>'DropDownController@makes'));
 	Route::get('types/{id}', 'DropDownController@types');
 
 	//Data passing to resource create pages
 	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'QdocsController@create'));
 	Route::get('edocs/create', array('as'=>'edocs.create', 'uses'=>'EdocsController@create'));
 	Route::get('idocs/create', array('as'=>'idocs.create', 'uses'=>'IdocsController@create'));
+	Route::get('cdocs/create', array('as'=>'cdocs.create', 'uses'=>'CdocsController@create'));
 
 	//Snappy pdfcreator routes
 	Route::get('qdocs/{qdoc}/pdf', array('as'=>'qdocs.pdf', 'uses'=>'QdocsPdfController@getQdocsPdf'));
 	Route::get('edocs/{edoc}/pdf', array('as'=>'edocs.pdf', 'uses'=>'EdocsPdfController@getEdocsPdf'));
 	Route::get('idocs/{idoc}/pdf', array('as'=>'idocs.pdf', 'uses'=>'IdocsPdfController@getIdocsPdf'));
+	Route::get('cdocs/{cdoc}/pdf', array('as'=>'cdocs.pdf', 'uses'=>'CdocsPdfController@getCdocsPdf'));
 
 	//CRUD Mail route
 	Route::get('qdocs/{qdoc}/mail', array('as'=>'qdocs.mail','uses'=>'QdocsSendMailController@qdocSendMail'));
 	Route::get('edocs/{edoc}/mail', array('as'=>'edocs.mail','uses'=>'EdocsSendMailController@edocSendMail'));
 	Route::get('idocs/{idoc}/mail', array('as'=>'idocs.mail','uses'=>'IdocsSendMailController@idocSendMail'));
+	Route::get('cdocs/{cdoc}/mail', array('as'=>'cdocs.mail','uses'=>'CdocsSendMailController@cdocSendMail'));
 
 	Route::get('/', function () {
 	    return view('auth.login');

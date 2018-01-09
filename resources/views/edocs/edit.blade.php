@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1 class="text-center">Peritaje de Vehículo Usado</h1>
+		<h1 class="text-center">Editar Peritaje de Vehículo Usado</h1>
 		<hr>
 		{!! Form::model($edoc, ['route' => ['edocs.update', $edoc->id], 'method' => 'PUT']) !!}
 		<div class="form-group">
