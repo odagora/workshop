@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use App\Make;
 use App\Type;
 use App\Qdocs;
@@ -126,6 +127,9 @@ class QdocsController extends Controller
         //Store status on submit
         $qdocs->status = 'ok';
 
+        //Store column position in DB
+        $qdocs->doc_number = Qdocs::count() + 1;
+
         $qdocs->save();
 
         //Display a flash message on succesfull submit
@@ -152,7 +156,8 @@ class QdocsController extends Controller
         $cats = Config::get('constants.qdoc_cats');
         $elements = Config::get('constants.qdoc_elements');
         $comments = Config::get('constants.qdoc_comments');
-        return view('qdocs.show', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
+        $doc = $qdoc->doc_number + 1115;
+        return view('qdocs.show', compact('qdoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments', 'doc'));
     }
 
     /**
