@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', '| Certificado de Control Calidad '.'No. '.$qdoc->id)
+@section('title', '| Certificado de Control Calidad '.'No. '.$doc)
 @section('content')
 <div class="row">
 	<h2 class="text-center text-uppercase">Certificado de Control Calidad # {{$doc}} @if($qdoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>

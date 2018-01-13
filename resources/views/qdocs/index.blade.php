@@ -35,7 +35,7 @@
 			<tbody>
 				@foreach($qdocs as $qdoc)
 				<tr>
-					<td class="text-center">{{$qdoc->id}}</td>
+					<td class="text-center">{{$qdoc->doc_number}}</td>
 					<td class="text-center">{{$qdoc->c_firstname}} {{$qdoc->c_lastname}}</td>
 					<td class="text-center">{{$qdoc->license}}</td>
 					<td class="text-center">{{number_format($qdoc->mileage,0,",",".")}} kms</td>

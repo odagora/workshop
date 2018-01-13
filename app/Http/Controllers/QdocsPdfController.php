@@ -20,7 +20,7 @@ class QdocsPdfController extends Controller
         {
                 $qdoc = Qdocs::find($id);
                 $date = date('dmY', strtotime($qdoc->created_at));
-                $filename = $qdoc->id.'_'.$qdoc->license.'_'.$date.'.pdf';
+                $filename = $qdoc->doc_number.'_'.$qdoc->license.'_'.$date.'.pdf';
                 $path = storage_path('app/'.$filename);
                 //Save file to storage folder
                 $this->printQdocsPdf($id)->save($path, true);
