@@ -22,13 +22,11 @@ class QdocsPdfController extends Controller
                 $date = date('dmY', strtotime($qdoc->created_at));
                 $filename = $qdoc->id.'_'.$qdoc->license.'_'.$date.'.pdf';
                 $path = storage_path('app/'.$filename);
-
-                return $path;
                 //Save file to storage folder
-                // $this->printQdocsPdf($id)->save($path, true);
+                $this->printQdocsPdf($id)->save($path, true);
 
                 //Download file saved in storage
-                // return \Response::download($path);
+                return \Response::download($path);
         }
 
 }
