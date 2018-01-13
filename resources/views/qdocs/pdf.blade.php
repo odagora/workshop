@@ -1,12 +1,12 @@
 @extends('base')
-@section('title', '| Certificado de Control Calidad '.'No. '.$qdoc->doc_number)
+@section('title', '| Certificado de Control Calidad '.'No. '.$doc)
 @section('content')
 <div class="row">
 	<div class="col-xs-6 col-sm-6 col-md-6 text-left">
 		<img src="{{asset('img/logo.png')}}" class="img-responsive" alt="logo servitalleres">
 	</div>
 	<div class="col-xs-6 col-sm-6 col-md-6 text-right text-danger doc-number">
-		<p><strong>No. {{ $qdoc->doc_number }}</strong></p>
+		<p><strong>No. {{ $doc }}</strong></p>
 	</div>
 </div>
 <div class="row">

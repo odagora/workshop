@@ -177,13 +177,14 @@ class QdocsController extends Controller
         $cats = Config::get('constants.qdoc_cats');
         $elements = Config::get('constants.qdoc_elements');
         $comments = Config::get('constants.qdoc_comments');
+        $doc = $qdoc->doc_number + 1115;
 
         //Check if document is not cancelled
         if ($qdoc->status == 'ok') {
-            return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
+            return view('qdocs.edit', compact('qdoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments', 'doc'));
         }
         else{
-           Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.' no se puede editar ya que se encuentra cancelado');
+           Session::flash('warning', 'El certificado de control calidad No.'.' '.$doc.' '.' no se puede editar ya que se encuentra cancelado');
 
             return redirect()->back(); 
         }
@@ -199,6 +200,7 @@ class QdocsController extends Controller
     public function update(Request $request, $id)
     {
         $qdocs = Qdocs::find($id);
+        $doc = $qdocs->doc_number + 1115;
 
         //Validate the data - general information
         //Check if ordernumber has been changed to verify if it's value is still unique
@@ -300,7 +302,7 @@ class QdocsController extends Controller
         $qdocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'fue modificado de forma exitosa');
+        Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.'fue modificado de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('qdocs.show', $qdocs->id); 
@@ -315,9 +317,10 @@ class QdocsController extends Controller
     public function destroy($id)
     {
         $qdocs = Qdocs::find($id);
+        $doc = $qdocs->doc_number + 1115;
         $qdocs->delete();
 
-        Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.' fue eliminado de forma exitosa');
+        Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.' fue eliminado de forma exitosa');
 
         return redirect()->route('qdocs.index');
     }
@@ -331,10 +334,11 @@ class QdocsController extends Controller
     public function cancel($id)
     {
         $qdocs = Qdocs::find($id);
+        $doc = $qdocs->doc_number + 1115;
 
         //Check for resource status
         if ($qdocs->status == 'cancelled') {
-            Session::flash('warning', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'ya se encuentra cancelado');
+            Session::flash('warning', 'El certificado de control calidad No.'.' '.$doc.' '.'ya se encuentra cancelado');
 
             return redirect()->back();
         }
@@ -343,7 +347,7 @@ class QdocsController extends Controller
 
             $qdocs->save();
 
-            Session::flash('success', 'El certificado de control calidad No.'.' '.$qdocs->id.' '.'fue cancelado de forma exitosa');
+            Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.'fue cancelado de forma exitosa');
 
             return redirect()->back();
         }

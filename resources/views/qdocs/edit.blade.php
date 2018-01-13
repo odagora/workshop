@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| Editar Certificado de Control Calidad')
+@section('title', '| Editar Certificado de Control Calidad'.'No. '.$doc)
 @section('content')
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1 class="text-center">Certificado de control calidad</h1>
+		<h1 class="text-center">Certificado de control calidad # {{$doc}}</h1>
 		<hr>
 		{!! Form::model($qdoc, ['route' => ['qdocs.update', $qdoc->id], 'method' => 'PUT']) !!}
 		<div class="form-group">
