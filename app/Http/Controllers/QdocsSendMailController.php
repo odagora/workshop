@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\QdocsPdfController;
 use App\Repositories\QdocsPdfRepository;
+use Illuminate\Support\Facades\Config;
 use App\Mail\QdocSent;
 use App\Make;
 use App\Type;
@@ -41,6 +42,7 @@ class QdocsSendMailController extends Controller
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
     	$receiverAddress = $qdoc->email;
+        $bccAddress = Config::get('emailadresses.bcc');
         $date = date('dmY', strtotime($qdoc->created_at));
         $doc = $qdoc->doc_number + 1115;
         $attachment = storage_path().'/app/'.$doc.'_'.$qdoc->license.'_'.$date.'.pdf';
@@ -56,7 +58,7 @@ class QdocsSendMailController extends Controller
         
         //Check if document is not cancelled
         if($qdoc->status == 'ok'){
-            Mail::to($receiverAddress)->send(new QdocSent($subject, $content, $attachment));
+            Mail::to($receiverAddress)->bcc($bccAddress)->send(new QdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
             Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.'fue enviado de forma exitosa');
