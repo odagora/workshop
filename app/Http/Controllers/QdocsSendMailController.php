@@ -42,10 +42,11 @@ class QdocsSendMailController extends Controller
     		];
     	$receiverAddress = $qdoc->email;
         $date = date('dmY', strtotime($qdoc->created_at));
-        $attachment = storage_path().'/static/'.$qdoc->id.'_'.$qdoc->license.'_'.$date.'.pdf';
+        $doc = $qdoc->doc_number + 1115;
+        $attachment = storage_path().'/app/'.$doc.'_'.$qdoc->license.'_'.$date.'.pdf';
 
-        $filename = $qdoc->id.'_'.$qdoc->license.'_'.$date.'.pdf';
-        $path = storage_path('static/'.$filename);
+        $filename = $doc.'_'.$qdoc->license.'_'.$date.'.pdf';
+        $path = storage_path('app/'.$filename);
         
         //If file doesn't exist in static folder run PdfRepository trait
         if(!file_exists($attachment)){
@@ -58,13 +59,13 @@ class QdocsSendMailController extends Controller
             Mail::to($receiverAddress)->send(new QdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
-            Session::flash('success', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.'fue enviado de forma exitosa');
+            Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.'fue enviado de forma exitosa');
 
             //Redirect to current page
             return redirect()->back();
         }
         else{
-            Session::flash('danger', 'El certificado de control calidad No.'.' '.$qdoc->id.' '.'está cancelado y no puede ser enviado');
+            Session::flash('danger', 'El certificado de control calidad No.'.' '.$doc.' '.'está cancelado y no puede ser enviado');
 
             //Redirect to current page
             return redirect()->back();
