@@ -165,7 +165,7 @@ class CdocsController extends Controller
     public function update(Request $request, $id)
     {
         $cdocs = Cdocs::find($id);
-        $doc = $cdoc->doc_number + 762;
+        $doc = $cdocs->doc_number + 762;
 
         //Validate the data - general information
         $data = array(
@@ -230,7 +230,7 @@ class CdocsController extends Controller
     public function destroy($id)
     {
         $cdocs = Cdocs::find($id);
-        $doc = $cdoc->doc_number + 762;
+        $doc = $cdocs->doc_number + 762;
         $cdocs->delete();
 
         Session::flash('success', 'La cotización de colisión exprés No.'.' '.$doc.' '.' fue eliminada de forma exitosa');
@@ -247,7 +247,7 @@ class CdocsController extends Controller
     public function cancel($id)
     {
         $cdocs = Cdocs::find($id);
-        $doc = $cdoc->doc_number + 762;
+        $doc = $cdocs->doc_number + 762;
 
         //Check for resource status
         if ($cdocs->status == 'cancelled') {
