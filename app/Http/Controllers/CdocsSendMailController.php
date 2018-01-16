@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CdocsPdfController;
 use App\Repositories\CdocsPdfRepository;
+use Illuminate\Support\Facades\Config;
 use App\Mail\CdocSent;
 use App\Make;
 use App\Type;
@@ -40,11 +41,13 @@ class CdocsSendMailController extends Controller
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
     	$receiverAddress = $cdoc->email;
+        $bccAddress = Config::get('emailadresses.bcc');
         $date = date('dmY', strtotime($cdoc->created_at));
-        $attachment = storage_path().'/static/'.$cdoc->id.'_'.$cdoc->license.'_'.$date.'.pdf';
+        $doc = $cdoc->doc_number + 762;
+        $attachment = storage_path().'/app/'.$doc.'_'.$cdoc->license.'_'.$date.'.pdf';
 
-        $filename = $cdoc->id.'_'.$cdoc->license.'_'.$date.'.pdf';
-        $path = storage_path('static/'.$filename);
+        $filename = $doc.'_'.$cdoc->license.'_'.$date.'.pdf';
+        $path = storage_path('app/'.$filename);
         
         //If file doesn't exist in static folder run PdfRepository trait
         if(!file_exists($attachment)){
@@ -54,16 +57,16 @@ class CdocsSendMailController extends Controller
         
         //Check if document is not cancelled
         if($cdoc->status == 'ok'){
-            Mail::to($receiverAddress)->send(new CdocSent($subject, $content, $attachment));
+            Mail::to($receiverAddress)->bcc($bccAddress)->send(new CdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
-            Session::flash('success', 'La cotización de colisión exprés No.'.' '.$cdoc->id.' '.'fue enviada de forma exitosa');
+            Session::flash('success', 'La cotización de colisión exprés No.'.' '.$doc.' '.'fue enviada de forma exitosa');
 
             //Redirect to current page
             return redirect()->back();
         }
         else{
-            Session::flash('danger', 'La cotización de colisión exprés No.'.' '.$cdoc->id.' '.'está cancelada y no puede ser enviada');
+            Session::flash('danger', 'La cotización de colisión exprés No.'.' '.$doc.' '.'está cancelada y no puede ser enviada');
 
             //Redirect to current page
             return redirect()->back();

@@ -1,5 +1,5 @@
 @extends('base')
-@section('title', '| Cotización de Colisión Exprés '.'No. '.$cdoc->id)
+@section('title', '| Cotización de Colisión Exprés '.'No. '.$doc)
 @section('content')
 <div class="row">
 	@if($cdoc->status == 'ok')
@@ -11,7 +11,7 @@
 				<p><strong>Cotización:</strong></p>
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 text-center text-danger">
-				<p><strong>No. {{ $cdoc->id }}</strong></p>
+				<p><strong>No. {{ $doc }}</strong></p>
 			</div>
 		</div>
 	@else
@@ -23,7 +23,7 @@
 				<p><strong>Cotización:</strong></p>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 text-center text-danger">
-				<p><strong>No. {{ $cdoc->id }}</strong></p>
+				<p><strong>No. {{ $doc }}</strong></p>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 text-center text-danger">
 				<p><strong>ANULADA</strong></p>

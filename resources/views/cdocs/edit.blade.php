@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| Editar Cotización de Colisión Exprés') 
+@section('title', '| Editar Cotización de Colisión Exprés'.'No. '.$doc) 
 @section('content')
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1 class="text-center">Editar Cotización de Colisión Exprés</h1>
+		<h1 class="text-center">Editar Cotización de Colisión Exprés # {{$doc}}</h1>
 		<hr>
 		{!! Form::model($cdoc, ['route' => ['cdocs.update', $cdoc->id], 'method' => 'PUT']) !!}
 			<div class="form-group">

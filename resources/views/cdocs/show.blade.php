@@ -1,8 +1,8 @@
 @extends('main')
-@section('title', '| Cotización de Colisión Exprés '.'No. '.$cdoc->id)
+@section('title', '| Cotización de Colisión Exprés '.'No. '.$doc)
 @section('content')
 <div class="row">
-	<h2 class="text-center text-uppercase">Cotización de Colisión Exprés # {{$cdoc->id}} @if($cdoc->status == 'cancelled')<span class="text-danger">- ANULADA -</span>@endif</h2>
+	<h2 class="text-center text-uppercase">Cotización de Colisión Exprés # {{$doc}} @if($cdoc->status == 'cancelled')<span class="text-danger">- ANULADA -</span>@endif</h2>
 	<hr>
 </div>
 <div class="row well">

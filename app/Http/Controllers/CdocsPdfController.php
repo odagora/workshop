@@ -20,8 +20,9 @@ class CdocsPdfController extends Controller
         {
                 $cdoc = Cdocs::find($id);
                 $date = date('dmY', strtotime($cdoc->created_at));
-                $filename = $cdoc->id.'_'.$cdoc->license.'_'.$date.'.pdf';
-                $path = storage_path('static/'.$filename);
+                $doc = $cdoc->doc_number + 762;
+                $filename = $doc.'_'.$cdoc->license.'_'.$date.'.pdf';
+                $path = storage_path('app/'.$filename);
                 //Save file to storage folder
                 $this->printCdocsPdf($id)->save($path, true);
 

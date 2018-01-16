@@ -102,6 +102,9 @@ class CdocsController extends Controller
         //Store status on submit
         $cdocs->status = 'ok';
 
+        //Store column position in DB
+        $qdocs->doc_number = Cdocs::count() + 1;
+
         $cdocs->save();
 
         //Display a flash message on succesfull submit
@@ -123,7 +126,8 @@ class CdocsController extends Controller
         $cdoc = Cdocs::find($id);
         $make = Make::find($cdoc->make);
         $type = Type::find($cdoc->type);
-        return view('cdocs.show', compact('cdoc', 'make', 'type'));
+        $doc = $cdoc->doc_number + 762;
+        return view('cdocs.show', compact('cdoc', 'make', 'type', 'doc'));
     }
 
     /**
@@ -138,13 +142,14 @@ class CdocsController extends Controller
         $make_id = Make::find($cdoc->make);
         $type = Type::find($cdoc->type);
         $makes = Make::all();
+        $doc = $cdoc->doc_number + 762;
 
         //Check if document is not cancelled
         if ($cdoc->status == 'ok') {
-            return view('cdocs.edit', compact('cdoc', 'make_id', 'type', 'makes'));
+            return view('cdocs.edit', compact('cdoc', 'make_id', 'type', 'makes', 'doc'));
         }
         else{
-           Session::flash('warning', 'La cotización de colisión exprés No.'.' '.$cdoc->id.' '.' no se puede editar ya que se encuentra cancelada');
+           Session::flash('warning', 'La cotización de colisión exprés No.'.' '.$doc.' '.' no se puede editar ya que se encuentra cancelada');
 
             return redirect()->back(); 
         }
@@ -160,6 +165,7 @@ class CdocsController extends Controller
     public function update(Request $request, $id)
     {
         $cdocs = Cdocs::find($id);
+        $doc = $cdoc->doc_number + 762;
 
         //Validate the data - general information
         $data = array(
@@ -209,7 +215,7 @@ class CdocsController extends Controller
         $cdocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'La cotización de colisión exprés No.'.' '.$cdocs->id.' '.'fue modificada de forma exitosa');
+        Session::flash('success', 'La cotización de colisión exprés No.'.' '.$doc.' '.'fue modificada de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('cdocs.show', $cdocs->id);
@@ -224,9 +230,10 @@ class CdocsController extends Controller
     public function destroy($id)
     {
         $cdocs = Cdocs::find($id);
+        $doc = $cdoc->doc_number + 762;
         $cdocs->delete();
 
-        Session::flash('success', 'La cotización de colisión exprés No.'.' '.$cdocs->id.' '.' fue eliminada de forma exitosa');
+        Session::flash('success', 'La cotización de colisión exprés No.'.' '.$doc.' '.' fue eliminada de forma exitosa');
 
         return redirect()->route('cdocs.index');
     }
@@ -240,10 +247,11 @@ class CdocsController extends Controller
     public function cancel($id)
     {
         $cdocs = Cdocs::find($id);
+        $doc = $cdoc->doc_number + 762;
 
         //Check for resource status
         if ($cdocs->status == 'cancelled') {
-            Session::flash('warning', 'La cotización de colisión exprés No.'.' '.$cdocs->id.' '.'ya se encuentra cancelada');
+            Session::flash('warning', 'La cotización de colisión exprés No.'.' '.$doc.' '.'ya se encuentra cancelada');
 
             return redirect()->back();
         }
@@ -252,7 +260,7 @@ class CdocsController extends Controller
 
             $cdocs->save();
 
-            Session::flash('success', 'La cotización de colisión exprés No.'.' '.$cdocs->id.' '.'fue cancelada de forma exitosa');
+            Session::flash('success', 'La cotización de colisión exprés No.'.' '.$doc.' '.'fue cancelada de forma exitosa');
 
             return redirect()->back();
         }
