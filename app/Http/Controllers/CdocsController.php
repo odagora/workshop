@@ -103,7 +103,7 @@ class CdocsController extends Controller
         $cdocs->status = 'ok';
 
         //Store column position in DB
-        $qdocs->doc_number = Cdocs::count() + 1;
+        $cdocs->doc_number = Cdocs::count() + 1;
 
         $cdocs->save();
 
