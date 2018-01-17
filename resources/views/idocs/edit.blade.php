@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| Editar Inspección Visual de Mecánca y Colisión')
+@section('title', '| Editar Inspección Visual de Mecánca y Colisión'.'No. '.$doc)
 @section('content')
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h1 class="text-center">Inspección Visual de Mecánica y Colisión</h1>
+		<h1 class="text-center">Inspección Visual de Mecánica y Colisión # {{$doc}}</h1>
 		<hr>
 		{!! Form::model($idoc, ['route' => ['idocs.update', $idoc->id], 'method' => 'PUT']) !!}
 		<div class="form-group">

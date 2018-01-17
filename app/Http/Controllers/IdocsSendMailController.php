@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\IdocsPdfController;
 use App\Repositories\IdocsPdfRepository;
+use Illuminate\Support\Facades\Config;
 use App\Mail\IdocSent;
 use App\Make;
 use App\Type;
@@ -40,11 +41,13 @@ class IdocsSendMailController extends Controller
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
     	$receiverAddress = $idoc->email;
+        $bccAddress = Config::get('emailadresses.bcc');
         $date = date('dmY', strtotime($idoc->created_at));
-        $attachment = storage_path().'/static/'.$idoc->id.'_'.$idoc->license.'_'.$date.'.pdf';
+        $doc = $idoc->doc_number + 3012;
+        $attachment = storage_path().'/app/'.$doc.'_'.$idoc->license.'_'.$date.'.pdf';
 
-        $filename = $idoc->id.'_'.$idoc->license.'_'.$date.'.pdf';
-        $path = storage_path('static/'.$filename);
+        $filename = $doc.'_'.$idoc->license.'_'.$date.'.pdf';
+        $path = storage_path('app/'.$filename);
         
         //If file doesn't exist in static folder run PdfRepository trait
         if(!file_exists($attachment)){
@@ -54,16 +57,16 @@ class IdocsSendMailController extends Controller
         
         //Check if document is not cancelled
         if($idoc->status == 'ok'){
-            Mail::to($receiverAddress)->send(new IdocSent($subject, $content, $attachment));
+            Mail::to($receiverAddress)->bcc($bccAddress)->send(new IdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
-            Session::flash('success', 'El informe de inspección visual No.'.' '.$idoc->id.' '.'fue enviado de forma exitosa');
+            Session::flash('success', 'El informe de inspección visual No.'.' '.$doc.' '.'fue enviado de forma exitosa');
 
             //Redirect to current page
             return redirect()->back();
         }
         else{
-            Session::flash('danger', 'El informe de inspección visual No.'.' '.$idoc->id.' '.'está cancelado y no puede ser enviado');
+            Session::flash('danger', 'El informe de inspección visual No.'.' '.$doc.' '.'está cancelado y no puede ser enviado');
 
             //Redirect to current page
             return redirect()->back();

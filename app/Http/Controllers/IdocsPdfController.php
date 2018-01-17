@@ -20,8 +20,9 @@ class IdocsPdfController extends Controller
         {
                 $idoc = Idocs::find($id);
                 $date = date('dmY', strtotime($idoc->created_at));
-                $filename = $idoc->id.'_'.$idoc->license.'_'.$date.'.pdf';
-                $path = storage_path('static/'.$filename);
+                $doc = $idoc->doc_number + 3012;
+                $filename = $doc.'_'.$idoc->license.'_'.$date.'.pdf';
+                $path = storage_path('app/'.$filename);
                 //Save file to storage folder
                 $this->printIdocsPdf($id)->save($path, true);
 

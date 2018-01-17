@@ -124,6 +124,9 @@ class IdocsController extends Controller
         //Store status on submit
         $idocs->status = 'ok';
 
+        //Store column position in DB
+        $idocs->doc_number = Idocs::count() + 1;
+
         $idocs->save();
 
         //Display a flash message on succesfull submit
@@ -150,7 +153,8 @@ class IdocsController extends Controller
         $cats = Config::get('constants.idoc_cats');
         $elements = Config::get('constants.idoc_elements');
         $comments = Config::get('constants.idoc_comments');
-        return view('idocs.show', compact('idoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
+        $doc = $idoc->doc_number + 3012;
+        return view('idocs.show', compact('idoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments','doc'));
     }
 
     /**
@@ -170,13 +174,14 @@ class IdocsController extends Controller
         $cats = Config::get('constants.idoc_cats');
         $elements = Config::get('constants.idoc_elements');
         $comments = Config::get('constants.idoc_comments');
+        $doc = $idoc->doc_number + 3012;
 
         //Check if document is not cancelled
         if ($idoc->status == 'ok') {
-            return view('idocs.edit', compact('idoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
+            return view('idocs.edit', compact('idoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments','doc'));
         }
         else{
-           Session::flash('warning', 'El informe de inspección visual No.'.' '.$idoc->id.' '.' no se puede editar ya que se encuentra cancelado');
+           Session::flash('warning', 'El informe de inspección visual No.'.' '.$doc.' '.' no se puede editar ya que se encuentra cancelado');
 
             return redirect()->back(); 
         }
@@ -192,6 +197,7 @@ class IdocsController extends Controller
     public function update(Request $request, $id)
     {
         $idocs = Idocs::find($id);
+        $doc = $idocs->doc_number + 3012;
 
         //Validate the data - general information
         $data = array(
@@ -257,7 +263,7 @@ class IdocsController extends Controller
         $idocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'El informe de inspección visual No.'.' '.$idocs->id.' '.'fue modificado de forma exitosa');
+        Session::flash('success', 'El informe de inspección visual No.'.' '.$doc.' '.'fue modificado de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('idocs.show', $idocs->id);
@@ -272,9 +278,10 @@ class IdocsController extends Controller
     public function destroy($id)
     {
         $idocs = Idocs::find($id);
+        $doc = $idocs->doc_number + 3012;
         $idocs->delete();
 
-        Session::flash('success', 'El informe de inspección visual No.'.' '.$idocs->id.' '.' fue eliminado de forma exitosa');
+        Session::flash('success', 'El informe de inspección visual No.'.' '.$doc.' '.' fue eliminado de forma exitosa');
 
         return redirect()->route('idocs.index');
     }
@@ -288,10 +295,11 @@ class IdocsController extends Controller
     public function cancel($id)
     {
         $idocs = Idocs::find($id);
+        $doc = $idocs->doc_number + 3012;
 
         //Check for resource status
         if ($idocs->status == 'cancelled') {
-            Session::flash('warning', 'El informe de inspección visual No.'.' '.$idocs->id.' '.'ya se encuentra cancelado');
+            Session::flash('warning', 'El informe de inspección visual No.'.' '.$doc.' '.'ya se encuentra cancelado');
 
             return redirect()->back();
         }
@@ -300,7 +308,7 @@ class IdocsController extends Controller
 
             $idocs->save();
 
-            Session::flash('success', 'El informe de inspección visual No.'.' '.$idocs->id.' '.'fue cancelado de forma exitosa');
+            Session::flash('success', 'El informe de inspección visual No.'.' '.$doc.' '.'fue cancelado de forma exitosa');
 
             return redirect()->back();
         }
