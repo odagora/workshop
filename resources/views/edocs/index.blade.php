@@ -34,12 +34,12 @@
 			<tbody>
 				@foreach($edocs as $edoc)
 				<tr>
-					<td class="text-center">{{$edoc->id}}</td>
+					<td class="text-center">{{$edoc->doc_number + 2024}}</td>
 					<td class="text-center">{{$edoc->c_firstname}} {{$edoc->c_lastname}}</td>
 					<td class="text-center">{{$edoc->license}}</td>
 					<td class="text-center">{{number_format($edoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($edoc->created_at))}}</td>
-					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('edocs.show', $edoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('edocs.edit', $edoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/edocs/'.$edoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/edocs/'.$edoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$edoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/edocs/'.$edoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$edoc->id}}');">Anular</a></div></td>@endif
+					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('edocs.show', $edoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('edocs.edit', $edoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/edocs/'.$edoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/edocs/'.$edoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$edoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/edocs/'.$edoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$edoc->doc_number + 2024}}');">Anular</a></div></td>@endif
 				</tr>
 				@endforeach
 			</tbody>

@@ -20,8 +20,9 @@ class EdocsPdfController extends Controller
         {
                 $edoc = Edocs::find($id);
                 $date = date('dmY', strtotime($edoc->created_at));
-                $filename = $edoc->id.'_'.$edoc->license.'_'.$date.'.pdf';
-                $path = storage_path('static/'.$filename);
+                $doc = $edoc->doc_number + 2024;
+                $filename = $doc.'_'.$edoc->license.'_'.$date.'.pdf';
+                $path = storage_path('app/'.$filename);
                 //Save file to storage folder
                 $this->printEdocsPdf($id)->save($path, true);
 

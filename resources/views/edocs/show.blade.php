@@ -1,8 +1,8 @@
 @extends('main')
-@section('title', '| Peritaje de Vehículo Usado '.'No. '.$edoc->id)
+@section('title', '| Peritaje de Vehículo Usado '.'No. '.$doc)
 @section('content')
 <div class="row">
-	<h2 class="text-center text-uppercase">Peritaje de Vehículo Usado # {{$edoc->id}} @if($edoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>
+	<h2 class="text-center text-uppercase">Peritaje de Vehículo Usado # {{$doc}} @if($edoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif</h2>
 	<hr>
 </div>
 <div class="row well">

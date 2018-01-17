@@ -20,7 +20,8 @@ trait EdocsPdfRepository {
                 $cats = Config::get('constants.edoc_cats');
                 $elements = Config::get('constants.edoc_elements');
                 $comments = Config::get('constants.edoc_comments');
-                $pdf = \PDF::loadView('edocs.pdf', compact('edoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'))->setPaper('Letter')->setOption('margin-top', 4)->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2)->setOption('footer-left', "[doctitle] | Impreso el: [date]")->setOption('footer-right', "Pagina [page] de [toPage]")->setOption('footer-font-size', 7);
+                $doc = $edoc->doc_number + 2024;
+                $pdf = \PDF::loadView('edocs.pdf', compact('edoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments','doc'))->setPaper('Letter')->setOption('margin-top', 4)->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2)->setOption('footer-left', "[doctitle] | Impreso el: [date]")->setOption('footer-right', "Pagina [page] de [toPage]")->setOption('footer-font-size', 7);
 
                 return $pdf;
         }

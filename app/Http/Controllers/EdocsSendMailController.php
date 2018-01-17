@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\EdocsPdfController;
 use App\Repositories\EdocsPdfRepository;
+use Illuminate\Support\Facades\Config;
 use App\Mail\EdocSent;
 use App\Make;
 use App\Type;
@@ -40,11 +41,13 @@ class EdocsSendMailController extends Controller
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
     	$receiverAddress = $edoc->email;
+        $bccAddress = Config::get('emailadresses.bcc');
         $date = date('dmY', strtotime($edoc->created_at));
-        $attachment = storage_path().'/static/'.$edoc->id.'_'.$edoc->license.'_'.$date.'.pdf';
+        $doc = $edoc->doc_number + 2024;
+        $attachment = storage_path().'/app/'.$doc.'_'.$edoc->license.'_'.$date.'.pdf';
 
-        $filename = $edoc->id.'_'.$edoc->license.'_'.$date.'.pdf';
-        $path = storage_path('static/'.$filename);
+        $filename = $doc.'_'.$edoc->license.'_'.$date.'.pdf';
+        $path = storage_path('app/'.$filename);
         
         //If file doesn't exist in static folder run PdfRepository trait
         if(!file_exists($attachment)){
@@ -54,16 +57,16 @@ class EdocsSendMailController extends Controller
         
         //Check if document is not cancelled
         if($edoc->status == 'ok'){
-            Mail::to($receiverAddress)->send(new EdocSent($subject, $content, $attachment));
+            Mail::to($receiverAddress)->bcc($bccAddress)->send(new EdocSent($subject, $content, $attachment));
 
             //Display a flash message on succesfull submit
-            Session::flash('success', 'El informe de peritaje de vehículo usado No.'.' '.$edoc->id.' '.'fue enviado de forma exitosa');
+            Session::flash('success', 'El informe de peritaje de vehículo usado No.'.' '.$doc.' '.'fue enviado de forma exitosa');
 
             //Redirect to current page
             return redirect()->back();
         }
         else{
-            Session::flash('danger', 'El informe de peritaje de vehículo usado No.'.' '.$edoc->id.' '.'está cancelado y no puede ser enviado');
+            Session::flash('danger', 'El informe de peritaje de vehículo usado No.'.' '.$doc.' '.'está cancelado y no puede ser enviado');
 
             //Redirect to current page
             return redirect()->back();

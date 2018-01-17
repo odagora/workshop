@@ -131,6 +131,9 @@ class EdocsController extends Controller
         //Store status on submit
         $edocs->status = 'ok';
 
+        //Store column position in DB
+        $edocs->doc_number = Edocs::count() + 1;
+
         $edocs->save();
 
         //Display a flash message on succesfull submit
@@ -157,7 +160,8 @@ class EdocsController extends Controller
         $cats = Config::get('constants.edoc_cats');
         $elements = Config::get('constants.edoc_elements');
         $comments = Config::get('constants.edoc_comments');
-        return view('edocs.show', compact('edoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments'));
+        $doc = $edoc->doc_number + 2024;
+        return view('edocs.show', compact('edoc', 'make', 'type', 'names', 'items', 'cats', 'elements', 'comments','doc'));
     }
 
     /**
@@ -177,13 +181,14 @@ class EdocsController extends Controller
         $cats = Config::get('constants.edoc_cats');
         $elements = Config::get('constants.edoc_elements');
         $comments = Config::get('constants.edoc_comments');
+        $doc = $edoc->doc_number + 2024;
 
         //Check if document is not cancelled
         if ($edoc->status == 'ok') {
-            return view('edocs.edit', compact('edoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments'));
+            return view('edocs.edit', compact('edoc', 'make_id', 'type', 'makes', 'names', 'items', 'cats', 'elements', 'comments','doc'));
         }
         else{
-           Session::flash('warning', 'El informe de peritaje No.'.' '.$edoc->id.' '.' no se puede editar ya que se encuentra cancelado');
+           Session::flash('warning', 'El informe de peritaje No.'.' '.$doc.' '.' no se puede editar ya que se encuentra cancelado');
 
             return redirect()->back(); 
         }
@@ -199,6 +204,7 @@ class EdocsController extends Controller
     public function update(Request $request, $id)
     {
         $edocs = Edocs::find($id);
+        $doc = $edocs->doc_number + 2024;
 
         //Validate the data - general information
         $data = array(
@@ -271,7 +277,7 @@ class EdocsController extends Controller
         $edocs->save();
 
         //Display a flash message on succesfull submit
-        Session::flash('success', 'El informe de peritaje No.'.' '.$edocs->id.' '.'fue modificado de forma exitosa');
+        Session::flash('success', 'El informe de peritaje No.'.' '.$doc.' '.'fue modificado de forma exitosa');
 
         //Redirect to another page
         return redirect()->route('edocs.show', $edocs->id);
@@ -286,9 +292,10 @@ class EdocsController extends Controller
     public function destroy($id)
     {
         $edocs = Edocs::find($id);
+        $doc = $edocs->doc_number + 2024;
         $edocs->delete();
 
-        Session::flash('success', 'El informe de peritaje No.'.' '.$edocs->id.' '.' fue eliminado de forma exitosa');
+        Session::flash('success', 'El informe de peritaje No.'.' '.$doc.' '.' fue eliminado de forma exitosa');
 
         return redirect()->route('edocs.index');
     }
@@ -302,10 +309,11 @@ class EdocsController extends Controller
     public function cancel($id)
     {
         $edocs = Edocs::find($id);
+        $doc = $edocs->doc_number + 2024;
 
         //Check for resource status
         if ($edocs->status == 'cancelled') {
-            Session::flash('warning', 'El informe de peritaje No.'.' '.$edocs->id.' '.'ya se encuentra cancelado');
+            Session::flash('warning', 'El informe de peritaje No.'.' '.$doc.' '.'ya se encuentra cancelado');
 
             return redirect()->back();
         }
@@ -314,7 +322,7 @@ class EdocsController extends Controller
 
             $edocs->save();
 
-            Session::flash('success', 'El informe de peritaje No.'.' '.$edocs->id.' '.'fue cancelado de forma exitosa');
+            Session::flash('success', 'El informe de peritaje No.'.' '.$doc.' '.'fue cancelado de forma exitosa');
 
             return redirect()->back();
         }
