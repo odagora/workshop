@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <div class="col-md-6 col-md-offset-3" style="padding-top: 60px;">
             <div class="panel panel-default">
                 <div class="panel-heading text-center"><img src="{{asset('img/logo.png')}}" alt="Logo Servitalleres"></div>
