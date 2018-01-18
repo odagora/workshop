@@ -47,7 +47,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof TokenMismatchException){
             // Catch it here and do what you want. For example...
-            return redirect()->back()->withInput()->with('error', 'Your session has expired');
+            return redirect()->back()->withInput()->with('error', 'Su sesión ha expirado. Vuelva a ingresar.');
         }
 
         return parent::render($request, $exception);
