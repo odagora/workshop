@@ -50,11 +50,8 @@ class QdocsSendMailController extends Controller
         $filename = $doc.'_'.$qdoc->license.'_'.$date.'.pdf';
         $path = storage_path('app/'.$filename);
         
-        //If file doesn't exist in static folder run PdfRepository trait
-        if(!file_exists($attachment)){
-            //Save file to storage folder
-            $this->printQdocsPdf($id)->save($path, true);
-        }
+        //Save file to storage folder
+        $this->printQdocsPdf($id)->save($path, true);
         
         //Check if document is not cancelled
         if($qdoc->status == 'ok'){
