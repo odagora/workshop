@@ -99,10 +99,10 @@
 </div>
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 text-left quote-description">
-		<div class="col-xs-3 col-sm-2 col-md-2 quote-title">
+		<div class="col-xs-3 col-sm-3 col-md-2 quote-title">
 			<h6><strong>Trabajos a realizar:</strong></h6>
 		</div>
-		<div class="col-xs-9 col-sm-2 col-md-2 quote-title quote-works" style="border-bottom: 1px solid black;">
+		<div class="col-xs-9 col-sm-9 col-md-10 quote-title quote-works" style="border-bottom: 1px solid black;">
 			<span>{{ $cdoc->description }}</span>
 		</div>
 	</div>
@@ -126,7 +126,7 @@
 			<div class="col-xs-3 col-sm-2 col-md-2 quote-title">
 				<h6><strong>Repuestos:</strong></h6>
 			</div>
-			<div class="col-xs-9 col-sm-2 col-md-2 quote-title quote-spare-desc">
+			<div class="col-xs-9 col-sm-10 col-md-10 quote-title quote-spare-desc">
 				<span>{{ $cdoc->spare_description }}</span>
 			</div>
 		</div>

@@ -2,13 +2,13 @@
 @section('title', '| Editar Cotización de Colisión Exprés'.'No. '.$doc) 
 @section('content')
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-xs-10 col-sm-10 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-2">
 		<h1 class="text-center">Editar Cotización de Colisión Exprés # {{$doc}}</h1>
 		<hr>
 		{!! Form::model($cdoc, ['route' => ['cdocs.update', $cdoc->id], 'method' => 'PUT']) !!}
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-xs-4 col-sm-3 col-md-3 date">
 						{{ Form::label('created_at', 'Fecha:')}}
 						{{ Form::date('created_at', \Carbon\Carbon::now(), array('class' =>'form-control'))}}
 					</div>
@@ -17,14 +17,14 @@
 	    	<div class="form-group">
 	    		{{ Form::label('e_name', 'Asesor de servicio:')}}
 		    	<div class="form-inline">
-		    		<div class="pull-left">
+		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 		    			{{ Form::text('e_firstname', null, array('class' => 'form-control'))}}
-		    			<br>
+		    			<br class="break">
 		    			{{ Form::label('e_firstname', 'Nombre')}}
 		    		</div>
-		    		<div>
+		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 		    			{{ Form::text('e_lastname', null, array('class' => 'form-control'))}}
-		    			<br>
+		    			<br class="break">
 		    			{{ Form::label('e_lastname', 'Apellido')}}
 					</div>
 				</div>
@@ -40,14 +40,14 @@
 			<div class="form-group">
 	    		{{ Form::label('c_name', 'Cliente:')}}
 		    	<div class="form-inline">
-		    		<div class="pull-left">
+		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 		    			{{ Form::text('c_firstname', null, array('class' => 'form-control'))}}
-		    			<br>
+		    			<br class="break">
 		    			{{ Form::label('c_firstname', 'Nombre(s)')}}
 		    		</div>
-		    		<div>
+		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 		    			{{ Form::text('c_lastname', null, array('class' => 'form-control'))}}
-		    			<br>
+		    			<br class="break">
 		    			{{ Form::label('c_lastname', 'Apellido')}}
 					</div>
 				</div>
@@ -61,7 +61,7 @@
 			@endif
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('phone', 'Teléfono:')}}
 			    		{{ Form::number('phone', null, array('class' => 'form-control'))}}
 			    	</div>
@@ -73,7 +73,7 @@
 			@endif
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-xs-6 col-sm-6 col-md-6 mail">
 			    		{{ Form::label('email', 'Email:')}}
 			    		{{ Form::email('email', null, array('class' => 'form-control'))}}
 			    	</div>
@@ -85,7 +85,7 @@
 			@endif
 	    	<div class="form-group">
 	    		<div class="row">
-	    			<div class="col-md-3">
+	    			<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 	    				{{ Form::label('make', 'Marca:')}}
 			    		<select name="make" id="make" class="form-control">
                     		@foreach ($makes as $make)
@@ -101,7 +101,7 @@
 			@endif
 	    	<div class="form-group">
 	    		<div class="row">
-	    			<div class="col-md-3">
+	    			<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 	    				{{ Form::label('type', 'Línea:')}}
 						{{ Form::select('type', [''],null,  array('class' => 'form-control'))}}
 	    			</div>
@@ -113,7 +113,7 @@
 			@endif
 	    	<div class="form-group">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('model', 'Modelo:')}}
 			    		{{ Form::number('model', null, array('class' => 'form-control'))}}
 			    	</div>
@@ -125,7 +125,7 @@
 			@endif
 			<div class="form-group">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('license', 'Placa:')}}
 			    		{{ Form::text('license', null, array('class' => 'form-control'))}}
 			    	</div>
@@ -137,7 +137,7 @@
 			@endif
 	    	<div class="form-group">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('mileage', 'Kilometraje:')}}
 			    		{{ Form::number('mileage', null, array('class' => 'form-control'))}}
 			    	</div>
@@ -152,7 +152,7 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('description', 'Piezas a intervenir')}}
-		    			{{Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3'))}}
+		    			{{Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3', 'maxlength' => 288))}}
 		    		</div>
 		    	</div>
 		    </div>
@@ -175,7 +175,7 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('spare_description', 'Repuestos')}}
-		    			{{Form::textarea('spare_description', null, array('class' => 'form-control', 'rows' => '3'))}}
+		    			{{Form::textarea('spare_description', null, array('class' => 'form-control', 'rows' => '3', 'maxlength' => 88))}}
 		    		</div>
 		    	</div>
 		    </div>
@@ -185,7 +185,7 @@
 		    		<div class="col-md-12">
 		    			{{Form::label('price', 'Costo de la reparación (IVA incluido)')}}
 		    		</div>
-		    		<div class="col-md-4">
+		    		<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    			{{Form::number('price', null, array('class' => 'form-control'))}}
 		    		</div>
 		    	</div>
@@ -199,7 +199,7 @@
 		    		<div class="col-md-12">
 		    			{{Form::label('time', 'Tiempo de entrega (Horas)')}}
 		    		</div>
-		    		<div class="col-md-4">
+		    		<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    			{{Form::number('time', null, array('class' => 'form-control'))}}
 		    		</div>
 		    	</div>
@@ -213,7 +213,7 @@
 		    		<div class="col-md-12">
 		    			{{Form::label('validity_time', 'Validez de la cotización (Días)')}}
 		    		</div>
-		    		<div class="col-md-4">
+		    		<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    			{{Form::number('validity_time', null, array('class' => 'form-control'))}}
 		    		</div>
 		    	</div>
@@ -226,7 +226,7 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('observations', 'Observaciones (detalles de la cotización - USO INTERNO)')}}
-		    			{{Form::textarea('observations', null, array('class' => 'form-control', 'rows' => '3'))}}
+		    			{{Form::textarea('observations', null, array('class' => 'form-control', 'rows' => '3', 'maxlength' => 300))}}
 		    		</div>
 		    	</div>
 		    </div>

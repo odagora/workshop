@@ -6,9 +6,9 @@
 		<h1>Inspecciones Visuales de Mecánica y Colisión</h1>
 	</div>
 	<div class="col-xs-12 col-sm-3 col-md-2 index-button">
-		<a href="{{ route('idocs.create') }}" class="btn btn-lg btn-block btn-primary btn-h1-spacing">Crear inspección</a>
+		<a href="{{ route('idocs.create') }}" class="btn btn-lg btn-primary btn-h1-spacing">Crear inspección</a>
 	</div>
-	<div class="col-xs-12 col-sm-9 col-md-10">
+	<div class="col-xs-12 col-sm-9 col-md-10 search-button">
 		{!! Form::open(array('method' => 'GET' , 'url' => 'app/idocs' ,'class' => 'navbar-form navbar-right search-group' , 'role' => 'search')) !!}
 	        <div class="form-group search-items">
 	         	<input type="text" name="search" class="form-control input-lg" placeholder="Buscar">

@@ -47,3 +47,36 @@
 	justify-content: space-between;
 	margin-top: 8px;
 }
+
+.create-pad {
+  width: 270px;
+  height: 170px;
+  border-bottom: 2px solid #eee;
+}
+
+.show-pad {
+  width: 415px;
+  height: 170px;
+}
+
+@media only screen and (max-width: 370px){
+  .create-pad {
+    width: 240px;
+    height: 170px;
+    border-bottom: 2px solid #eee;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .show-pad {
+    width: 300px;
+    height: 170px;
+  }
+}
+
+@media only screen and (max-width: 460px){
+  .show-pad {
+    width: 150px;
+    height: 170px;
+  }
+}

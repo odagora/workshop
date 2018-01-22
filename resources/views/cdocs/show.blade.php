@@ -116,12 +116,12 @@
 </div>
 <div class="row">
 	<div class="row">
-		<div class="col-md-4 text-center">
-			<div class="col-md-6">
+		<div class="col-xs-4 col-sm-4 col-md-4 show-opt text-center">
+			<div class="col-xs-6 col-sm-6 col-md-6">
 				{!! Html::linkRoute('cdocs.edit', 'Editar', array($cdoc->id), array('class' => 'btn btn-warning btn-block')) !!}
 			</div>
 			@if (Auth::user()->hasRole('Admin'))
-				<div class="col-md-6">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					{!! Form::open(array('route' => ['cdocs.destroy', $cdoc->id], 'method' => 'DELETE')) !!}
 						{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
 					{!! Form::close() !!}	

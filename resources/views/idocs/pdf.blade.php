@@ -260,50 +260,50 @@
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg height="120" width="120">
-				<circle cx="50%" cy="50%" r="50" stroke="red" stroke-width="3" fill="red" />
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<circle cx="50%" cy="50%" r="48%" stroke="red" stroke-width="3" fill="red" />
 				<text class="svg-text" x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">Inmediato</text>
 			</svg>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="pdf-comments col-xs-8 col-sm-8 col-md-8">
 			<h5 class="text-justify">{{$idoc->comment1}}</h5>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg height="120" width="120">
-				<circle cx="50%" cy="50%" r="50" stroke="yellow" stroke-width="3" fill="yellow" />
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<circle cx="50%" cy="50%" r="48%" stroke="yellow" stroke-width="3" fill="yellow" />
 				<text class="svg-text" x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">De ser posible</text>
 			</svg>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="pdf-comments col-xs-8 col-sm-8 col-md-8">
 			<h5 class="text-justify">{{$idoc->comment2}}</h5>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg height="120" width="120">
-				<circle cx="50%" cy="50%" r="50" stroke="green" stroke-width="3" fill="green" />
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<circle cx="50%" cy="50%" r="48%" stroke="green" stroke-width="3" fill="green" />
 				<text class="svg-text" x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">A prever</text>
 			</svg>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="pdf-comments col-xs-8 col-sm-8 col-md-8">
 			<h5 class="text-justify">{{$idoc->comment3}}</h5>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="comments col-xs-4 col-sm-4 col-md-4">
+		<div class="pdf-comments col-xs-4 col-sm-4 col-md-4">
 			<h5 class="text-center"><strong>Observaciones:</strong></h5>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="pdf-comments col-xs-8 col-sm-8 col-md-8">
 			<h5 class="text-justify">{{$idoc->comment4}}</h5>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="comments col-xs-4 col-sm-4 col-md-4">
+		<div class="pdf-comments col-xs-4 col-sm-4 col-md-4">
 			<h5 class="text-center"><strong>Otros latonería y pintura:</strong></h5>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="pdf-comments col-xs-8 col-sm-8 col-md-8">
 			<h5 class="text-justify">{{$idoc->comment5}}</h5>
 		</div>
 	</div>

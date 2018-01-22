@@ -257,9 +257,9 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg>
-				<circle cx="50%" cy="50%" r="50" stroke="red" stroke-width="3" fill="red" />
+		<div class="show-fire col-xs-4 col-sm-4 col-md-4">
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<g><circle cx="50%" cy="50%" r="48%" stroke="red" stroke-width="3" fill="red" /></g>
 				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">Inmediato</text>
 			</svg>
 		</div>
@@ -268,9 +268,9 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg>
-				<circle cx="50%" cy="50%" r="50" stroke="yellow" stroke-width="3" fill="yellow" />
+		<div class="show-fire col-xs-4 col-sm-4 col-md-4">
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<g><circle cx="50%" cy="50%" r="48%" stroke="yellow" stroke-width="3" fill="yellow" /></g>
 				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">De ser posible</text>
 			</svg>
 		</div>
@@ -279,9 +279,9 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="fire col-xs-4 col-sm-4 col-md-4">
-			<svg>
-				<circle cx="50%" cy="50%" r="50" stroke="green" stroke-width="3" fill="green" />
+		<div class="show-fire col-xs-4 col-sm-4 col-md-4">
+			<svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+				<circle cx="50%" cy="50%" r="48%" stroke="green" stroke-width="3" fill="green" />
 				<text x="50%" y="50%" text-anchor="middle" stroke="#1A1A1A" stroke-width="0.5px" dy=".3em">A prever</text>
 			</svg>
 		</div>
@@ -290,18 +290,18 @@
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="comments col-xs-4 col-sm-4 col-md-4">
+		<div class="comments-obs comments-title col-xs-4 col-sm-4 col-md-4">
 			<h4 class="text-center"><strong>Observaciones:</strong></h4>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="comments-obs comments-desc col-xs-8 col-sm-8 col-md-8">
 			<h4 class="text-justify">{{$idoc->comment4}}</h4>
 		</div>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
-		<div class="comments col-xs-4 col-sm-4 col-md-4">
+		<div class="comments-obs comments-title col-xs-4 col-sm-4 col-md-4">
 			<h4 class="text-center"><strong>Otros latonería y pintura:</strong></h4>
 		</div>
-		<div class="comments col-xs-8 col-sm-8 col-md-8">
+		<div class="comments-obs comments-desc col-xs-8 col-sm-8 col-md-8">
 			<h4 class="text-justify">{{$idoc->comment5}}</h4>
 		</div>
 	</div>
@@ -310,7 +310,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 well">
 		<div class="showSig" id="sig-employee">
 			<div id="exp-sig" class="sig sigWrapper">
-				<canvas class="pad" width="415" height="170">
+				<canvas class="pad show-pad">
 				{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
 			</div>
 			<div class="sigFooter">
@@ -319,12 +319,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 text-center">
-			<div class="col-md-6">
+		<div class="col-xs-4 col-sm-4 col-md-4 show-opt text-center">
+			<div class="col-xs-6 col-sm-6 col-md-6">
 				{!! Html::linkRoute('idocs.edit', 'Editar', array($idoc->id), array('class' => 'btn btn-warning btn-block')) !!}
 			</div>
 			@if (Auth::user()->hasRole('Admin'))
-				<div class="col-md-6">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					{!! Form::open(array('route' => ['idocs.destroy', $idoc->id], 'method' => 'DELETE')) !!}
 						{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
 					{!! Form::close() !!}	

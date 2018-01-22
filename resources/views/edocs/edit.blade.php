@@ -2,13 +2,13 @@
 @section('title', '| Editar Peritaje de Vehículo Usado'.'No. '.$doc)
 @section('content')
 <div class="row">
-	<div class="col-md-8 col-md-offset-2">
+	<div class="col-xs-10 col-sm-10 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-2">
 		<h1 class="text-center">Editar Peritaje de Vehículo Usado # {{$doc}}</h1>
 		<hr>
 		{!! Form::model($edoc, ['route' => ['edocs.update', $edoc->id], 'method' => 'PUT']) !!}
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-3 col-md-3 date">
 					{{ Form::label('created_at', 'Fecha:')}}
 					{{ Form::date('created_at',  $edoc->created_at->format('Y-m-d'), array('class' =>'form-control'))}}
 				</div>
@@ -17,14 +17,14 @@
     	<div class="form-group">
     		{{ Form::label('e_name', 'Asesor de servicio:')}}
 	    	<div class="form-inline">
-	    		<div class="pull-left">
+	    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 	    			{{ Form::text('e_firstname', null, array('class' => 'form-control'))}}
-	    			<br>
+	    			<br class="break">
 	    			{{ Form::label('e_firstname', 'Nombre')}}
 	    		</div>
-	    		<div>
+	    		<div class="col-xs-5 col-sm-3 col-md-3 names">
 	    			{{ Form::text('e_lastname', null, array('class' => 'form-control'))}}
-	    			<br>
+	    			<br class="break">
 	    			{{ Form::label('e_lastname', 'Apellido')}}
 				</div>
 			</div>
@@ -40,14 +40,14 @@
 		<div class="form-group">
     		{{ Form::label('c_name', 'Cliente:')}}
 	    	<div class="form-inline">
-	    		<div class="pull-left">
+	    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
 	    			{{ Form::text('c_firstname', null, array('class' => 'form-control'))}}
-	    			<br>
+	    			<br class="break">
 	    			{{ Form::label('c_firstname', 'Nombre(s)')}}
 	    		</div>
-	    		<div>
+	    		<div class="col-xs-5 col-sm-3 col-md-3 names">
 	    			{{ Form::text('c_lastname', null, array('class' => 'form-control'))}}
-	    			<br>
+	    			<br class="break">
 	    			{{ Form::label('c_lastname', 'Apellido')}}
 				</div>
 			</div>
@@ -61,7 +61,7 @@
 		@endif
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    		{{ Form::label('id_number', 'Cédula:')}}
 		    		{{ Form::number('id_number', null, array('class' => 'form-control'))}}
 		    	</div>
@@ -73,7 +73,7 @@
 		@endif
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-xs-6 col-sm-6 col-md-6 mail">
 		    		{{ Form::label('email', 'Email:')}}
 		    		{{ Form::email('email', null, array('class' => 'form-control'))}}
 		    	</div>
@@ -85,7 +85,7 @@
 		@endif
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    		{{ Form::label('phone', 'Teléfono:')}}
 		    		{{ Form::number('phone', null, array('class' => 'form-control'))}}
 	    	</div>
@@ -97,7 +97,7 @@
     	</div>
     	<div class="form-group">
     		<div class="row">
-    			<div class="col-md-3">
+    			<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
     				{{ Form::label('make', 'Marca:')}}
 		    		<select name="make" id="make" class="form-control">
                 		@foreach ($makes as $make)
@@ -113,7 +113,7 @@
 		@endif
     	<div class="form-group">
     		<div class="row">
-    			<div class="col-md-3">
+    			<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
     				{{ Form::label('type', 'Línea:')}}
 					{{ Form::select('type', [''],null,  array('class' => 'form-control'))}}
     			</div>
@@ -125,7 +125,7 @@
 		@endif
     	<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    		{{ Form::label('model', 'Modelo:')}}
 		    		{{ Form::number('model', null, array('class' => 'form-control'))}}
 		    	</div>
@@ -137,7 +137,7 @@
 		@endif
 		<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    		{{ Form::label('license', 'Placa:')}}
 		    		{{ Form::text('license', null, array('class' => 'form-control'))}}
 		    	</div>
@@ -149,7 +149,7 @@
 		@endif
     	<div class="form-group">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 		    		{{ Form::label('mileage', 'Kilometraje:')}}
 		    		{{ Form::number('mileage', null, array('class' => 'form-control'))}}
 		    	</div>
@@ -213,11 +213,11 @@
     	<hr>
     	<div class="form-group">
 			<div class="row">
-				<div class="col-xs-6 col-sm-6 col-md-6 signature">
+				<div class="col-xs-12 col-sm-6 col-md-6 signature">
 					{{Form::label('e_signature', 'Firma del asesor de servicio:')}}
 					<div class="sigPad" id="sig-employee">
 						<div class="sig sigWrapper">
-							<canvas class="pad" width="280" height="170">
+							<canvas class="pad create-pad">
 							{{ Form::hidden('e_signature', null, array('class' => 'e_signature'))}}
 						</div>
 						<div class="sigFooter">
@@ -234,7 +234,7 @@
 					{{Form::label('c_signature', 'Firma del cliente:')}}
 					<div class="sigPad" id="sig-client">
 						<div class="sig sigWrapper">
-							<canvas class="pad" width="280" height="170">
+							<canvas class="pad create-pad">
 							{{ Form::hidden('c_signature', null, array('class' => 'c_signature'))}}
 						</div>
 						<div class="sigFooter">

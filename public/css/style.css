@@ -1,4 +1,26 @@
 /*
+LOGIN PAGE
+ */
+.login-logo{
+	display: inline-block;
+}
+
+@media only screen and (max-width: 480px){
+	.login-form {
+		width: 80%;
+		margin-left: 10%;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.form-horizontal .control-label {
+		padding-top: 7px;
+		margin-bottom: 10px;
+		text-align: left;
+	}
+}
+
+/*
 MAIN NAVIGATION
  */
 @media only screen and (min-width: 768px){
@@ -36,6 +58,19 @@ MAIN PAGES
 	.main-title h1 {
 		font-size: 30px;
 	}
+}
+
+/*Flash messages in mobile devices display*/
+@media only screen and (max-width: 768px){
+	.alert-success,
+	.alert-default,
+	.alert-primary,
+	.alert-info,
+	.alert-warning,
+	.alert-danger {
+		text-align: center;
+	}
+
 }
 
 /*
@@ -82,22 +117,100 @@ For index.blade.php
 
 }
 
+@media screen and (min-width: 768px) and (max-width: 992px){
+	.index-button .btn-lg{
+		padding: 10px 10px;
+	}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+	.index-button {
+		width: 20%;
+	}
+
+	.search-button {
+		width: 80%;
+	}
+}
+
 /*
 For create.blade.php and edit.blade.php 
  */
+
+.date .form-control {
+	padding: 6px 6px;
+}
+
+@media only screen and (max-width: 458px){
+	.date {
+		width: 55%;
+	}
+}
+
+@media only screen and (min-width: 458px) and (max-width: 544px){
+	.date {
+		width: 40%;
+	}
+}
+
+@media only screen and (max-width: 468px){
+	.gen-field {
+		width: 65%;
+	}
+}
+
+@media only screen and (min-width: 468px) and (max-width: 634px){
+	.gen-field {
+		width: 45%;
+	}
+}
 
 @media only screen and (max-width: 480px){
 	.edit-buttons {
 		width: 100%; 
 	}
+
+	.names {
+		width: 50%;
+	}
+
+	.mail {
+		width: 100%;
+	}
 }
 
-@media only screen and (max-width: 630px){
+@media only screen and (max-width: 768px){
+	.break {
+		display: none;
+	}
+
+	.form-inline > .pull-left {
+		float: none !important;
+	}
+
 	.signature {
 		width: 100%; 
 		margin-bottom: 20px;
 	}
 }
+
+@media only screen and (min-width: 768px){
+	.form-inline .form-control {
+		width: 100%;
+	}
+}
+
+.form-inline {
+	display: flex;
+	display: -webkit-flex;
+	display: -webkit-box;
+}
+
+.names {
+	padding-left: 0;
+}
+
+
 
 .sigWrapper {
 	text-align: center;
@@ -108,25 +221,56 @@ For create.blade.php and edit.blade.php
 /*
 For show.blade.php
  */
+
 @media only screen and (max-width: 768px){
 	.header-info {
 		padding: 12px;
 		border-bottom: 1px solid #eee;
+	}
+
+	h4 {
+		font-size: 14px;
 	}
 }
 
 .col-md-4 svg {
 	display: block;
 	margin: auto;
+	height: 100px;
+	margin-top: 10px;
 }
 
-.comments {
-	height: 121px;
+.comments,
+.comments-obs {
+	height: 151px;
 	border-bottom: 1px solid #eee;
 }
 
-.fire {
+@media only screen and (max-width: 474px){
+	.comments-obs {
+		width: 100%;
+	}
+
+	.comments-title {
+		height: auto;
+		border-bottom: none;
+	}
+
+	.comments-desc {
+		height: 151px;
+		border-bottom: 1px solid #eee;
+	}
+}
+
+.fire,
+.show-fire {
 	border-bottom: 1px solid #eee;
+}
+
+.show-fire {
+	height: 151px;
+	display: flex;
+	align-items: center;
 }
 
 .showSig {
@@ -149,6 +293,15 @@ body.body-pdf {
 	padding: 0 0 0 5px;
 }
 
+.fire {
+	height: 121px;
+}
+
+.pdf-comments {
+	height: 121px;
+	border-bottom: 1px solid #eee;
+}
+
 .svg-text {
 	font-size: 14px;
 }
@@ -156,6 +309,25 @@ body.body-pdf {
 .sig-pdf {
 	margin: 0 15px;
 }
+
+@media only screen and (max-width: 680px){
+	.show-opt {
+		width: 50%;
+	}
+}
+
+@media only screen and (max-width: 480px){
+	.show-opt {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.btn-block {
+		width: 100%;
+	}
+}
+
 
 /*
 EDOCS PAGES
@@ -243,6 +415,9 @@ For pdf.blade.php
 .quote-spare-desc span {
 	padding-left: 3px;
 	font-size: 12px;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
 }
 
 .quote-spare {

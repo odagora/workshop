@@ -170,7 +170,7 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 well">
 		<div class="showSig" id="sig-employee">
 			<div id="exp-sig" class="sig sigWrapper">
-				<canvas class="pad" width="415" height="170">
+				<canvas class="pad show-pad">
 				{{ Form::hidden('e_signature', null, array('class' => 'signature'))}}
 			</div>
 			<div class="sigFooter">
@@ -179,12 +179,12 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-4 text-center">
-			<div class="col-md-6">
+		<div class="col-xs-4 col-sm-4 col-md-4 show-opt text-center">
+			<div class="col-xs-6 col-sm-6 col-md-6">
 				{!! Html::linkRoute('edocs.edit', 'Editar', array($edoc->id), array('class' => 'btn btn-warning btn-block')) !!}
 			</div>
 			@if (Auth::user()->hasRole('Admin'))
-				<div class="col-md-6">
+				<div class="col-xs-6 col-sm-6 col-md-6">
 					{!! Form::open(array('route' => ['edocs.destroy', $edoc->id], 'method' => 'DELETE')) !!}
 						{{Form::submit('Eliminar', array('class' => 'btn btn-danger btn-block'))}}
 					{!! Form::close() !!}	
