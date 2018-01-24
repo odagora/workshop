@@ -205,7 +205,7 @@
 		    			{{Form::label('comment',$name)}}
 		    		</div>
 		    		<div class="col-md-12">	
-		    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3'))}}
+		    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3','maxlength' => 400))}}
 		    		</div>
 	    		</div>
     		</div>
