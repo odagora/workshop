@@ -67,7 +67,7 @@ return [
     'not_in'               => ':attribute es inválido.',
     'numeric'              => ':attribute debe ser un múmero.',
     'present'              => ':attribute debe estar presente.',
-    'regex'                => 'El formato :attribute es inválido.',
+    'regex'                => 'El formato de :attribute es inválido.',
     'required'             => ':attribute es requerido.',
     'required_if'          => ':attribute es requerido cuando :other es :value.',
     'required_unless'      => ':attribute es requerido a menos que :other esté en :values.',
@@ -137,7 +137,8 @@ return [
         'price' => 'Costo de la reparación',
         'time' => 'Tiempo de entrega',
         'validity_time' => 'Validez de la cotización',
-        'observations' => 'Observaciones'
+        'observations' => 'Observaciones',
+        'name' => 'Marca y línea'
     ],
 
 ];

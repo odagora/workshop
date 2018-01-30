@@ -19,6 +19,10 @@ Route::prefix('app')->group(function(){
 	Route::prefix('admin')->group(function(){
 		//CRUD users routes
 		Route::resource('users', 'UserController', array('only' => ['index', 'edit', 'update', 'destroy']));
+		//CRUD makes routes
+		Route::resource('makes', 'MakeController');
+		//CRUD types routes
+		Route::resource('types', 'TypeController');
 	});
 	
 	//CRUD documents routes

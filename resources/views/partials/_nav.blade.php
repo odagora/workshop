@@ -35,6 +35,7 @@
     @if (Auth::user()->hasRole('Admin'))
       <li><a href="{{ route('register') }}">Registro de usuario</a></li>
       <li><a href="{{ route('users.index') }}">Administrar usuarios</a></li>
+      <li><a href="{{ route('admin') }}">Configuración</a></li>
       <li role="separator" class="divider"></li>
     @endif
     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -43,7 +44,6 @@
         {{ csrf_field() }}
       </form>
     </li>
-
   </ul>
 </li>
 </ul>

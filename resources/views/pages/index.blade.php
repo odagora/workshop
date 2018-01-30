@@ -74,6 +74,26 @@
       </div>
     </div>
   </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">
+        <h3 class="text-uppercase">Cotizaciones</h3>
+      </div> 
+      <div class="col-md-12 main-index-image">
+        <a href="quote"><img src="{{asset('img/price.png')}}" class="img-responsive center-block"></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
+    <div class="col-xs-12 col-sm-12 col-md-12 well">
+      <div class="col-md-12 main-index-title">
+        <h3 class="text-uppercase">Correo</h3>
+      </div> 
+      <div class="col-md-12 main-index-image">
+        <a href="mail"><img src="{{asset('img/email.png')}}" class="img-responsive center-block"></a>
+      </div>
+    </div>
+  </div>
 </div>
 @endsection
   
