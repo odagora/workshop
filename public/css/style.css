@@ -74,6 +74,17 @@ MAIN PAGES
 }
 
 /*
+ADMIN PAGES
+ */
+@media only screen and (max-width: 376px){
+	.btn-responsive {
+		margin-bottom: 10px;
+	}
+
+}
+
+
+/*
 QDOCS PAGES
  */
 

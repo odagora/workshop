@@ -76,7 +76,7 @@
 			<div class="form-group">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 mail">
-			    		{{ Form::label('email', 'Email:')}}
+			    		{{ Form::label('email', 'Email Principal:')}}
 			    		{{ Form::email('email', null, array('class' => 'form-control'))}}
 			    	</div>
 			    </div>
@@ -84,6 +84,18 @@
 	    	@if ($errors->has('email'))
 				<br>
 				<div class="alert alert-danger" role="alert">{{ $errors->first('email') }}</div>
+			@endif
+			<div class="form-group">
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 mail">
+			    		{{ Form::label('email_alt', 'Email Alterno (opcional):')}}
+			    		{{ Form::email('email_alt', null, array('class' => 'form-control'))}}
+			    	</div>
+			    </div>
+	    	</div>
+	    	@if ($errors->has('email_alt'))
+				<br>
+				<div class="alert alert-danger" role="alert">{{ $errors->first('email_alt') }}</div>
 			@endif
 			<div class="form-group">
 				<div class="row">

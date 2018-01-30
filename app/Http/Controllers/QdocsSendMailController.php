@@ -42,6 +42,7 @@ class QdocsSendMailController extends Controller
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
     	$receiverAddress = $qdoc->email;
+        $copyAddress = $qdoc->email_alt;
         $bccAddress = Config::get('emailadresses.bcc');
         $date = date('dmY', strtotime($qdoc->created_at));
         $doc = $qdoc->doc_number + 1115;
@@ -53,9 +54,14 @@ class QdocsSendMailController extends Controller
         //Save file to storage folder
         $this->printQdocsPdf($id)->save($path, true);
         
-        //Check if document is not cancelled
+        //Check if document is not cancelled and if copyAddress exists
         if($qdoc->status == 'ok'){
-            Mail::to($receiverAddress)->bcc($bccAddress)->send(new QdocSent($subject, $content, $attachment));
+            if ($copyAddress) {
+                Mail::to($receiverAddress)->cc($copyAddress)->bcc($bccAddress)->send(new QdocSent($subject, $content, $attachment));
+            }
+            else{
+                Mail::to($receiverAddress)->bcc($bccAddress)->send(new QdocSent($subject, $content, $attachment));
+            }
 
             //Display a flash message on succesfull submit
             Session::flash('success', 'El certificado de control calidad No.'.' '.$doc.' '.'fue enviado de forma exitosa');

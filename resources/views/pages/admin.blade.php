@@ -12,7 +12,7 @@
 </div>
 <div class="row text-center" style="padding-bottom: 250px;">
 	<div class="btn-group-lg" role="group">
-		<a href="{{route('makes.index')}}" class="btn btn-primary">Administrar Marcas</a> <a href="{{route('types.index')}}" class="btn btn-info">Administrar Líneas</a>
+		<a href="{{route('makes.index')}}" class="btn btn-primary btn-responsive">Administrar Marcas</a> <a href="{{route('types.index')}}" class="btn btn-info">Administrar Líneas</a>
 	</div>
 </div>
 @endsection

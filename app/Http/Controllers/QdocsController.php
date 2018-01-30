@@ -68,6 +68,7 @@ class QdocsController extends Controller
             'c_firstname' => 'required|max:32|alpha',
             'c_lastname' => 'required|max:32|alpha',
             'email' => 'required|email',
+            'email_alt' => 'email',
             'phone' => 'required|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
@@ -102,6 +103,7 @@ class QdocsController extends Controller
         $qdocs->c_firstname = $request->c_firstname;
         $qdocs->c_lastname = $request->c_lastname;
         $qdocs->email = $request->email;
+        $qdocs->email_alt = $request->email_alt;
         $qdocs->phone = $request->phone;
         $qdocs->make = $request->make;
         $qdocs->type = $request->type;
@@ -210,6 +212,7 @@ class QdocsController extends Controller
                 'c_firstname' => 'required|max:32|alpha',
                 'c_lastname' => 'required|max:32|alpha',
                 'email' => 'required|email',
+                'email_alt' => 'email',
                 'phone' => 'required|numeric',
                 'make' => 'required',
                 'type' => 'required|not_in:0',
@@ -243,6 +246,7 @@ class QdocsController extends Controller
                 'c_firstname' => 'required|max:32|alpha',
                 'c_lastname' => 'required|max:32|alpha',
                 'email' => 'required|email',
+                'email_alt' => 'email',
                 'phone' => 'required|numeric',
                 'make' => 'required',
                 'type' => 'required|not_in:0',
@@ -277,6 +281,7 @@ class QdocsController extends Controller
         $qdocs->c_firstname = $request->input('c_firstname');
         $qdocs->c_lastname = $request->input('c_lastname');
         $qdocs->email = $request->input('email');
+        $qdocs->email_alt = $request->input('email_alt');
         $qdocs->phone = $request->input('phone');
         $qdocs->make = $request->input('make');
         $qdocs->type = $request->input('type');
