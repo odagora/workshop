@@ -199,13 +199,23 @@
     	<h3>Observaciones</h3>
     	<h5>Anote el número correspondiente al ítem en cada caso antes de comenzar a escribir</h5>
     	@foreach ($names as $com => $name)
+    		@php
+    			$com_name = 'comment'.$com;
+    			$args = 'this.form.'.$com_name;
+    			$args2 = 'countdown'.$com;
+	    		$args3 = 'this.form.'.$args2;
+    			$max_length = 'limitTextOnKeyUpDown('.$args.','.$args3.','.'400)';
+			@endphp
     		<div class="form-group">
     			<div class="row">
     				<div class="col-md-12">	
 		    			{{Form::label('comment',$name)}}
 		    		</div>
 		    		<div class="col-md-12">	
-		    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3','maxlength' => 400))}}
+		    			{{Form::textarea('comment'.$com, null, array('class' => 'form-control', 'rows' => '3','maxlength' => 400, 'onKeyDown' => $max_length))}}
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2 col-xs-offset-8 col-sm-offset-10 col-md-offset-10">
+		    			<input readonly type="text" name= {{$args2}} size="3" value="400" class="form-control text-center">
 		    		</div>
 	    		</div>
     		</div>
@@ -311,6 +321,18 @@ $(function(){
     	});
     }
 });
+</script>
+{{-- Max length function to show alert on browser --}}
+<script type="text/javascript">
+	function limitTextOnKeyUpDown(limitField, limitCount, limitNum) {	
+		if (limitField.value.length >= limitNum) {
+		var msg = "Ha alcanzado el máximo de caracteres permitido para este campo";
+		alert(msg);
+		}
+		else {
+        limitCount.value = limitNum - limitField.value.length;
+      }
+	}
 </script>
 {{-- Signature pad javascript calling and options configuration --}}
 <script type="text/javascript">

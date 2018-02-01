@@ -152,7 +152,10 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('description', 'Piezas a intervenir')}}
-		    			{{Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3','maxlength' => 288))}}
+		    			{{Form::textarea('description', null, array('class' => 'form-control', 'rows' => '3','maxlength' => 288, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.description, this.form.countdown, 288)'))}}
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2 col-xs-offset-8 col-sm-offset-10 col-md-offset-10">
+		    			<input readonly type="text" name="countdown" size="3" value="288" class="form-control text-center">
 		    		</div>
 		    	</div>
 		    </div>
@@ -175,7 +178,10 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('spare_description', 'Repuestos')}}
-		    			{{Form::textarea('spare_description', null, array('class' => 'form-control', 'rows' => '3','maxlength' => 88))}}
+		    			{{Form::textarea('spare_description', null, array('class' => 'form-control', 'rows' => '3','maxlength' => 88, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.spare_description, this.form.countdown1, 88)'))}}
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2 col-xs-offset-8 col-sm-offset-10 col-md-offset-10">
+		    			<input readonly type="text" name="countdown1" size="3" value="88" class="form-control text-center">
 		    		</div>
 		    	</div>
 		    </div>
@@ -226,7 +232,10 @@
 		    	<div class="row">
 		    		<div class="col-md-12">
 		    			{{Form::label('observations', 'Observaciones (detalles de la cotización - USO INTERNO)')}}
-		    			{{Form::textarea('observations', null, array('class' => 'form-control', 'rows' => '3', 'maxlength' => 300))}}
+		    			{{Form::textarea('observations', null, array('class' => 'form-control', 'rows' => '3', 'maxlength' => 300, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.observations, this.form.countdown2, 300)'))}}
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2 col-xs-offset-8 col-sm-offset-10 col-md-offset-10">
+		    			<input readonly type="text" name="countdown2" size="3" value="300" class="form-control text-center">
 		    		</div>
 		    	</div>
 		    </div>
@@ -284,6 +293,19 @@ $(function(){
     }
 });
 </script>
+{{-- Max length function to show alert on browser --}}
+<script type="text/javascript">
+	function limitTextOnKeyUpDown(limitField, limitCount, limitNum) {	
+		if (limitField.value.length >= limitNum) {
+		var msg = "Ha alcanzado el máximo de caracteres permitido para este campo";
+		alert(msg);
+		}
+		else {
+			limitCount.value = limitNum - limitField.value.length;
+		}
+	}
+</script>
+{{-- Function to show/hide spare parts description field --}}
 <script type="text/javascript">
     function showField(){
         if(document.getElementById("yes").checked){
