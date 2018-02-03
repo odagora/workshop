@@ -293,7 +293,7 @@ For pdf.blade.php
  */
 
 body.body-pdf {
-	font-size: 11px;
+	font-size: 10px;
 }
 
 .doc-number {
