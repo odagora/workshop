@@ -412,23 +412,27 @@ For pdf.blade.php
 	vertical-align: top;
 }
 
-.quote-description h6 {
+/*.quote-description h6 {
 	margin: 2.2em 0;
-}
+}*/
 
 .quote-works {
 	text-align: justify;
 	height: 68px;
-	line-height: 68px;
 }
 
 .quote-works span,
 .quote-spare-desc span {
 	padding-left: 3px;
 	font-size: 12px;
-	display: inline-block;
-	vertical-align: middle;
-	line-height: normal;
+}
+
+.quote-works span {
+	margin: 10px 0 0;
+}
+
+.quote-spare-desc span {
+	margin: 0.5em 0 0;
 }
 
 .quote-spare {
@@ -450,8 +454,6 @@ For pdf.blade.php
 
 .quote-spare-desc {
 	text-align: justify;
-	height: 28px;
-	line-height: 28px;
 }
 
 .quote-price,

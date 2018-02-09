@@ -32,7 +32,7 @@
 	@endif
 </div>
 <div class="row">
-	<h3 class="text-center text-uppercase" style="margin-top: 10px;"><strong>Servicio de latonería y pintura exprés</strong></h3>
+	<h3 class="text-center text-uppercase" style="margin: 5px 0;"><strong>Servicio de latonería y pintura exprés</strong></h3>
 </div>
 <hr style="margin: 5px 0;">
 <div class="row">
@@ -97,6 +97,7 @@
 		</div>
 	</div>	
 </div>
+<hr style="margin: 5px 0;">
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 text-left quote-description">
 		<div class="col-xs-3 col-sm-3 col-md-2 quote-title">
