@@ -246,7 +246,7 @@ class QdocsController extends Controller
                 'c_firstname' => 'required|max:32|alpha',
                 'c_lastname' => 'required|max:32|alpha',
                 'email' => 'required|email',
-                'email_alt' => 'email',
+                'email_alt' => 'nullable|email',
                 'phone' => 'required|numeric',
                 'make' => 'required',
                 'type' => 'required|not_in:0',
