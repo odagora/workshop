@@ -395,8 +395,32 @@ For show.blade.php
 For pdf.blade.php
  */
 
-.body-pdf hr {
-	border-top: 1px solid black;
+.col-sp-1 {
+	width: 12.66666666%;
+}
+
+.col-sp-2 {
+	width: 12%;
+	padding-left: 0;
+}
+
+.doc-number p {
+	margin: 0;
+}
+
+.quote {
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.body-pdf .panel-default {
+	margin-bottom: 5px;
+}
+
+.quote-title h6,
+.body-pdf .panel-default h6 {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .quote-title {
@@ -412,22 +436,14 @@ For pdf.blade.php
 	vertical-align: top;
 }
 
-/*.quote-description h6 {
-	margin: 2.2em 0;
-}*/
-
 .quote-works {
 	text-align: justify;
 	height: 68px;
 }
 
-.quote-works span,
-.quote-spare-desc span {
-	font-size: 12px;
-}
-
-.quote-works span {
-	margin: 10px 0 0;
+.quote-works h6,
+.quote-spare-desc h6 {
+	margin: 5px;
 }
 
 .quote-spare-desc span {
@@ -447,17 +463,24 @@ For pdf.blade.php
 	padding-left: 5px;
 }
 
-.quote-spare-title h6 {
-	margin: 0.5em 0;
-}
-
 .quote-spare-desc {
 	text-align: justify;
 }
 
-.quote-price,
-.quote-time {
-	border: 1px solid black;;
+.quote-validity {
+	padding-right: 0;
+	margin: 0;
+}
+
+.quote-days,
+.quote-tax {
+	margin: 0 !important;
+	padding: 0;
+}
+
+.quote-tax h6 {
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 .quote-footer h6 {
