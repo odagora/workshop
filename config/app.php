@@ -187,7 +187,11 @@ return [
         /*
          * Laravel Snappy with wkhtmltopdf
          */
-        Barryvdh\Snappy\ServiceProvider::class
+        Barryvdh\Snappy\ServiceProvider::class,
+        /*
+         * Cloudinary Wrapper Service Provider
+         */
+        JD\Cloudder\CloudderServiceProvider::class
 
     ],
 
@@ -241,6 +245,7 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
     ],
 
 ];

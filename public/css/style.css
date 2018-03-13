@@ -144,6 +144,10 @@ For index.blade.php
 	}
 }
 
+.v-center {
+	vertical-align: middle !important;
+}
+
 /*
 For create.blade.php and edit.blade.php 
  */

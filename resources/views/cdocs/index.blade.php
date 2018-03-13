@@ -39,7 +39,7 @@
 					<td class="text-center">{{$cdoc->license}}</td>
 					<td class="text-center">{{number_format($cdoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($cdoc->created_at))}}</td>
-					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('cdocs.show', $cdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('cdocs.edit', $cdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/cdocs/'.$cdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/cdocs/'.$cdoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$cdoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/cdocs/'.$cdoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$cdoc->doc_number + 762}}');">Anular</a></div></td>@endif
+					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('cdocs.show', $cdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('cdocs.edit', $cdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/cdocs/'.$cdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/cdocs/'.$cdoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$cdoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/cdocs/'.$cdoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$cdoc->doc_number + 762}}');">Anular</a>@endif <a href="{{url('app/cdocs/'.$cdoc->id.'/photo/')}}" class="btn btn-default">Fotos</a></div></td>
 				</tr>
 				@endforeach
 			</tbody>

@@ -62,6 +62,14 @@ Route::prefix('app')->group(function(){
 	Route::get('idocs/{idoc}/mail', array('as'=>'idocs.mail','uses'=>'IdocsSendMailController@idocSendMail'));
 	Route::get('cdocs/{cdoc}/mail', array('as'=>'cdocs.mail','uses'=>'CdocsSendMailController@cdocSendMail'));
 
+	//CRUD photo routes
+	Route::get('cdocs/{cdoc}/photo', array('as'=>'cdocs.photo', 'uses'=>'CdocsPhotoController@getCdocsPhotos'));
+	Route::resource('cdocs.photo', 'CdocsPhotoController', array('only' => ['create' , 'show', 'destroy']));
+	Route::post('/upload/images/{doc}', [
+	  'uses'   =>  'CdocsImageUploadController@uploadImages',
+	  'as'     =>  'uploadImage'
+	]);
+
 	Route::get('/', function () {
 	    return view('auth.login');
 
