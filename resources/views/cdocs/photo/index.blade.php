@@ -25,7 +25,7 @@
 			<tbody>
 				@foreach($cphotos as $cphoto)
 				<tr>
-					<td class="text-center v-center">{{$cphoto->id}}</td>
+					<td class="text-center v-center">{{$cphoto->doc_number}}</td>
 					<td class="text-center v-center">{{$cphoto->image_name}}</td>
 					<td class="text-center v-center">{{$cphoto->created_at}}</td>
 					<td class="text-center"><img src="{{$cphoto->image_url}}" alt="{{$cphoto->image_name}}"></td>
