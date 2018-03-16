@@ -1,5 +1,15 @@
 <?php
 
+/*
+Heroku environment variable splitted
+ */
+
+// $account = parse_url(getenv("CLOUDINARY_URL"));
+
+// $cloudName = $account["host"];
+// $apiKey = $account["user"];
+// $apiSecret = $account["pass"];
+
 return [
 
     /*
