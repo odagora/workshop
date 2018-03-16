@@ -41,7 +41,7 @@
 					<td class="text-center">{{number_format($qdoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{$qdoc->ordernumber}}</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($qdoc->created_at))}}</td>
-					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/qdocs/'.$qdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/qdocs/'.$qdoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$qdoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/qdocs/'.$qdoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$qdoc->doc_number + 1115}}');">Anular</a></div></td>@endif
+					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('qdocs.show', $qdoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('qdocs.edit', $qdoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/qdocs/'.$qdoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/qdocs/'.$qdoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$qdoc->email}}');">Enviar</a> @if (Auth::check()) @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/qdocs/'.$qdoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$qdoc->doc_number + 1115}}');">Anular</a></div></td>@endif @endif
 				</tr>
 				@endforeach
 			</tbody>

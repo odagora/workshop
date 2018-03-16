@@ -17,7 +17,6 @@ class QdocsController extends Controller
         $this->middleware('auth');
     }
 
-
     /**
      * Display a listing of the resource.
      *

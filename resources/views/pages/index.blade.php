@@ -57,10 +57,10 @@
   <div class="col-xs-12 col-sm-6 col-md-3 text-center main-index-option">
     <div class="col-xs-12 col-sm-12 col-md-12 well">
       <div class="col-md-12 main-index-title">  
-        <h3 class="text-uppercase">Fotos OT</span></h3>
+        <h3 class="text-uppercase">Fotos OR</span></h3>
       </div> 
       <div class="col-md-12 main-index-image">
-        <a href="photo"><img src="{{asset('img/photo-camera.png')}}" class="img-responsive center-block"></a>
+        <a href="otdocs"><img src="{{asset('img/photo-camera.png')}}" class="img-responsive center-block"></a>
       </div>
     </div>
   </div>

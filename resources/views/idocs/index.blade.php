@@ -39,7 +39,7 @@
 					<td class="text-center">{{$idoc->license}}</td>
 					<td class="text-center">{{number_format($idoc->mileage,0,",",".")}} kms</td>
 					<td class="text-center">{{date('d/m/Y', strtotime($idoc->created_at))}}</td>
-					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('idocs.show', $idoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('idocs.edit', $idoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/idocs/'.$idoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/idocs/'.$idoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$idoc->email}}');">Enviar</a> @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/idocs/'.$idoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$idoc->doc_number + 3012}}');">Anular</a></div></td>@endif
+					<td class="text-center"><div class="button-group btn-group-xs" role="group"><a href="{{route('idocs.show', $idoc->id)}}" class="btn btn-info">Ver</a> <a href="{{route('idocs.edit', $idoc->id)}}" class="btn btn-warning">Editar</a> <a href="{{url('app/idocs/'.$idoc->id.'/pdf')}}" class="btn btn-success">Imprimir</a> <a href="{{url('app/idocs/'.$idoc->id.'/mail')}}" class="btn btn-primary" onclick="mailMessage('{{$idoc->email}}');">Enviar</a> @if (Auth::check()) @if (Auth::user()->hasRole('Admin'))<a href="{{url('app/idocs/'.$idoc->id.'/cancel')}}" class="btn btn-danger" onclick="cancelMessage('{{$idoc->doc_number + 3012}}');">Anular</a></div></td>@endif @endif
 				</tr>
 				@endforeach
 			</tbody>

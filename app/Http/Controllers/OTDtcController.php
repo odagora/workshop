@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use JD\Cloudder\Facades\Cloudder;
-use App\Cdocs;
-use App\Cphotos;
+use App\Otdocs;
+use App\Otdtc;
 use Session;
 
-class CdocsPhotoController extends Controller
+class OTDtcController extends Controller
 {
     public function __construct()
     {
@@ -22,10 +22,10 @@ class CdocsPhotoController extends Controller
      */
     public function index($id)
     {
-        $cdocs = Cdocs::find($id);
-        $doc = $cdocs->doc_number + 762;
-        $cphotos = Cphotos::whereDocId($id)->get();
-        return view ('cdocs.photo.index' ,compact('cdocs', 'doc', 'cphotos'));
+        $otdocs = Otdocs::find($id);
+        $doc = $otdocs->ordernumber;
+        $otdtcs = Otdtc::whereDocId($id)->get();
+        return view ('otdocs.dtc.index', compact('otdocs', 'doc', 'otdtcs'));
     }
 
     /**
@@ -35,8 +35,8 @@ class CdocsPhotoController extends Controller
      */
     public function create(Request $request)
     {
-        $doc_id = $request->route('cdoc');
-        return view('cdocs.photo.create', compact('doc_id'));
+        $doc_id = $request->route('otdoc');
+        return view ('otdocs.dtc.create', compact('doc_id'));
     }
 
     /**
@@ -53,22 +53,22 @@ class CdocsPhotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id $photo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id, $photo)
+    public function show($id, $dtc)
     {
-        $cdocs = Cdocs::find($id);
-        $doc = $cdocs->doc_number + 762;
-        $cphoto = Cphotos::find($photo);
+        $otdocs = Otdocs::find($id);
+        $doc = $otdocs->ordernumber;
+        $otdtc = Otdtc::find($dtc);
 
-        return view('cdocs.photo.show', compact('doc', 'cphoto'));
+        return view('otdocs.dtc.show', compact('doc', 'otdtc'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id $photo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,7 +80,7 @@ class CdocsPhotoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id $photo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -91,30 +91,30 @@ class CdocsPhotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id $photo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id, $photo)
+    public function destroy($id, $dtc)
     {
-        $cdocs = Cdocs::find($id);
-        $doc = $cdocs->doc_number + 762;
-        $cphoto = Cphotos::find($photo);
-        $photo = $cphoto->id;
-        $photo_url = $cphoto->image_url;
+        $otdocs = Otdocs::find($id);
+        $doc = $otdocs->ordernumber;
+        $otdtc = Otdtc::find($dtc);
+        $dtc = $otdtc->id;
+        $dtc_url = $otdtc->image_url;
 
         //Delete information from database
-        $cphoto->delete();
+        $otdtc->delete();
 
         //Delete image from cloudinary
-        $seg_url = explode('/', parse_url($photo_url, PHP_URL_PATH));
+        $seg_url = explode('/', parse_url($dtc_url, PHP_URL_PATH));
         $public_id = $seg_url[5];
         $public_id = strstr($public_id, '.', true);
 
         Cloudder::destroyImage($public_id);
 
         //Show success delete flash message
-        Session::flash('success', 'La foto No.'.' '.$photo.' '.'que pertenece a la cotización No.'.' '.$doc.' fue eliminada de forma exitosa');
+        Session::flash('success', 'La imágen No.'.' '.$dtc.' '.'que pertenece a la orden de reparación No.'.' '.$doc.' fue eliminada de forma exitosa');
 
-        return redirect()->route('cdocs.photo.index', ['cdoc'=> $cdocs->id]);
+        return redirect()->route('otdocs.dtc.index', ['otdoc'=> $otdocs->id]);
     }
 }

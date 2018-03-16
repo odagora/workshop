@@ -30,12 +30,14 @@ Route::prefix('app')->group(function(){
 	Route::resource('edocs', 'EdocsController');
 	Route::resource('idocs', 'IdocsController');
 	Route::resource('cdocs', 'CdocsController');
+	Route::resource('otdocs', 'OTdocsController');
 
 	//CRUD added method to cancel docs
 	Route::get('qdocs/{qdoc}/cancel', array('as'=>'qdocs.cancel', 'uses'=>'QdocsController@cancel'));
 	Route::get('edocs/{edoc}/cancel', array('as'=>'edocs.cancel', 'uses'=>'EdocsController@cancel'));
 	Route::get('idocs/{idoc}/cancel', array('as'=>'idocs.cancel', 'uses'=>'IdocsController@cancel'));
 	Route::get('cdocs/{cdoc}/cancel', array('as'=>'cdocs.cancel', 'uses'=>'CdocsController@cancel'));
+	Route::get('otdocs/{otdoc}/cancel', array('as'=>'otdocs.cancel', 'uses'=>'OTdocsController@cancel'));
 
 	//Jquery & Ajax routes for dropdown dependent in forms
 	Route::get('qdocs/create', array('as'=>'qdocs.create', 'uses'=>'DropDownController@makes'));
@@ -63,12 +65,22 @@ Route::prefix('app')->group(function(){
 	Route::get('cdocs/{cdoc}/mail', array('as'=>'cdocs.mail','uses'=>'CdocsSendMailController@cdocSendMail'));
 
 	//CRUD photo routes
-	Route::get('cdocs/{cdoc}/photo', array('as'=>'cdocs.photo', 'uses'=>'CdocsPhotoController@getCdocsPhotos'));
-	Route::resource('cdocs.photo', 'CdocsPhotoController', array('only' => ['create' , 'show', 'destroy']));
-	Route::post('/upload/images/{doc}', [
+	Route::resource('cdocs.photo', 'CdocsPhotoController', array('only' => ['index', 'create' , 'show', 'destroy']));
+	Route::post('/cdocs/upload/images/{doc}', [
 	  'uses'   =>  'CdocsImageUploadController@uploadImages',
-	  'as'     =>  'uploadImage'
+	  'as'     =>  'cdocUploadImage'
 	]);
+	Route::resource('otdocs.photo', 'OTPhotoController', array('only' => ['index', 'create' , 'show', 'destroy']));
+	Route::post('/otdocs/upload/images/{doc}', [
+	  'uses'   =>  'OTdocsImageUploadController@otdocuploadImages',
+	  'as'     =>  'otdocUploadImage'
+	]);
+	Route::resource('otdocs.dtc', 'OTDtcController', array('only' => ['index', 'create' , 'show', 'destroy']));
+	Route::post('/otdocs/upload/dtc/{doc}', [
+	  'uses'   =>  'OTdocsDTCUploadController@uploadDTCImages',
+	  'as'     =>  'UploadDTCImage'
+	]);
+
 
 	Route::get('/', function () {
 	    return view('auth.login');

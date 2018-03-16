@@ -1,9 +1,9 @@
 @extends('main')
-@section('title', '| Subir Fotos Cotización Colisión Exprés')
+@section('title', '| Subir Imágenes DTC Orden de Reparación')
 @section('content')
 <div class="row">
 	<div class="col-xs-12 col-sm-12 col-md-12 index-header text-center">
-		<h1>Subir Fotos Cotización Colisión Exprés</h1>
+		<h1>Subir Imágenes DTC Orden de Reparación</h1>
 	</div>
 	<div class="col-xs-12 col-sm-12 col-md-12">
 		<hr>
@@ -16,7 +16,7 @@
 				<h4><strong>Subir imágenes</strong></h4>
 			</div>
 			<div class="panel-body">
-				{!! Form::open(array('method'=>'POST', 'role'=>'form', 'route'=> ['cdocUploadImage', $doc_id], 'files'=> true)) !!}
+				{!! Form::open(array('method'=>'POST', 'role'=>'form', 'route'=> ['UploadDTCImage', $doc_id], 'files'=> true)) !!}
 					@if(session()->has('status'))
                        <div class="alert alert-info" role="alert">
                            {{session()->get('status')}}

@@ -23,7 +23,7 @@
     <li><a href="{{ url('/app/idocs') }}">Inspecciones Visuales</a></li>
     <li><a href="{{ url('/app/cdocs') }}">Cotizaciones Colisión</a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="{{ url('/app/photos') }}">Fotos OR</a></li>
+    <li><a href="{{ url('/app/otdocs') }}">Fotos OR</a></li>
     <li><a href="{{ url('/app/prices') }}">Precios MO</a></li>
   </ul>
 </li>
