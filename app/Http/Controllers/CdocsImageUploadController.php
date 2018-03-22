@@ -12,12 +12,14 @@ class CdocsImageUploadController extends Controller
     public function uploadImages(Request $request, $doc_id)
     {
     	$this->validate($request,[
-           'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
+           'image_name'=>'required|file|mimes:jpeg,bmp,jpg,png|between:1,2000',
        ]);
 
-      $image_name = $request->file('image_name')->getRealPath();;
+      $image_name = $request->file('image_name')->getRealPath();
 
-      Cloudder::upload($image_name, null);
+      $options = ["width" => 1000, "height" => 1000, "crop" => "limit"];
+
+      Cloudder::upload($image_name, null, $options);
 
       // list($width, $height) = getimagesize($image_name);
 
