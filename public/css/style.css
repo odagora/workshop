@@ -300,6 +300,10 @@ body.body-pdf {
 	font-size: 10px;
 }
 
+.table-items {
+	font-size: 12px;
+}
+
 .doc-number {
 	font-size: 23px;
 }
@@ -368,8 +372,13 @@ For show.blade.php
 	font-size: 11px;
 }
 
+.footer {
+	padding: 2px;
+	margin: 0;
+}
+
 .footer h6 {
-	margin: 5px 0;
+	margin: 0;
 }
 
 /*
