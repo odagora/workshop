@@ -45,7 +45,7 @@
 		<div class="col-xs-3 col-sm-3 col-md-3 quote-title">
 			<h6><strong>Asesor de servicio:</strong></h6>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default">
+		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default" style="padding: 0;">
 			<h6>{{ $cdoc->e_firstname }} {{ $cdoc->e_lastname }}</h6>
 		</div>
 	</div>
@@ -53,7 +53,7 @@
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">
 			<h6><strong>Nombre:</strong></h6>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default">
+		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default" style="padding: 0;">
 			<h6>{{ $cdoc->c_firstname }} {{ $cdoc->c_lastname }}</h6>
 		</div>
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">
@@ -65,7 +65,7 @@
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">
 			<h6><strong>Correo:</strong></h6>
 		</div>
-		<div class="col-xs-4 col-sm-3 col-md-3 quote-item panel panel-default">
+		<div class="col-xs-4 col-sm-3 col-md-3 quote-item panel panel-default" style="padding: 0;">
 			<h6>{{ $cdoc->email }}</h6>
 		</div>
 	</div>
@@ -92,7 +92,7 @@
 			<h6><strong>Kilometraje:</strong></h6>
 		</div>
 		<div class="col-xs-1 col-sm-3 col-md-3 col-sp-2 quote-item panel panel-default">
-			<h6>{{ number_format($cdoc->mileage,0,",",".") }}</h6>
+			<h6>{{ number_format($cdoc->mileage,0,",",".") }} kms</h6>
 		</div>
 	</div>	
 </div>

@@ -23,7 +23,7 @@ return [
     */
 
     'cloudName'  => $cloudName,
-    'baseUrl'    =>  'http://res.cloudinary.com/'.$cloudName,
+    'baseUrl'    => 'http://res.cloudinary.com/'.$cloudName,
     'secureUrl'  => 'https://res.cloudinary.com/'.$cloudName,
     'apiBaseUrl' => 'https://api.cloudinary.com/v1_1/'.$cloudName,
     'apiKey'     =>  $apiKey,

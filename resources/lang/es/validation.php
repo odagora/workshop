@@ -142,4 +142,5 @@ return [
         'name' => 'Marca y línea'
     ],
 
+    'alpha_spaces' => "El :attribute puede incluir letras y espacios solamente.",
 ];

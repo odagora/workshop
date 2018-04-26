@@ -18,15 +18,23 @@
 	    		{{ Form::label('e_name', 'Asesor de servicio:')}}
 		    	<div class="form-inline">
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('e_firstname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('e_firstname', null, array('class' => 'form-control', 'maxlength' => 32, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.e_firstname,this.form.count1,32)'))}}
 		    			<br class="break">
 		    			{{ Form::label('e_firstname', 'Nombre')}}
 		    		</div>
 		    		<div class="col-xs-5 col-sm-3 col-md-3 names">
-		    			{{ Form::text('e_lastname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('e_lastname', null, array('class' => 'form-control', 'maxlength' => 32, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.e_lastname,this.form.count2,32)'))}}
 		    			<br class="break">
 		    			{{ Form::label('e_lastname', 'Apellido')}}
 					</div>
+				</div>
+				<div class="form-inline" style="display: none;">
+					<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count1" size="3" value="32" class="form-control text-center">
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count2" size="3" value="32" class="form-control text-center">
+		    		</div>
 				</div>
 			</div>
 			@if ($errors->has('e_firstname'))
@@ -41,15 +49,23 @@
 	    		{{ Form::label('c_name', 'Cliente:')}}
 		    	<div class="form-inline">
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('c_firstname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('c_firstname', null, array('class' => 'form-control', 'maxlength' => 32, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_firstname,this.form.count3,32)'))}}
 		    			<br class="break">
 		    			{{ Form::label('c_firstname', 'Nombre(s)')}}
 		    		</div>
 		    		<div class="col-xs-5 col-sm-3 col-md-3 names">
-		    			{{ Form::text('c_lastname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('c_lastname', null, array('class' => 'form-control', 'maxlength' => 32, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_lastname,this.form.count4,32)'))}}
 		    			<br class="break">
 		    			{{ Form::label('c_lastname', 'Apellido')}}
 					</div>
+				</div>
+				<div class="form-inline" style="display: none;">
+					<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count3" size="3" value="32" class="form-control text-center">
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count4" size="3" value="32" class="form-control text-center">
+		    		</div>
 				</div>
 			</div>
 			@if ($errors->has('c_firstname'))

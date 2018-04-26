@@ -23,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
             $other = Input::get($params[0]);
             return intval($value) > intval($other);
         });
+
+        //Adding a new validator rule that allow spaces
+        Validator::extend('alpha_spaces', function($attribute, $value, $params, $validator){
+            return preg_match('/^[\pL\s]+$/u', $value);
+        });
     }
 
     /**

@@ -62,10 +62,10 @@ class QdocsController extends Controller
         //Validate the data - general information
         $data = array(
             'ordernumber' => 'required|integer|unique:qdocs',
-            'e_firstname' => 'required|max:32|alpha',
-            'e_lastname' => 'required|max:32|alpha',
-            'c_firstname' => 'required|max:32|alpha',
-            'c_lastname' => 'required|max:32|alpha',
+            'e_firstname' => 'required|max:32|alpha_spaces',
+            'e_lastname' => 'required|max:32|alpha_spaces',
+            'c_firstname' => 'required|max:32|alpha_spaces',
+            'c_lastname' => 'required|max:32|alpha_spaces',
             'email' => 'required|email',
             'email_alt' => 'nullable|email',
             'phone' => 'required|numeric',
@@ -206,10 +206,10 @@ class QdocsController extends Controller
         //Check if ordernumber has been changed to verify if it's value is still unique
         if ($request->input('ordernumber') == $qdocs->ordernumber) {
                 $data = array(
-                'e_firstname' => 'required|max:32|alpha',
-                'e_lastname' => 'required|max:32|alpha',
-                'c_firstname' => 'required|max:32|alpha',
-                'c_lastname' => 'required|max:32|alpha',
+                'e_firstname' => 'required|max:32|alpha_spaces',
+                'e_lastname' => 'required|max:32|alpha_spaces',
+                'c_firstname' => 'required|max:32|alpha_spaces',
+                'c_lastname' => 'required|max:32|alpha_spaces',
                 'email' => 'required|email',
                 'email_alt' => 'nullable|email',
                 'phone' => 'required|numeric',
