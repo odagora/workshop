@@ -53,13 +53,13 @@
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">
 			<h6><strong>Nombre:</strong></h6>
 		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default" style="padding: 0;">
+		<div class="col-xs-3 col-sm-3 col-md-3 panel panel-default" style="padding: 0; width:31%;">
 			<h6>{{ $cdoc->c_firstname }} {{ $cdoc->c_lastname }}</h6>
 		</div>
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">
 			<h6><strong>Teléfono:</strong></h6>
 		</div>
-		<div class="col-xs-2 col-sm-2 col-md-2 panel panel-default">
+		<div class="col-xs-2 col-sm-2 col-md-2 panel panel-default" style="padding: 0; width: 10.6666667%">
 			<h6>{{ $cdoc->phone }}</h6>
 		</div>
 		<div class="col-xs-1 col-sm-2 col-md-2 quote-title">

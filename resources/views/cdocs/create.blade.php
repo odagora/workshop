@@ -54,7 +54,7 @@
 		    			{{ Form::label('c_firstname', 'Nombre(s)')}}
 		    		</div>
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('c_lastname', null, array('class' => 'form-control', 'maxlength' => 10, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_lastname,this.form.count4,10)'))}}
+		    			{{ Form::text('c_lastname', null, array('class' => 'form-control', 'maxlength' => 16, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_lastname,this.form.count4,16)'))}}
 		    			<br class="break">
 		    			{{ Form::label('c_lastname', 'Apellido')}}
 					</div>
@@ -64,7 +64,7 @@
 		    			<input readonly type="text" name= "count3" size="3" value="20" class="form-control text-center">
 		    		</div>
 		    		<div class="col-xs-4 col-sm-2 col-md-2">
-		    			<input readonly type="text" name= "count4" size="3" value="10" class="form-control text-center">
+		    			<input readonly type="text" name= "count4" size="3" value="16" class="form-control text-center">
 		    		</div>
 				</div>
 			</div>
@@ -91,8 +91,13 @@
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 mail">
 			    		{{ Form::label('email', 'Email:')}}
-			    		{{ Form::email('email', null, array('class' => 'form-control'))}}
+			    		{{ Form::email('email', null, array('class' => 'form-control', 'maxlength' => 37, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.email,this.form.count5,37)'))}}
 			    	</div>
+			    </div>
+			    <div class="row" style="display: none;">
+			    	<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count5" size="3" value="37" class="form-control text-center">
+		    		</div>
 			    </div>
 	    	</div>
 	    	@if ($errors->has('email'))
