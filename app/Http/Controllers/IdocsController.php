@@ -67,7 +67,7 @@ class IdocsController extends Controller
             'c_lastname' => 'required|max:32|alpha_spaces',
             'id_number' => 'required|numeric',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -95,10 +95,10 @@ class IdocsController extends Controller
         //Store in the database - general information
         $idocs = new Idocs;
 
-        $idocs->e_firstname = $request->e_firstname;
-        $idocs->e_lastname = $request->e_lastname;
-        $idocs->c_firstname = $request->c_firstname;
-        $idocs->c_lastname = $request->c_lastname;
+        $idocs->e_firstname = ucwords(strtolower($request->e_firstname));
+        $idocs->e_lastname = ucwords(strtolower($request->e_lastname));
+        $idocs->c_firstname = ucwords(strtolower($request->c_firstname));
+        $idocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $idocs->id_number = $request->id_number;
         $idocs->email = $request->email;
         $idocs->phone = $request->phone;
@@ -207,7 +207,7 @@ class IdocsController extends Controller
             'c_lastname' => 'required|max:32|alpha_spaces',
             'id_number' => 'required|numeric',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -234,10 +234,10 @@ class IdocsController extends Controller
 
         //Save the data to the database - general information
 
-        $idocs->e_firstname = $request->input('e_firstname');
-        $idocs->e_lastname = $request->input('e_lastname');
-        $idocs->c_firstname = $request->input('c_firstname');
-        $idocs->c_lastname = $request->input('c_lastname');
+        $idocs->e_firstname = ucwords(strtolower($request->input('e_firstname')));
+        $idocs->e_lastname = ucwords(strtolower($request->input('e_lastname')));
+        $idocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
+        $idocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $idocs->id_number = $request->input('id_number');
         $idocs->email = $request->input('email');
         $idocs->phone = $request->input('phone');

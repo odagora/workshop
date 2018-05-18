@@ -68,7 +68,7 @@ class QdocsController extends Controller
             'c_lastname' => 'required|max:32|alpha_spaces',
             'email' => 'required|email',
             'email_alt' => 'nullable|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -97,10 +97,10 @@ class QdocsController extends Controller
         $qdocs = new Qdocs;
 
         $qdocs->ordernumber = $request->ordernumber;
-        $qdocs->e_firstname = $request->e_firstname;
-        $qdocs->e_lastname = $request->e_lastname;
-        $qdocs->c_firstname = $request->c_firstname;
-        $qdocs->c_lastname = $request->c_lastname;
+        $qdocs->e_firstname = ucwords(strtolower($request->e_firstname));
+        $qdocs->e_lastname = ucwords(strtolower($request->e_lastname));
+        $qdocs->c_firstname = ucwords(strtolower($request->c_firstname));
+        $qdocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $qdocs->email = $request->email;
         $qdocs->email_alt = $request->email_alt;
         $qdocs->phone = $request->phone;
@@ -212,7 +212,7 @@ class QdocsController extends Controller
                 'c_lastname' => 'required|max:32|alpha_spaces',
                 'email' => 'required|email',
                 'email_alt' => 'nullable|email',
-                'phone' => 'required|numeric',
+                'phone' => 'required|digits_between:7,10|numeric',
                 'make' => 'required',
                 'type' => 'required|not_in:0',
                 'model' => 'required|max:10|digits:4',
@@ -246,7 +246,7 @@ class QdocsController extends Controller
                 'c_lastname' => 'required|max:32|alpha',
                 'email' => 'required|email',
                 'email_alt' => 'nullable|email',
-                'phone' => 'required|numeric',
+                'phone' => 'required|digits_between:7,10|numeric',
                 'make' => 'required',
                 'type' => 'required|not_in:0',
                 'model' => 'required|max:10|digits:4',
@@ -275,10 +275,10 @@ class QdocsController extends Controller
         //Save the data to the database - general information
 
         $qdocs->ordernumber = $request->input('ordernumber');
-        $qdocs->e_firstname = $request->input('e_firstname');
-        $qdocs->e_lastname = $request->input('e_lastname');
-        $qdocs->c_firstname = $request->input('c_firstname');
-        $qdocs->c_lastname = $request->input('c_lastname');
+        $qdocs->e_firstname = ucwords(strtolower($request->input('e_firstname')));
+        $qdocs->e_lastname = ucwords(strtolower($request->input('e_lastname')));
+        $qdocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
+        $qdocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $qdocs->email = $request->input('email');
         $qdocs->email_alt = $request->input('email_alt');
         $qdocs->phone = $request->input('phone');

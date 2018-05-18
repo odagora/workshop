@@ -67,7 +67,7 @@ class EdocsController extends Controller
             'c_lastname' => 'required|max:32|alpha_spaces',
             'id_number' => 'required|numeric',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -98,10 +98,10 @@ class EdocsController extends Controller
         //Store in the database - general information
         $edocs = new Edocs;
 
-        $edocs->e_firstname = $request->e_firstname;
-        $edocs->e_lastname = $request->e_lastname;
-        $edocs->c_firstname = $request->c_firstname;
-        $edocs->c_lastname = $request->c_lastname;
+        $edocs->e_firstname = ucwords(strtolower($request->e_firstname));
+        $edocs->e_lastname = ucwords(strtolower($request->e_lastname));
+        $edocs->c_firstname = ucwords(strtolower($request->c_firstname));
+        $edocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $edocs->id_number = $request->id_number;
         $edocs->email = $request->email;
         $edocs->phone = $request->phone;
@@ -214,7 +214,7 @@ class EdocsController extends Controller
             'c_lastname' => 'required|max:32|alpha_spaces',
             'id_number' => 'required|numeric',
             'email' => 'required|email',
-            'phone' => 'required|numeric',
+            'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
@@ -244,10 +244,10 @@ class EdocsController extends Controller
 
         //Save the data to the database - general information
 
-        $edocs->e_firstname = $request->input('e_firstname');
-        $edocs->e_lastname = $request->input('e_lastname');
-        $edocs->c_firstname = $request->input('c_firstname');
-        $edocs->c_lastname = $request->input('c_lastname');
+        $edocs->e_firstname = ucwords(strtolower($request->input('e_firstname')));
+        $edocs->e_lastname = ucwords(strtolower($request->input('e_lastname')));
+        $edocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
+        $edocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $edocs->id_number = $request->input('id_number');
         $edocs->email = $request->input('email');
         $edocs->phone = $request->input('phone');

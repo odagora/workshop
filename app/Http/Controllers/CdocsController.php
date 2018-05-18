@@ -80,10 +80,10 @@ class CdocsController extends Controller
         //Store in the database - general information
         $cdocs = new Cdocs;
 
-        $cdocs->e_firstname = $request->e_firstname;
-        $cdocs->e_lastname = $request->e_lastname;
-        $cdocs->c_firstname = $request->c_firstname;
-        $cdocs->c_lastname = $request->c_lastname;
+        $cdocs->e_firstname = ucwords(strtolower($request->e_firstname));
+        $cdocs->e_lastname = ucwords(strtolower($request->e_lastname));
+        $cdocs->c_firstname = ucwords(strtolower($request->c_firstname));
+        $cdocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $cdocs->phone = $request->phone;
         $cdocs->email = $request->email;
         $cdocs->make = $request->make;
@@ -193,10 +193,10 @@ class CdocsController extends Controller
 
         //Store in the database - general information
 
-        $cdocs->e_firstname = $request->input('e_firstname');
-        $cdocs->e_lastname = $request->input('e_lastname');
-        $cdocs->c_firstname = $request->input('c_firstname');
-        $cdocs->c_lastname = $request->input('c_lastname');
+        $cdocs->e_firstname = ucwords(strtolower($request->input('e_firstname')));
+        $cdocs->e_lastname = ucwords(strtolower($request->input('e_lastname')));
+        $cdocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
+        $cdocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $cdocs->phone = $request->input('phone');
         $cdocs->email = $request->input('email');
         $cdocs->make = $request->input('make');
