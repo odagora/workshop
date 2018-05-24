@@ -6,4 +6,8 @@
 @import "variables";
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//Custom SASS Pages
+//File to specify class helpers
+@import "helpers";

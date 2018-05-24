@@ -9,6 +9,7 @@
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
+<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 <!-- Font awesome icons library-->
 <link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
