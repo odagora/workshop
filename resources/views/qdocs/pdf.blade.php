@@ -15,7 +15,7 @@
 	<h3 class="text-center text-uppercase"><strong>Certificado de Control Calidad @if($qdoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif </strong></h3>
 </div>
 <div class="row well quote">
-	<div class="col-xs-4 col-sm-4 col-md-4" style="padding: 0">
+	<div class="col-xs-4 col-sm-4 col-md-4 p-t-0 p-b-0 p-l-0 p-r-0">
 		<div class="col-xs-12 col-sm-12 col-md-12">
 			<div class="col-xs-6 col-sm-4 col-md-4 quote-title">
 				<h6><strong>Fecha:</strong></h6>
@@ -41,7 +41,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-4 col-sm-4 col-md-4" style="padding: 0">
+	<div class="col-xs-4 col-sm-4 col-md-4 p-t-0 p-b-0 p-l-0 p-r-0">
 		<div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0 10px">
 			<div class="col-xs-3 col-sm-4 col-md-4 quote-title">	
 				<h6><strong>Cliente: </strong></h6>
@@ -67,7 +67,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-4 col-sm-4 col-md-4" style="padding: 0">
+	<div class="col-xs-4 col-sm-4 col-md-4 p-t-0 p-b-0 p-l-0 p-r-0">
 		<div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0 10px">
 			<div class="col-xs-4 col-sm-5 col-md-5 quote-title">
 				<h6><strong>Vehículo: </strong></h6>

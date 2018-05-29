@@ -61,12 +61,12 @@ class EdocsController extends Controller
     {
         //Validate the data - general information
         $data = array(
-            'e_firstname' => 'required|max:32|alpha_spaces',
-            'e_lastname' => 'required|max:32|alpha_spaces',
-            'c_firstname' => 'required|max:32|alpha_spaces',
-            'c_lastname' => 'required|max:32|alpha_spaces',
+            'e_firstname' => 'required|max:17|alpha_spaces',
+            'e_lastname' => 'required|max:13|alpha_spaces',
+            'c_firstname' => 'required|max:17|alpha_spaces',
+            'c_lastname' => 'required|max:13|alpha_spaces',
             'id_number' => 'required|numeric',
-            'email' => 'required|email',
+            'email' => 'required|max:26|email',
             'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',
@@ -208,12 +208,12 @@ class EdocsController extends Controller
 
         //Validate the data - general information
         $data = array(
-            'e_firstname' => 'required|max:32|alpha_spaces',
-            'e_lastname' => 'required|max:32|alpha_spaces',
-            'c_firstname' => 'required|max:32|alpha_spaces',
-            'c_lastname' => 'required|max:32|alpha_spaces',
+            'e_firstname' => 'required|max:17|alpha_spaces',
+            'e_lastname' => 'required|max:13|alpha_spaces',
+            'c_firstname' => 'required|max:17|alpha_spaces',
+            'c_lastname' => 'required|max:13|alpha_spaces',
             'id_number' => 'required|numeric',
-            'email' => 'required|email',
+            'email' => 'required|max:26|email',
             'phone' => 'required|digits_between:7,10|numeric',
             'make' => 'required',
             'type' => 'required|not_in:0',

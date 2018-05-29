@@ -25,7 +25,7 @@
 		<div class="col-xs-4 col-sm-4 col-md-4 quote-title">
 			<p class="m-b-0"><strong>Asesor:</strong></p>
 		</div>
-		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center">
+		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center p-l-0 p-r-0">
 			<p class="m-b-0">{{ $edoc->e_firstname }} {{ $edoc->e_lastname }}</p>
 		</div>
 	</div>
@@ -33,7 +33,7 @@
 		<div class="col-xs-4 col-sm-4 col-md-4">
 			<p class="m-b-0"><strong>Cliente: </strong></p>
 		</div>
-		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center">
+		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center p-l-0 p-r-0">
 			<p class="m-b-0">{{ $edoc->c_firstname }} {{ $edoc->c_lastname }}</p>
 		</div>
 		<div class="col-xs-4 col-sm-4 col-md-4">
@@ -51,7 +51,7 @@
 		<div class="col-xs-4 col-sm-4 col-md-4">
 			<p class="m-b-0"><strong>Email: </strong></p>
 		</div>
-		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center">
+		<div class="col-xs-8 col-sm-8 col-md-8 panel panel-default text-center p-l-0 p-r-0">
 			<p class="m-b-0">{{ $edoc->email }}</p>
 		</div>
 	</div>
