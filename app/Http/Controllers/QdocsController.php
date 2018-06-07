@@ -101,8 +101,8 @@ class QdocsController extends Controller
         $qdocs->e_lastname = ucwords(strtolower($request->e_lastname));
         $qdocs->c_firstname = ucwords(strtolower($request->c_firstname));
         $qdocs->c_lastname = ucwords(strtolower($request->c_lastname));
-        $qdocs->email = $request->email;
-        $qdocs->email_alt = $request->email_alt;
+        $qdocs->email = strtolower($request->email);
+        $qdocs->email_alt = strtolower($request->email_alt);
         $qdocs->phone = $request->phone;
         $qdocs->make = $request->make;
         $qdocs->type = $request->type;
@@ -279,8 +279,8 @@ class QdocsController extends Controller
         $qdocs->e_lastname = ucwords(strtolower($request->input('e_lastname')));
         $qdocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
         $qdocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
-        $qdocs->email = $request->input('email');
-        $qdocs->email_alt = $request->input('email_alt');
+        $qdocs->email = strtolower($request->input('email'));
+        $qdocs->email_alt = strtolower($request->input('email_alt'));
         $qdocs->phone = $request->input('phone');
         $qdocs->make = $request->input('make');
         $qdocs->type = $request->input('type');

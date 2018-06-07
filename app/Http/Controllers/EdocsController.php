@@ -103,7 +103,7 @@ class EdocsController extends Controller
         $edocs->c_firstname = ucwords(strtolower($request->c_firstname));
         $edocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $edocs->id_number = $request->id_number;
-        $edocs->email = $request->email;
+        $edocs->email = strtolower($request->email);
         $edocs->phone = $request->phone;
         $edocs->make = $request->make;
         $edocs->type = $request->type;
@@ -249,7 +249,7 @@ class EdocsController extends Controller
         $edocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
         $edocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $edocs->id_number = $request->input('id_number');
-        $edocs->email = $request->input('email');
+        $edocs->email = strtolower($request->input('email'));
         $edocs->phone = $request->input('phone');
         $edocs->make = $request->input('make');
         $edocs->type = $request->input('type');

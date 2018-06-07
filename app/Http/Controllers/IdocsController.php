@@ -100,7 +100,7 @@ class IdocsController extends Controller
         $idocs->c_firstname = ucwords(strtolower($request->c_firstname));
         $idocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $idocs->id_number = $request->id_number;
-        $idocs->email = $request->email;
+        $idocs->email = strtolower($request->email);
         $idocs->phone = $request->phone;
         $idocs->make = $request->make;
         $idocs->type = $request->type;
@@ -239,7 +239,7 @@ class IdocsController extends Controller
         $idocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
         $idocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $idocs->id_number = $request->input('id_number');
-        $idocs->email = $request->input('email');
+        $idocs->email = strtolower($request->input('email'));
         $idocs->phone = $request->input('phone');
         $idocs->make = $request->input('make');
         $idocs->type = $request->input('type');

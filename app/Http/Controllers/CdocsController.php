@@ -85,7 +85,7 @@ class CdocsController extends Controller
         $cdocs->c_firstname = ucwords(strtolower($request->c_firstname));
         $cdocs->c_lastname = ucwords(strtolower($request->c_lastname));
         $cdocs->phone = $request->phone;
-        $cdocs->email = $request->email;
+        $cdocs->email = strtolower($request->email);
         $cdocs->make = $request->make;
         $cdocs->type = $request->type;
         $cdocs->model = $request->model;
@@ -198,7 +198,7 @@ class CdocsController extends Controller
         $cdocs->c_firstname = ucwords(strtolower($request->input('c_firstname')));
         $cdocs->c_lastname = ucwords(strtolower($request->input('c_lastname')));
         $cdocs->phone = $request->input('phone');
-        $cdocs->email = $request->input('email');
+        $cdocs->email = strtolower($request->input('email'));
         $cdocs->make = $request->input('make');
         $cdocs->type = $request->input('type');
         $cdocs->model = $request->input('model');
