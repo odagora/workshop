@@ -36,7 +36,7 @@ class CdocsSendMailController extends Controller
         $content = [
             'client'=> $cdoc->c_firstname.' '.$cdoc->c_lastname,
     		'title'=> 'Cotización de colisión exprés No. '.$cdoc->id, 
-    		'body'=> 'Adjunto se encuentra la cotización hecha al vehículo'. ' '. $make->name.' '. $type->name.' '.'de placas'.' '. $cdoc->license.'.'.' '. 'Si estás interesado en realizar los trabajos, puedes agendar una cita por teléfono o haciendo click en el siguiente link:',
+    		'body'=> 'Adjunto se encuentra la cotización hecha al vehículo'. ' '. $make->name.' '. $type->name.' '.'de placas'.' '. $cdoc->license.'.'.' '. 'Si estás interesado(a) en realizar los trabajos, puedes agendar una cita por teléfono o haciendo click en el siguiente link:',
     		'button' => 'Agendar cita',
             'social'=> 'No olvides seguirnos en nuestras redes sociales:'
     		];
