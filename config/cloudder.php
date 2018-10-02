@@ -4,11 +4,11 @@
 Heroku environment variable splitted
  */
 
-// $account = parse_url(getenv("CLOUDINARY_URL"));
+$account = parse_url(getenv("CLOUDINARY_URL"));
 
-// $cloudName = $account["host"];
-// $apiKey = $account["user"];
-// $apiSecret = $account["pass"];
+$cloudName = $account["host"];
+$apiKey = $account["user"];
+$apiSecret = $account["pass"];
 
 return [
 
@@ -22,12 +22,12 @@ return [
     |
     */
 
-    'cloudName'  => env('CLOUDINARY_CLOUD_NAME'),
-    'baseUrl'    => env('CLOUDINARY_BASE_URL', 'http://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME')),
-    'secureUrl'  => env('CLOUDINARY_SECURE_URL', 'https://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME')),
-    'apiBaseUrl' => env('CLOUDINARY_API_BASE_URL', 'https://api.cloudinary.com/v1_1/'.env('CLOUDINARY_CLOUD_NAME')),
-    'apiKey'     => env('CLOUDINARY_API_KEY'),
-    'apiSecret'  => env('CLOUDINARY_API_SECRET'),
+    'cloudName'  => $cloudName,
+    'baseUrl'    => 'http://res.cloudinary.com/'.$cloudName,
+    'secureUrl'  => 'https://res.cloudinary.com/'.$cloudName,
+    'apiBaseUrl' => 'https://api.cloudinary.com/v1_1/'.$cloudName,
+    'apiKey'     => $apiKey,
+    'apiSecret'  => $apiSecret,
 
     'scaling'    => [
         'format' => 'png',
