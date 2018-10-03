@@ -1,14 +1,28 @@
 <?php
 
 /*
-Heroku environment variable splitted
+Heroku and localhost environment variable splitted
  */
 
-$account = parse_url(getenv("CLOUDINARY_URL"));
+$account = getenv("CLOUDINARY_URL");
 
-$cloudName = $account["host"];
-$apiKey = $account["user"];
-$apiSecret = $account["pass"];
+if (!empty($account)) {
+    $account    = parse_url($account);
+    $cloudName  = $account["host"];
+    $baseUrl    = 'http://res.cloudinary.com/'.$cloudName;
+    $secureUrl  = 'https://res.cloudinary.com/'.$cloudName;
+    $apiBaseUrl = 'https://api.cloudinary.com/v1_1/'.$cloudName;
+    $apiKey     = $account["user"];
+    $apiSecret  = $account["pass"];
+} else {
+    $cloudName  = env('CLOUDINARY_CLOUD_NAME');
+    $baseUrl    = env('CLOUDINARY_BASE_URL', 'http://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME'));
+    $secureUrl  = env('CLOUDINARY_SECURE_URL', 'https://res.cloudinary.com/'.env('CLOUDINARY_CLOUD_NAME'));
+    $apiBaseUrl = env('CLOUDINARY_API_BASE_URL', 'https://api.cloudinary.com/v1_1/'.env('CLOUDINARY_CLOUD_NAME'));
+    $apiKey     = env('CLOUDINARY_API_KEY');
+    $apiSecret  = env('CLOUDINARY_API_SECRET');
+
+}
 
 return [
 
@@ -23,9 +37,9 @@ return [
     */
 
     'cloudName'  => $cloudName,
-    'baseUrl'    => 'http://res.cloudinary.com/'.$cloudName,
-    'secureUrl'  => 'https://res.cloudinary.com/'.$cloudName,
-    'apiBaseUrl' => 'https://api.cloudinary.com/v1_1/'.$cloudName,
+    'baseUrl'    => $baseUrl,
+    'secureUrl'  => $secureUrl,
+    'apiBaseUrl' => $apiBaseUrl,
     'apiKey'     => $apiKey,
     'apiSecret'  => $apiSecret,
 
