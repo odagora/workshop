@@ -18,15 +18,23 @@
 	    		{{ Form::label('e_name', 'Asesor de servicio:')}}
 		    	<div class="form-inline">
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('e_firstname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('e_firstname', null, array('class' => 'form-control', 'maxlength' => 19, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.e_firstname,this.form.count1,19)'))}}
 		    			<br class="break">
 		    			{{ Form::label('e_firstname', 'Nombre')}}
 		    		</div>
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('e_lastname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('e_lastname', null, array('class' => 'form-control', 'maxlength' => 10, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.e_lastname,this.form.count2,10)'))}}
 		    			<br class="break">
 		    			{{ Form::label('e_lastname', 'Apellido')}}
 					</div>
+				</div>
+				<div class="form-inline" style="display: none;">
+					<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count1" size="3" value="19" class="form-control text-center">
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count2" size="3" value="10" class="form-control text-center">
+		    		</div>
 				</div>
 			</div>
 			@if ($errors->has('e_firstname'))
@@ -41,15 +49,23 @@
 	    		{{ Form::label('c_name', 'Cliente:')}}
 		    	<div class="form-inline">
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('c_firstname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('c_firstname', null, array('class' => 'form-control', 'maxlength' => 20, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_firstname,this.form.count3,20)'))}}
 		    			<br class="break">
 		    			{{ Form::label('c_firstname', 'Nombre(s)')}}
 		    		</div>
 		    		<div class="col-xs-5 col-sm-3 col-md-3 pull-left names">
-		    			{{ Form::text('c_lastname', null, array('class' => 'form-control'))}}
+		    			{{ Form::text('c_lastname', null, array('class' => 'form-control', 'maxlength' => 16, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.c_lastname,this.form.count4,16)'))}}
 		    			<br class="break">
 		    			{{ Form::label('c_lastname', 'Apellido')}}
 					</div>
+				</div>
+				<div class="form-inline" style="display: none;">
+					<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count3" size="3" value="20" class="form-control text-center">
+		    		</div>
+		    		<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count4" size="3" value="16" class="form-control text-center">
+		    		</div>
 				</div>
 			</div>
 			@if ($errors->has('c_firstname'))
@@ -63,8 +79,13 @@
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('phone', 'Teléfono:')}}
-			    		{{ Form::number('phone', null, array('class' => 'form-control'))}}
+			    		{{ Form::number('phone', null, array('class' => 'form-control', 'maxlength' => 11, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.phone,this.form.count5,11)'))}}
 			    	</div>
+			    </div>
+			    <div class="row" style="display: none;">
+			    	<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count5" size="3" value="11" class="form-control text-center">
+		    		</div>
 			    </div>
 	    	</div>
 	    	@if ($errors->has('phone'))
@@ -75,8 +96,13 @@
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 mail">
 			    		{{ Form::label('email', 'Email:')}}
-			    		{{ Form::email('email', null, array('class' => 'form-control'))}}
+			    		{{ Form::email('email', null, array('class' => 'form-control', 'maxlength' => 37, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.email,this.form.count6,37)'))}}
 			    	</div>
+			    </div>
+			    <div class="row" style="display: none;">
+			    	<div class="col-xs-4 col-sm-2 col-md-2">
+		    			<input readonly type="text" name= "count6" size="3" value="37" class="form-control text-center">
+		    		</div>
 			    </div>
 	    	</div>
 	    	@if ($errors->has('email'))

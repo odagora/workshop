@@ -108,12 +108,12 @@
 				<div class="row">
 					<div class="col-xs-4 col-sm-4 col-md-3 gen-field">
 			    		{{ Form::label('phone', 'Teléfono:')}}
-			    		{{ Form::number('phone', null, array('class' => 'form-control', 'maxlength' => 10, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.phone,this.form.count6,10)'))}}
+			    		{{ Form::number('phone', null, array('class' => 'form-control', 'maxlength' => 11, 'onKeyDown' => 'limitTextOnKeyUpDown(this.form.phone,this.form.count6,11)'))}}
 			    	</div>
 			    </div>
 			    <div class="row" style="display: none;">
 			    	<div class="col-xs-4 col-sm-2 col-md-2">
-		    			<input readonly type="text" name= "count6" size="3" value="10" class="form-control text-center">
+		    			<input readonly type="text" name= "count6" size="3" value="11" class="form-control text-center">
 		    		</div>
 			    </div>
 		    @if ($errors->has('phone'))
