@@ -8,6 +8,7 @@ use App\Make;
 use App\Type;
 use App\Cdocs;
 use Session;
+use Newsletter;
 
 class CdocsController extends Controller
 {
@@ -106,6 +107,11 @@ class CdocsController extends Controller
         $cdocs->doc_number = Cdocs::count() + 1;
 
         $cdocs->save();
+
+        //Save client data to mailchimp list
+        if (!Newsletter::isSubscribed($request->email)) {
+                Newsletter::subscribe($request->email, ['FNAME'=>ucwords(strtolower($request->c_firstname)), 'LNAME'=>ucwords(strtolower($request->c_lastname))]);
+            }    
 
         //Display a flash message on succesfull submit
         Session::flash('success', 'El documento fue creado de forma exitosa');

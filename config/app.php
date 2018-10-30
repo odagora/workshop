@@ -191,8 +191,11 @@ return [
         /*
          * Cloudinary Wrapper Service Provider
          */
-        JD\Cloudder\CloudderServiceProvider::class
-
+        JD\Cloudder\CloudderServiceProvider::class,
+        /*
+        * Laravel Newsletter for Mailchimp Service Provider
+         */
+        Spatie\Newsletter\NewsletterServiceProvider::class
     ],
 
     /*
@@ -246,6 +249,7 @@ return [
         'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
+        'Newsletter' => Spatie\Newsletter\NewsletterFacade::class
     ],
 
 ];
