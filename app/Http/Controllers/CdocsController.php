@@ -94,17 +94,17 @@ class CdocsController extends Controller
         $cdocs->mileage = $request->mileage;
         $cdocs->description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->description)));
+        }, ucfirst(mb_strtolower($request->description)));
         $cdocs->spare_parts = $request->spare_parts;
         $cdocs->spare_description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->spare_description)));
+        }, ucfirst(mb_strtolower($request->spare_description)));
         $cdocs->price = $request->price;
         $cdocs->time = $request->time;
         $cdocs->validity_time = $request->validity_time;
         $cdocs->observations = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->observations)));  
+        }, ucfirst(mb_strtolower($request->observations)));  
 
         //Store status on submit
         $cdocs->status = 'ok';
@@ -218,17 +218,17 @@ class CdocsController extends Controller
         $cdocs->mileage = $request->input('mileage');
         $cdocs->description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->input('description'))));
+        }, ucfirst(mb_strtolower($request->input('description'))));
         $cdocs->spare_parts = $request->input('spare_parts');
         $cdocs->spare_description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->input('spare_description'))));
+        }, ucfirst(mb_strtolower($request->input('spare_description'))));
         $cdocs->price = $request->input('price');
         $cdocs->time = $request->input('time');
         $cdocs->validity_time = $request->input('validity_time');
         $cdocs->observations = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
-        }, ucfirst(strtolower($request->input('observations'))));
+        }, ucfirst(mb_strtolower($request->input('observations'))));
         
         $cdocs->save();
 
