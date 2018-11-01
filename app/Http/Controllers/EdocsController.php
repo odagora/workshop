@@ -71,7 +71,7 @@ class EdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'comment1' => 'max:400',
             'comment2' => 'max:400',
@@ -108,16 +108,32 @@ class EdocsController extends Controller
         $edocs->make = $request->make;
         $edocs->type = $request->type;
         $edocs->model = $request->model;
-        $edocs->license = $request->license;
+        $edocs->license = strtoupper($request->license);
         $edocs->mileage = $request->mileage;
-        $edocs->comment1 = $request->comment1;
-        $edocs->comment2 = $request->comment2;
-        $edocs->comment3 = $request->comment3;
-        $edocs->comment4 = $request->comment4;
-        $edocs->comment5 = $request->comment5;
-        $edocs->comment6 = $request->comment6;
-        $edocs->comment7 = $request->comment7;
-        $edocs->comment8 = $request->comment8;
+        $edocs->comment1 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment1)));
+        $edocs->comment2 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment2)));
+        $edocs->comment3 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment3)));
+        $edocs->comment4 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment4)));
+        $edocs->comment5 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment5)));
+        $edocs->comment6 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment6)));
+        $edocs->comment7 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment7)));
+        $edocs->comment8 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment8)));
         $edocs->e_signature = $request->e_signature;
         $edocs->c_signature = $request->c_signature;
 
@@ -218,7 +234,7 @@ class EdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'comment1' => 'max:500',
             'comment2' => 'max:500',
@@ -254,16 +270,32 @@ class EdocsController extends Controller
         $edocs->make = $request->input('make');
         $edocs->type = $request->input('type');
         $edocs->model = $request->input('model');
-        $edocs->license = $request->input('license');
+        $edocs->license = strtoupper($request->input('license'));
         $edocs->mileage = $request->input('mileage');
-        $edocs->comment1 = $request->input('comment1');
-        $edocs->comment2 = $request->input('comment2');
-        $edocs->comment3 = $request->input('comment3');
-        $edocs->comment4 = $request->input('comment4');
-        $edocs->comment5 = $request->input('comment5');
-        $edocs->comment6 = $request->input('comment6');
-        $edocs->comment7 = $request->input('comment7');
-        $edocs->comment8 = $request->input('comment8');
+        $edocs->comment1 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment1'))));
+        $edocs->comment2 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment2'))));
+        $edocs->comment3 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment3'))));
+        $edocs->comment4 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment4'))));
+        $edocs->comment5 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment5'))));
+        $edocs->comment6 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment6'))));
+        $edocs->comment7 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment7'))));
+        $edocs->comment8 = preg_replace_callback('/([.!?-])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment8'))));
         $edocs->e_signature = $request->input('e_signature');
         $edocs->c_signature = $request->input('c_signature');
 

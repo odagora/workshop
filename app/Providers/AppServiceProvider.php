@@ -28,6 +28,11 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('alpha_spaces', function($attribute, $value, $params, $validator){
             return preg_match('/^[\pL\s]+$/u', $value);
         });
+
+        //Adding a new validator rule that matches exactly the license type: XXX000 or XX0000
+        Validator::extend('license_type', function($attribute, $value, $params, $validator){
+            return preg_match('/^[a-zA-Z]{2}\d{4}|[a-zA-Z]{3}\d{3}$/u', $value);
+        });
     }
 
     /**

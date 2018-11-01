@@ -65,7 +65,7 @@ class CdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'description' => 'required|max:288',
             'spare_parts' => 'required|max:3',
@@ -90,7 +90,7 @@ class CdocsController extends Controller
         $cdocs->make = $request->make;
         $cdocs->type = $request->type;
         $cdocs->model = $request->model;
-        $cdocs->license = $request->license;
+        $cdocs->license = strtoupper($request->license);
         $cdocs->mileage = $request->mileage;
         $cdocs->description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);
@@ -190,7 +190,7 @@ class CdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'description' => 'required|max:288',
             'spare_parts' => 'required|max:3',
@@ -214,7 +214,7 @@ class CdocsController extends Controller
         $cdocs->make = $request->input('make');
         $cdocs->type = $request->input('type');
         $cdocs->model = $request->input('model');
-        $cdocs->license = $request->input('license');
+        $cdocs->license = strtoupper($request->input('license'));
         $cdocs->mileage = $request->input('mileage');
         $cdocs->description = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
             return strtoupper($matches[1] . ' ' . $matches[2]);

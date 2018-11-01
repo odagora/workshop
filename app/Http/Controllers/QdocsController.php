@@ -72,7 +72,7 @@ class QdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'comment1' => 'max:500',
             'comment2' => 'max:500',
@@ -107,12 +107,20 @@ class QdocsController extends Controller
         $qdocs->make = $request->make;
         $qdocs->type = $request->type;
         $qdocs->model = $request->model;
-        $qdocs->license = $request->license;
+        $qdocs->license = strtoupper($request->license);
         $qdocs->mileage = $request->mileage;
-        $qdocs->comment1 = $request->comment1;
-        $qdocs->comment2 = $request->comment2;
-        $qdocs->comment3 = $request->comment3;
-        $qdocs->comment4 = $request->comment4;
+        $qdocs->comment1 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment1)));
+        $qdocs->comment2 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment2)));
+        $qdocs->comment3 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment3)));
+        $qdocs->comment4 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment4)));
         $qdocs->n_mileage = $request->n_mileage;
         $qdocs->e_signature = $request->e_signature;
         $qdocs->c_signature = $request->c_signature;
@@ -216,7 +224,7 @@ class QdocsController extends Controller
                 'make' => 'required',
                 'type' => 'required|not_in:0',
                 'model' => 'required|max:10|digits:4',
-                'license' => 'required|max:6|alpha_num',
+                'license' => 'required|max:6|alpha_num|license_type',
                 'mileage' => 'required|numeric',
                 'comment1' => 'max:500',
                 'comment2' => 'max:500',
@@ -285,12 +293,20 @@ class QdocsController extends Controller
         $qdocs->make = $request->input('make');
         $qdocs->type = $request->input('type');
         $qdocs->model = $request->input('model');
-        $qdocs->license = $request->input('license');
+        $qdocs->license = strtoupper($request->input('license'));
         $qdocs->mileage = $request->input('mileage');
-        $qdocs->comment1 = $request->input('comment1');
-        $qdocs->comment2 = $request->input('comment2');
-        $qdocs->comment3 = $request->input('comment3');
-        $qdocs->comment4 = $request->input('comment4');
+        $qdocs->comment1 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment1'))));
+        $qdocs->comment2 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment2'))));
+        $qdocs->comment3 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment3'))));
+        $qdocs->comment4 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment4'))));
         $qdocs->n_mileage = $request->input('n_mileage');
         $qdocs->e_signature = $request->input('e_signature');
         $qdocs->c_signature = $request->input('c_signature');

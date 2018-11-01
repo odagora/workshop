@@ -71,7 +71,7 @@ class IdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'comment1' => 'max:500',
             'comment2' => 'max:500',
@@ -105,13 +105,23 @@ class IdocsController extends Controller
         $idocs->make = $request->make;
         $idocs->type = $request->type;
         $idocs->model = $request->model;
-        $idocs->license = $request->license;
+        $idocs->license = strtoupper($request->license);
         $idocs->mileage = $request->mileage;
-        $idocs->comment1 = $request->comment1;
-        $idocs->comment2 = $request->comment2;
-        $idocs->comment3 = $request->comment3;
-        $idocs->comment4 = $request->comment4;
-        $idocs->comment5 = $request->comment5;
+        $idocs->comment1 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment1)));
+        $idocs->comment2 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment2)));
+        $idocs->comment3 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment3)));
+        $idocs->comment4 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment4)));
+        $idocs->comment5 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->comment5)));
         $idocs->e_signature = $request->e_signature;
 
         //Store in the database - matrix information
@@ -211,7 +221,7 @@ class IdocsController extends Controller
             'make' => 'required',
             'type' => 'required|not_in:0',
             'model' => 'required|max:10|digits:4',
-            'license' => 'required|max:6|alpha_num',
+            'license' => 'required|max:6|alpha_num|license_type',
             'mileage' => 'required|numeric',
             'comment1' => 'max:500',
             'comment2' => 'max:500',
@@ -244,13 +254,23 @@ class IdocsController extends Controller
         $idocs->make = $request->input('make');
         $idocs->type = $request->input('type');
         $idocs->model = $request->input('model');
-        $idocs->license = $request->input('license');
+        $idocs->license = strtoupper($request->input('license'));
         $idocs->mileage = $request->input('mileage');
-        $idocs->comment1 = $request->input('comment1');
-        $idocs->comment2 = $request->input('comment2');
-        $idocs->comment3 = $request->input('comment3');
-        $idocs->comment4 = $request->input('comment4');
-        $idocs->comment5 = $request->input('comment5');
+        $idocs->comment1 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment1'))));
+        $idocs->comment2 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment2'))));
+        $idocs->comment3 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment3'))));
+        $idocs->comment4 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment4'))));
+        $idocs->comment5 = preg_replace_callback('/([.!?])\s*(\w)/', function($matches) {
+            return strtoupper($matches[1] . ' ' . $matches[2]);
+        }, ucfirst(mb_strtolower($request->input('comment5'))));
         $idocs->e_signature = $request->input('e_signature');
 
         //Store in the database - matrix information

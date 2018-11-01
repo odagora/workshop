@@ -143,4 +143,5 @@ return [
     ],
 
     'alpha_spaces' => "El :attribute puede incluir letras y espacios solamente.",
+    'license_type' => ":attribute debe estar en formato de 3 letras-3 números o 2 letras-4 números"
 ];
