@@ -16,7 +16,7 @@ trait CdocsPdfRepository {
                 $type = Type::find($cdoc->type);
                 $license = Cdocs::find($cdoc->license);
                 $doc = $cdoc->doc_number + 762;
-                $pdf = \PDF::loadView('cdocs.pdf', compact('cdoc', 'make', 'type','doc'))->setPaper('Letter')->setOption('margin-top', 3)->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2);
+                $pdf = \PDF::loadView('cdocs.pdf', compact('cdoc', 'make', 'type','doc'))->setPaper('Letter')->setOption('zoom', 1.3)->setOption('margin-top', 3)->setOption('margin-left', 6)->setOption('margin-right', 6)->setOption('footer-spacing', 2);
 
                 return $pdf;
         }
