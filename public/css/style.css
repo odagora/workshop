@@ -329,6 +329,12 @@ body.body-pdf {
 	margin: 0 15px;
 }
 
+.page-break {
+	border: none;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
 @media only screen and (max-width: 680px){
 	.show-opt {
 		width: 50%;

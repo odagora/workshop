@@ -288,6 +288,7 @@
 	    @endforeach
 	</div>
 </div>
+<hr class="page-break">
 <div class="row well m-b-5 p-l-0 p-r-0 p-t-0 p-b-0">
 	<h4 class="text-center text-uppercase m-b-0"><strong>Observaciones:</strong></h4>
 	<h6 class="text-center m-t-0">(Anote el número correspondiente del ítem en cada caso)</h6>
