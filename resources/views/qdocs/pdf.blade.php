@@ -229,7 +229,7 @@
 	    @endforeach
 	</div>
 </div>
-<hr>
+<hr style="border: none;">
 <div class="row well quote">
 	<h4 class="text-center text-uppercase"><strong>Importante:</strong></h4>
 	<h5 class="text-center"><strong>Los controles realizados son únicamente sobre los elementos visibles del vehículo y no implican desmontaje alguno, por lo tanto el taller no asume responsabilidad en caso de la no detección de una falla no aparente.</strong></h5>
