@@ -294,6 +294,7 @@
 	    @endforeach
 	</div>
 </div>
+<hr class="page-break">
 <div class="row well quote">
 	<h5 class="text-center" style="margin: 0"><strong>Llamamos la atención sobre los siguientes aspectos a realizar al vehículo:</strong></h5>
 </div>
