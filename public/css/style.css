@@ -331,8 +331,8 @@ body.body-pdf {
 
 .page-break {
 	border: none;
-	margin-top: 22px;
-	margin-bottom: 22px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 @media only screen and (max-width: 680px){
