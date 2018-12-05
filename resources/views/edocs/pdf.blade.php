@@ -102,10 +102,10 @@
 	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -144,10 +144,10 @@
 	    				@for($i=15; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -173,10 +173,10 @@
 	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -202,10 +202,10 @@
 	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -241,10 +241,10 @@
 	    				@for($i=7; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -270,10 +270,10 @@
 	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
 	    						<td class="col-md-6">{{$i}} - {{$items[$mat][$i]}}</td>
-	    						@for($j=1; $j <= count($cats); $j++) 
+	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
-	    							@php 
+	    							@php
 	    							$elem = $elements[$mat][$i];
 	    							$elem = ($edoc->$elem == $j ? ' checked' : '');
 	    							@endphp
@@ -305,7 +305,7 @@
 				<div id="exp-com" class="col-xs-12 col-sm-12 col-md-12 panel panel-default">
 					<h6>{{$com}}</h6>
 				</div>
-			</div>	
+			</div>
 		@endforeach
 	</div>
 </div>
@@ -323,7 +323,7 @@
 	</div>
 </div>
 <div class="row footer">
-	<h6 class="text-center"><strong>NOTA: El peritaje constituye una revisión exclusiva de los ítems relacionados. Cualquier daño no aparente detectado posterior a dicha revisión, no es responsabilidad del taller</strong></h6>
+	<h6 class="text-center"><strong>NOTA: El peritaje constituye una inspección visual de los ítems relacionados y no implican desmontaje alguno. Cualquier daño no aparente detectado posterior a esta revisión no es responsabilidad del taller.</strong></h6>
 </div>
 <hr class="m-t-5 m-b-5">
 <div class="row footer">
