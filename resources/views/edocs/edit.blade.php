@@ -200,7 +200,7 @@
 	    			<tbody>
 	    				@for($i=1; $i <= count($items[$mat]) ; $i++)
 	    					<tr>
-	    						<td>{{$items[$mat][$i]}}</td>
+	    						<td>{{$i}} - {{$items[$mat][$i]}}</td>
 	    						@for($j=1; $j <= count($cats); $j++)
 	    							<td class="col-md-2 text-center">
 	    							{{Form::label($cats[$j], $cats[$j], array('style' => 'display:none'))}}
