@@ -1,4 +1,12 @@
 <?php
+/*
+Heroku and localhost environment variable splitted
+ */
+$disk = getenv("DROPBOX_TOKEN");
+
+if (empty($disk)) {
+    $disk = env('DROPBOX_TOKEN');
+}
 
 return [
 
@@ -63,6 +71,10 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'dropbox' => [
+            'driver' => 'dropbox',
+            'token'  => $disk,
+        ],
     ],
 
 ];

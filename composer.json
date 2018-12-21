@@ -7,6 +7,7 @@
     "require": {
         "php": ">=5.6.4",
         "barryvdh/laravel-snappy": "0.4.x",
+        "benjamincrozat/laravel-dropbox-driver": "^2.0",
         "doctrine/dbal": "^2.6",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
@@ -15,6 +16,7 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "orangehill/iseed": "dev-master",
+        "spatie/laravel-backup": "^4.0.0",
         "spatie/laravel-newsletter": "^3.7.0"
     },
     "require-dev": {

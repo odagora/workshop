@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Cron;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,8 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+         $schedule->command('backup:clean')->everyMinute()->when(function(){
+            //Returns true every week
+            return Cron::shouldIRun('backup:clean', 1);
+        }); 
+        $schedule->command('backup:run')->everyMinute()->when(function(){
+            //Returns true every week
+            return Cron::shouldIRun('backup:run', 1);
+        });  
     }
 
     /**
