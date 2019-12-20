@@ -116,8 +116,8 @@ class CdocsController extends Controller
 
         //Save client data to mailchimp list
         if (!Newsletter::isSubscribed($request->email)) {
-                Newsletter::subscribe($request->email, ['FNAME'=>ucwords(strtolower($request->c_firstname)), 'LNAME'=>ucwords(strtolower($request->c_lastname))]);
-            }    
+                Newsletter::subscribe($request->email, ['FNAME'=>ucwords(strtolower($request->c_firstname)), 'LNAME'=>ucwords(strtolower($request->c_lastname))], 'subscribers', ['interests'=>['4642b3d511'=>true, '4642b3d511'=>true]]);
+             }    
 
         //Display a flash message on succesfull submit
         Session::flash('success', 'El documento fue creado de forma exitosa');
