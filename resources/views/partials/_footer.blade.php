@@ -1,4 +1,4 @@
 <div class="row">
 	<hr>
-	<p class="text-center">Copyright &copy 2018 Servitalleres</p>
+	<p class="text-center">Copyright &copy 2020 Servitalleres</p>
 </div>

@@ -15,6 +15,7 @@ Route::prefix('app')->group(function(){
 	//Pages routes
 	Route::get('index', array('as' => 'index', 'uses' => 'PagesController@getIndex'));
 	Route::get('admin', array('as' => 'admin', 'uses' => 'PagesController@getAdmin'));
+	Route::get('price', array('as' => 'price', 'uses' => 'PagesController@getPrice'));
 
 	Route::prefix('admin')->group(function(){
 		//CRUD users routes
