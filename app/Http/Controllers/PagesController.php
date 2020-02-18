@@ -15,9 +15,6 @@ class PagesController extends Controller {
 	public function getAdmin() {
 		return view('pages.admin');
 	}
-	public function getPrice() {
-		return view('pages.price');
-	}
 }
 
 ?>

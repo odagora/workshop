@@ -70,7 +70,7 @@
         <h3 class="text-uppercase">Precios OM</h3>
       </div> 
       <div class="col-md-12 main-index-image">
-        <a href="price"><img src="{{asset('img/label.png')}}" class="img-responsive center-block"></a>
+        <a href="prices"><img src="{{asset('img/label.png')}}" class="img-responsive center-block"></a>
       </div>
     </div>
   </div>
