@@ -564,3 +564,26 @@ EDIT USER PAGE
 #manual-password {
 	display: none;
 }
+
+/*
+PRICES MAIN PAGE
+*/
+@media only screen and (max-width: 480px){
+	.ops-field {
+		margin-right: 25px;
+	}
+}
+
+
+@media only screen and (min-width: 768px){
+	.model-field {
+		margin-right: 10px;
+	}
+	.ops-field {
+		margin-right: 30px;
+	}
+	.ad-ops-field {
+		text-align: left !important;
+		padding-right: 0;
+	}
+}	
