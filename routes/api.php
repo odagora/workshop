@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/* 
+Make & Type API Routes
+*/
+
+Route::get('getMakes', 'APIController@getMakes');
+Route::get('getTypes', 'APIController@getTypes');

@@ -6,7 +6,7 @@
   </head>
   <body>
     @include('partials._nav')
-    <div class="container">
+    <div class="container" id="app">
       <!-- Loads session messages before all content-->
       @include('partials._messages')
 

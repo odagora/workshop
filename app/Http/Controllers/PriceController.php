@@ -20,7 +20,7 @@ class PriceController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $makes = Make::all();
-        return view('pages.prices', compact('makes'));
+        // $makes = Make::all();
+        return view('pages.prices');
     }
 }

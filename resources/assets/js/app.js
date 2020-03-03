@@ -16,3 +16,20 @@ window.Vue = require('vue');
  */
 
 // Vue.component('example', require('./components/Example.vue'));
+
+/* 
+Global Component Registration
+*/
+
+import MakeTypeDropdown from './components/MakeTypeDropdown.vue';
+
+const app = new Vue({
+    el: '#app',
+    components: {MakeTypeDropdown}
+});
+
+// export default {
+//     components: {
+//         MakeTypeDropdown
+//     }
+// }
