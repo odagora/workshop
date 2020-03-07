@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main-vue')
 @section('title', '| Precios Operaciones de Mecánica')
 @section('content')
 <div class="row">
