@@ -20,6 +20,12 @@ LOGIN PAGE
 	}
 }
 
+@media only screen and (min-width: 768px){
+	.form-horizontal .control-label {
+		text-align: right;
+	}
+}
+
 /*
 MAIN NAVIGATION
  */
@@ -58,6 +64,13 @@ MAIN PAGES
 	.main-title h1 {
 		font-size: 30px;
 	}
+}
+
+@media only screen and  (max-width: 768px){
+	.main-index-title h4 {
+		font-size: 1.5rem !important;
+	}
+
 }
 
 /*Flash messages in mobile devices display*/
@@ -123,7 +136,8 @@ For index.blade.php
 
 	.search-group {
 		margin-top: 0;
-		text-align: center;
+		margin-left: auto !important;
+		margin-right: auto !important;
 	}
 
 }

@@ -7,14 +7,14 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 <!-- Bootstrap -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 <!-- Custom Styles -->
 <link rel="stylesheet" href="{{asset('css/style.css')}}">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 <!-- Font awesome icons library-->
-<link rel="stylesheet" href="{{asset('font-awesome/css/font-awesome.min.css')}}">
+<script src="https://kit.fontawesome.com/f894ec0804.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{asset('css/go-top-button.css')}}">
 
 <!-- Loads specific styles for each page -->
