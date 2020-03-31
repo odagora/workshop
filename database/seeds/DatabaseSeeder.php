@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             $this->call(MakesTableSeeder::class);
             $this->call(TypesTableSeeder::class);
             $this->call(QdocsTableSeeder::class);
+            $this->call(EdocsTableSeeder::class);
         } 
         else {
             $this->call(RoleTableSeeder::class);
