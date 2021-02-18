@@ -66,9 +66,9 @@ class SendCdocsMailTest extends TestCase
         //     ->andReturnSelf();
         
         //Make the assertion on mail route
-        $this->withExceptionHandling()
-             ->get("app/cdocs/{$cdoc->id}/mail")
-             ->seeEmailWasSent();
+        // $this->withExceptionHandling()
+        //      ->get("app/cdocs/{$cdoc->id}/mail")
+        //      ->seeEmailWasSent();
             //  ->assertSuccessful();
             // ->assertEquals(1, $cdoc->id);
              
