@@ -28,7 +28,9 @@ class CreateOtdtcForeignKeys extends Migration
     public function down()
     {
         Schema::table('otdtcs', function(Blueprint $table) {
-            $table->dropForeign('otdtcs_doc_id_foreign');
+            if(env('DB_CONNECTION') !== 'sqlite'){
+                $table->dropForeign('otdtcs_doc_id_foreign');
+            }
         });
     }
 }

@@ -14,7 +14,7 @@ class CreateStatusColumn extends Migration
     public function up()
     {
         Schema::table('qdocs', function (Blueprint $table) {
-            $table->string('status');
+            $table->string('status')->nullable();
         });
     }
 

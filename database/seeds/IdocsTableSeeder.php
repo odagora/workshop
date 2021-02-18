@@ -11,6 +11,6 @@ class IdocsTableSeeder extends Seeder
      */
     public function run()
     {
-        $qdoc = factory(App\Idocs::class, 6)->create();
+        $idoc = create('App\Idocs', [], 6);
     }
 }

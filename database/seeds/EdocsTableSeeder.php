@@ -11,6 +11,6 @@ class EdocsTableSeeder extends Seeder
      */
     public function run()
     {
-        $edoc = factory(App\Edocs::class, 6)->create();
+        $edoc = create('App\Edocs', [], 6);
     }
 }

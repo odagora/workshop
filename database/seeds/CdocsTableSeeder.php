@@ -11,6 +11,6 @@ class CdocsTableSeeder extends Seeder
      */
     public function run()
     {
-        $qdoc = factory(App\Cdocs::class, 6)->create();
+        $cdoc = create('App\Cdocs', [] , 6);
     }
 }

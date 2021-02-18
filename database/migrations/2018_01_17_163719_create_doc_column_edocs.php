@@ -14,7 +14,7 @@ class CreateDocColumnEdocs extends Migration
     public function up()
     {
         Schema::table('edocs', function (Blueprint $table) {
-            $table->integer('doc_number')->after('id');
+            $table->integer('doc_number')->after('id')->nullable();
         });
     }
 

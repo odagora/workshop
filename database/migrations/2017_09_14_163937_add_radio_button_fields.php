@@ -21,7 +21,7 @@ class AddRadioButtonFields extends Migration
             $elements = Config::get('constants.qdoc_elements');
             foreach ($names as $key => $value) {
                 foreach ($elements[$key] as $mat => $name) {
-                    $table->integer($name);            
+                    $table->integer($name)->nullable();
                 }
             }
         });
@@ -37,8 +37,10 @@ class AddRadioButtonFields extends Migration
         Schema::table('qdocs', function (Blueprint $table) {
             $names = Config::get('constants.qdoc_names');
             $elements = Config::get('constants.qdoc_elements');
-            foreach ($names as $key => $value) {
-                $table->dropColumn($elements[$key]);
+            if(env('DB_CONNECTION') !== 'sqlite'){
+                foreach ($names as $key => $value) {
+                    $table->dropColumn($elements[$key]);
+                }
             }
         });
     }

@@ -4,22 +4,17 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "repositories": [{
-        "type": "vcs",
-        "url": "https://github.com/ao5357/wkhtmltopdf-amd64"
-    }],
     "require": {
         "php": ">=7.1.3",
         "barryvdh/laravel-snappy": "0.4.x",
         "benjamincrozat/laravel-dropbox-driver": "^2.0",
         "doctrine/dbal": "^2.6",
-        "h4cc/wkhtmltoimage-amd64": "0.12.x",
-        "h4cc/wkhtmltopdf-amd64": "dev-master#c216cb8dc9b1323",
         "jrm2k6/cloudder": "0.4.*",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.7.0",
         "orangehill/iseed": "2.3.1",
+        "silvertipsoftware/wkhtmltopdf-amd64": "0.12.5",
         "spatie/laravel-backup": "^5.10.1",
         "spatie/laravel-newsletter": "^4.2.2"
     },
@@ -39,8 +34,13 @@
     },
     "autoload-dev": {
         "psr-4": {
+            "App\\": "app/",
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "tests/utilities/test_helpers.php",
+            "tests/Mail/MailTracking.php"
+        ]
     },
     "scripts": {
         "post-root-package-install": [

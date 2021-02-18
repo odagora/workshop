@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             $this->call(EdocsTableSeeder::class);
             $this->call(IdocsTableSeeder::class);
             $this->call(CdocsTableSeeder::class);
-        } 
+        }
         else {
             $this->call(RoleTableSeeder::class);
             $this->call(MakesTableSeeder::class);

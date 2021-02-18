@@ -14,7 +14,7 @@ class CreateDocColumnQdocs extends Migration
     public function up()
     {
         Schema::table('qdocs', function (Blueprint $table) {
-            $table->integer('doc_number')->after('id');
+            $table->integer('doc_number')->after('id')->nullable();
         });
     }
 

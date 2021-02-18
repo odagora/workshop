@@ -14,8 +14,8 @@ class AddSignatureFields extends Migration
     public function up()
     {
         Schema::table('qdocs', function (Blueprint $table) {
-            $table->text('e_signature');
-            $table->text('c_signature');
+            $table->text('e_signature')->nullable();
+            $table->text('c_signature')->nullable();
         });
     }
 
@@ -27,8 +27,10 @@ class AddSignatureFields extends Migration
     public function down()
     {
         Schema::table('qdocs', function (Blueprint $table) {
-            $table->dropColumn('e_signature');
-            $table->dropColumn('c_signature');
+            if(env('DB_CONNECTION') !== 'sqlite'){
+                $table->dropColumn('e_signature');
+                $table->dropColumn('c_signature');
+            }
         });
     }
 }

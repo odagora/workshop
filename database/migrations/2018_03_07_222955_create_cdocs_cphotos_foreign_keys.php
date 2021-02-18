@@ -28,7 +28,9 @@ class CreateCdocsCphotosForeignKeys extends Migration
     public function down()
     {
         Schema::table('cphotos', function(Blueprint $table) {
-            $table->dropForeign('cphotos_doc_id_foreign');
+            if(env('DB_CONNECTION') !== 'sqlite'){
+                $table->dropForeign('cphotos_doc_id_foreign');
+            }
         });
     }
 }

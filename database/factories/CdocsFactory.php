@@ -12,10 +12,11 @@ $factory->define(App\Cdocs::class, function (Faker $faker) {
         'c_lastname' => $faker->lastName,
         'phone' => $faker->randomNumber($nbDigits = 7, $strict = false),
         'email' => $faker->unique()->safeEmail,
-        'make' => '16',
-        'type' => '417',
+        'make' => factory('App\Make')->create()->id,
+        'type' => factory('App\Type')->create()->id,
         'model' => $faker->year($max = 'now'),
-        'license' => strtoupper($faker->regexify('/^[a-zA-Z]{2}\d{4}|[a-zA-Z]{3}\d{3}$/u')),
+        'license' => 'ABC001',
+        // 'license' => strtoupper($faker->regexify('/^[a-zA-Z]{2}\d{4}|[a-zA-Z]{3}\d{3}$/u')),
         'mileage' => $faker->randomNumber($nbDigits = 4, $strict = false),
         'description' => $faker->text($maxNbChars = 288),
         'spare_parts' => $faker->randomElement($array = array ('yes','no')),
@@ -24,8 +25,8 @@ $factory->define(App\Cdocs::class, function (Faker $faker) {
         'time' => $faker->randomDigit,
         'validity_time' => $faker->randomDigit,
         'observations' => $faker->text($maxNbChars = 300),
-        'created_at' => $faker->dateTime($max = 'now', $timezone = null),
-        'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
+        // 'created_at' => $faker->dateTime($max = 'now', $timezone = null),
+        // 'updated_at' => $faker->dateTime($max = 'now', $timezone = null),
         'status' => 'ok'
     ];
 });

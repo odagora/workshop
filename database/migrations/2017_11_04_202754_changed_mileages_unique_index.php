@@ -26,10 +26,11 @@ class ChangedMileagesUniqueIndex extends Migration
      */
     public function down()
     {
-        Schema::table('qdocs', function (Blueprint $table) {
-            $table->integer('mileage')->unique();
-            $table->integer('n_mileage')->unique();
-        });
-
+        // Schema::table('qdocs', function (Blueprint $table) {
+        //     if(env('DB_CONNECTION') !== 'sqlite'){
+        //         $table->dropUnique(['mileage']);
+        //         $table->dropunique(['n_mileage']);
+        //     }
+        // });
     }
 }

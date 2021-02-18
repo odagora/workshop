@@ -34,7 +34,7 @@ class CreateCdocsTable extends Migration
             $table->integer('time')->unsigned();
             $table->integer('validity_time')->unsigned();
             $table->string('observations', 300);
-            $table->string('status');
+            $table->string('status')->nullable();
             $table->timestamps();
         });
     }

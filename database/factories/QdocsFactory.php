@@ -35,7 +35,7 @@ $factory->define(App\Qdocs::class, function (Faker $faker) {
 
     foreach ($names as $key => $value) {
         foreach ($elements[$key] as $mat => $name) {
-            $fakeData["$name"] = $faker->numberBetween($min = 1, $max = 3);            
+            $fakeData["$name"] = $faker->numberBetween($min = 1, $max = 3);
         }
     }
 

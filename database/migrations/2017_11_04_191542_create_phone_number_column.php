@@ -14,7 +14,7 @@ class CreatePhoneNumberColumn extends Migration
     public function up()
     {
         Schema::table('qdocs', function (Blueprint $table) {
-            $table->bigInteger('phone');
+            $table->bigInteger('phone')->nullable();
         });
     }
 

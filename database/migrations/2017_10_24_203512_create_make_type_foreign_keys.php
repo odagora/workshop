@@ -28,7 +28,9 @@ class CreateMakeTypeForeignKeys extends Migration
     public function down()
     {
         Schema::table('car_type', function(Blueprint $table) {
-            $table->dropForeign('car_type_make_id_foreign');
+            if(env('DB_CONNECTION') !== 'sqlite'){
+                $table->dropForeign('car_type_make_id_foreign');
+            }
         });
     }
 }

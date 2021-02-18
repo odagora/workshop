@@ -26,7 +26,7 @@ class ChangeCarTypeForeignColumnAttributes extends Migration
     public function down()
     {
         Schema::table('car_type', function (Blueprint $table) {
-            $table->int('make_id', false, false)->length(11)->change();
+            $table->integer('make_id', false, false)->length(11)->change();
         });
     }
 }
