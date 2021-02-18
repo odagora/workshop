@@ -4,8 +4,8 @@
 Heroku and localhost environment variable splitted
  */
 
-$mailApiKey = getenv('SENDGRID_API_KEY');
-$mailPassword = getenv('SENDGRID_PASSWORD');
+$username = getenv('SENDGRID_USERNAME');
+$password = getenv('SENDGRID_PASSWORD');
 $mailFrom = getenv('ADMIN_EMAIL');
 $mailFromName = getenv('ADMIN_EMAIL_NAME');
 
