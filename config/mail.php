@@ -1,5 +1,14 @@
 <?php
 
+/*
+Heroku and localhost environment variable splitted
+ */
+
+$mailApiKey = getenv('SENDGRID_API_KEY');
+$mailPassword = getenv('SENDGRID_PASSWORD');
+$mailFrom = getenv('ADMIN_EMAIL');
+$mailFromName = getenv('ADMIN_EMAIL_NAME');
+
 return [
 
     /*
@@ -56,8 +65,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'contacto@servitalleres.com'),
-        'name' => env('MAIL_FROM_NAME', 'Servitalleres'),
+        'address' => env('MAIL_FROM_ADDRESS', $mailFrom),
+        'name' => env('MAIL_FROM_NAME', $mailFromName),
     ],
 
     /*
@@ -84,9 +93,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME', 'app85420089@heroku.com'),
+    'username' => env('MAIL_USERNAME', $username),
 
-    'password' => env('MAIL_PASSWORD', 'l1ztkgcq2733'),
+    'password' => env('MAIL_PASSWORD', $password),
 
     /*
     |--------------------------------------------------------------------------
