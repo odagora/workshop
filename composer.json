@@ -11,7 +11,7 @@
         "doctrine/dbal": "^2.6",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
-        "jrm2k6/cloudder": "0.4.*",
+        "jrm2k6/cloudder": "0.7.*",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.7.0",
