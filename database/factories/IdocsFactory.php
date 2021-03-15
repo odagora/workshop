@@ -14,7 +14,7 @@ $factory->define(App\Idocs::class, function (Faker $faker) {
         'c_lastname' => $faker->lastName,
         'id_number' => $faker->randomNumber($nbDigits = 8, $strict = false),
         'email' => $faker->unique()->safeEmail,
-        'phone' => $faker->randomNumber($nbDigits = 7, $strict = false), 
+        'phone' => $faker->randomNumber($nbDigits = 7, $strict = false),
         'make' => create('App\Make')->id,
         'type' => create('App\Type')->id,
         'model' => $faker->year($max = 'now'),

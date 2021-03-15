@@ -15,10 +15,10 @@ $factory->define(App\Edocs::class, function (Faker $faker) {
         'id_number' => $faker->randomNumber($nbDigits = 8, $strict = false),
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->randomNumber($nbDigits = 7, $strict = false),
-        'make' => '16',
-        'type' => '417',
+        'make' => create('App\Make')->id,
+        'type' => create('App\Type')->id,
         'model' => $faker->year($max = 'now'),
-        'license' => strtoupper($faker->regexify('/^[a-zA-Z]{2}\d{4}|[a-zA-Z]{3}\d{3}$/u')),
+        'license' => strtoupper($faker->regexify('[a-zA-Z]{3}\d{3}')),
         'mileage' => $faker->randomNumber($nbDigits = 4, $strict = false),
         'comment1' => $faker->text($maxNbChars = 400),
         'comment2' => $faker->text($maxNbChars = 400),
@@ -37,7 +37,7 @@ $factory->define(App\Edocs::class, function (Faker $faker) {
 
     foreach ($names as $key => $value) {
         foreach ($elements[$key] as $mat => $name) {
-            $fakeData["$name"] = $faker->numberBetween($min = 1, $max = 3);            
+            $fakeData["$name"] = $faker->numberBetween($min = 1, $max = 3);
         }
     }
 
