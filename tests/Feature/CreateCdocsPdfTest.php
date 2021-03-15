@@ -13,7 +13,7 @@ class CreateCdocsPdfTest extends TestCase
     /**
      * @test
      */
-    public function it_can_download_a_cdocs_pdf(){
+    public function it_can_download_cdocs_pdf(){
         //Create Cdoc document
         $cdoc = create('App\Cdocs');
 

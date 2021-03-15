@@ -3,13 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
-use Illuminate\Http\File;
-use Illuminate\Support\Facades\Storage;
-use App\Mail\CdocSent;
-use Mail;
-
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Mail\MailTracking;
 
 class SendCdocsMailTest extends TestCase
@@ -22,7 +16,7 @@ class SendCdocsMailTest extends TestCase
      * @test
      */
 
-    public function it_can_send_a_cdocs_mail(){
+    public function it_can_send_cdocs_mail(){
         $cdoc = create('App\Cdocs');
 
         //Assert email was sent with custom function

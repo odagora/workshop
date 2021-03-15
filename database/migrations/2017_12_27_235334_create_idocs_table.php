@@ -28,7 +28,7 @@ class CreateIdocsTable extends Migration
             $table->string('make', 32);
             $table->string('type', 32);
             $table->integer('model')->unsigned();
-            $table->char('license', 6)->unique();
+            $table->char('license', 6);
             $table->integer('mileage')->unsigned();
             foreach ($names as $key => $value) {
                 foreach ($elements[$key] as $mat => $name) {
