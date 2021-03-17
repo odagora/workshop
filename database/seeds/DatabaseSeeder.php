@@ -21,6 +21,9 @@ class DatabaseSeeder extends Seeder
             $this->call(IdocsTableSeeder::class);
             $this->call(CdocsTableSeeder::class);
             $this->call(CdocsPhotoTableSeeder::class);
+            $this->call(OTdocsTableSeeder::class);
+            $this->call(OtDtcTableSeeder::class);
+            $this->call(OtPhotoTableSeeder::class);
         }
         else {
             $this->call(RoleTableSeeder::class);
