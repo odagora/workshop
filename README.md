@@ -1,7 +1,11 @@
 <!-- TODO: Complete the description and about the appropriate license. -->
 # Workshop
 
-_Brief description._
+Documents management application based on Laravel and Bootstrap. Includes the following integrations:
+
+- Mailchimp newsletter subscription
+- Sendgrid email marketing
+- Cloudinary assets upload
 
 ## Getting Started :rocket:
 
