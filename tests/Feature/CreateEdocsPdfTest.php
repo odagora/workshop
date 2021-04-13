@@ -15,7 +15,8 @@ class CreateEdocsPdfTest extends TestCase
     public function it_can_download_edocs_pdf(){
         $edoc = create('App\Edocs');
 
-        $this->get("app/edocs/{$edoc->id}/pdf")
+        $this->withExceptionHandling()
+            ->get("app/edocs/{$edoc->id}/pdf")
             ->assertSuccessful();
     }
 }

@@ -16,7 +16,8 @@ class CancelOTdocsTest extends TestCase
         $otDoc = create('App\Otdocs');
         $newOtDoc = make('App\Otdocs', ['status' => 'cancelled']);
 
-        $this->put("app/otdocs/{$otDoc->id}", $newOtDoc->toArray());
+        $this->withExceptionHandling()
+            ->put("app/otdocs/{$otDoc->id}", $newOtDoc->toArray());
 
         $this->assertEquals($newOtDoc->status, 'cancelled');
     }

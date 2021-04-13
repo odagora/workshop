@@ -15,7 +15,8 @@ class CreateEdocsTest extends TestCase
     public function it_can_create_edocs(){
         $edoc = create('App\Edocs');
 
-        $this->post('app/edocs', $edoc->toArray());
+        $this->withExceptionHandling()
+            ->post('app/edocs', $edoc->toArray());
 
         $this->assertEquals(2, \App\Edocs::all()->count());
 

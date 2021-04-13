@@ -17,7 +17,8 @@ class UpdateEdocsTest extends TestCase
         $edoc = create('App\Edocs');
         $newEdoc = make('App\Edocs', ['make' => $type->make_id, 'type' => $type->name]);
 
-        $this->put("app/edocs/{$edoc->id}", $newEdoc->toArray())
+        $this->withExceptionHandling()
+            ->put("app/edocs/{$edoc->id}", $newEdoc->toArray())
             ->assertRedirect("app/edocs/{$edoc->id}");
 
         $this->get('app/edocs')

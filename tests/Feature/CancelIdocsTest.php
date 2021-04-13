@@ -16,7 +16,8 @@ class CancelIdocsTest extends TestCase
         $idoc = create('App\Idocs');
         $newIdoc = make('App\Idocs', ['status' => 'cancelled']);
 
-        $this->put("app/idocs/{$idoc->id}", $newIdoc->toArray());
+        $this->withExceptionHandling()
+            ->put("app/idocs/{$idoc->id}", $newIdoc->toArray());
 
         $this->assertEquals($newIdoc->status, 'cancelled');
     }
