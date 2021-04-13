@@ -26,7 +26,7 @@ class CreateCdocsTest extends TestCase
         $this->withExceptionHandling()
             ->post('app/cdocs', $cdoc->toArray());
 
-        $this->assertEquals(1, \App\Cdocs::all()->count());
+        $this->assertEquals(2, \App\Cdocs::all()->count());
 
         $this->withExceptionHandling()
             ->get('app/cdocs')
