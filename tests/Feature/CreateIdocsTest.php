@@ -15,7 +15,8 @@ class CreateIdocsTest extends TestCase
     public function it_can_create_idocs(){
         $idoc = create('App\Idocs');
 
-        $this->post('app/idocs', $idoc->toArray());
+        $this->withExceptionHandling()
+            ->post('app/idocs', $idoc->toArray());
 
         $this->assertEquals(2, \App\Idocs::all()->count());
 
