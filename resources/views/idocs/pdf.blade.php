@@ -102,6 +102,9 @@
 		</div>
 	</div>
 </div>
+<div class="row well quote">
+	<h4 class="text-center text-uppercase"><strong>Puntos de control</strong></h4>
+</div>
 <div class="row well quote table-items">
 	<div class="col-xs-6 col-sm-6 col-md-6">
 		@php
