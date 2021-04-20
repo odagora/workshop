@@ -303,11 +303,11 @@
 	</div>
 	<div class="col-xs-6 col-sm-6 col-md-6 ">
 		<div class="col-xs-12 col-sm-12 col-md-12">	
-			<div class="col-xs-8 col-sm-8 col-md-8 quote-title">
+			<div class="col-xs-8 col-sm-8 col-md-8 p-r-0">
 				<h6><strong>Próximo mantenimiento a los:</strong></h6>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 text-center panel panel-default" style="padding: 0">
-				<h5>{{number_format($qdoc->n_mileage,0,",",".")}} kms</h5>
+				<h6>{{number_format($qdoc->n_mileage,0,",",".")}} kms</h6>
 			</div>
 		</div>
 		<div class="showSig sig-pdf" id="sig-client">
