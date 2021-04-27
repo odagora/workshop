@@ -42,9 +42,10 @@ jobs:
       - name: Install Dependencies (PHP vendors)
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
-      # Installs wkhtmltopdf binary
+      # Installs wkhtmltopdf binary and dependencies
       - name: Install wkhtmltopdf binary
         run: |
+          sudo apt-get install xfonts-75dpi
           sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
           sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
           sudo apt -f install
