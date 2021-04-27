@@ -9,6 +9,7 @@ on:
     branches:
     - master
     - price
+    - update
   pull_request:
     branches: [ master ]
 
@@ -41,17 +42,24 @@ jobs:
       - name: Install Dependencies (PHP vendors)
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
+      # Installs wkhtmltopdf binary
+      - name: Install wkhtmltopdf binary
+        run: |
+          wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+          dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
+          apt -f install
+
       # Setups Laravel key
       - name: Generate Key
         run: php artisan key:generate
-        
+
       # Creates the sqlite database
       - name: Create DB and schemas
         run: |
           mkdir -p database
           touch database/database.sqlite
           php artisan migrate
-          
+
       # Executes the tests
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
