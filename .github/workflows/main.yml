@@ -46,6 +46,7 @@ jobs:
       - name: Install wkhtmltopdf binary
         run: |
           sudo apt-get install xfonts-75dpi
+          sudo apt-get install xfonts-base
           sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
           sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
           sudo apt -f install
