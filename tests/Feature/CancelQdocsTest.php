@@ -16,7 +16,8 @@ class CancelQdocsTest extends TestCase
         $qdoc = create('App\Qdocs');
         $newQdoc = make('App\Qdocs', ['status' => 'cancelled']);
 
-        $this->put("app/qdocs/{$qdoc->id}", $newQdoc->toArray());
+        $this->withExceptionHandling()
+            ->put("app/qdocs/{$qdoc->id}", $newQdoc->toArray());
 
         $this->assertEquals($newQdoc->status, 'cancelled');
     }

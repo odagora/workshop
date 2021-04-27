@@ -1,11 +1,19 @@
 <?php
 
+/**
+ * Heroku and localhost environment variable
+ */
+
+$wkhtmltopdf = getenv("WKHTMLTOPDF_BIN");
+
+(!empty($wkhtmltopdf)) ? $pdfBinPath = $wkhtmltopdf : $pdfBinPath = env('WKHTMLTOPDF_BIN_PATH');
+
 return array(
 
 
     'pdf' => array(
         'enabled' => true,
-        'binary'  => 'wkhtmltopdf-amd64',
+        'binary'  => $pdfBinPath,
         'timeout' => false,
         'options' => array(),
         'env'     => array(),

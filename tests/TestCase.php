@@ -12,7 +12,7 @@ abstract class TestCase extends BaseTestCase
     protected $user;
     use CreatesApplication;
 
-    protected function setUp ()
+    protected function setUp () :void
     {
         parent::setUp();
         $this->user = create('App\User');

@@ -23,7 +23,8 @@ class CreateCdocsTest extends TestCase
     public function it_can_create_cdocs(){
         $cdoc = create('App\Cdocs');
 
-        $this->post('app/cdocs', $cdoc->toArray());
+        $this->withExceptionHandling()
+            ->post('app/cdocs', $cdoc->toArray());
 
         $this->assertEquals(2, \App\Cdocs::all()->count());
 

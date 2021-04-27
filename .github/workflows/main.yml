@@ -9,6 +9,7 @@ on:
     branches:
     - master
     - price
+    - update
   pull_request:
     branches: [ master ]
 
@@ -20,7 +21,7 @@ jobs:
   # This workflow contains a single job called "laravel-tests"
   laravel-tests:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -41,17 +42,26 @@ jobs:
       - name: Install Dependencies (PHP vendors)
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
 
+      # Installs wkhtmltopdf binary and dependencies
+      - name: Install wkhtmltopdf binary
+        run: |
+          sudo apt-get install xfonts-75dpi
+          sudo apt-get install xfonts-base
+          sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
+          sudo apt -f install
+
       # Setups Laravel key
       - name: Generate Key
         run: php artisan key:generate
-        
+
       # Creates the sqlite database
       - name: Create DB and schemas
         run: |
           mkdir -p database
           touch database/database.sqlite
           php artisan migrate
-          
+
       # Executes the tests
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit

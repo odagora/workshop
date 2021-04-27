@@ -17,7 +17,8 @@ class UpdateIdocsTest extends TestCase
         $idoc = create('App\Idocs');
         $newIdoc = make('App\Idocs', ['make' => $type->make_id, 'type' => $type->name]);
 
-        $this->put("app/idocs/{$idoc->id}", $newIdoc->toArray())
+        $this->withExceptionHandling()
+            ->put("app/idocs/{$idoc->id}", $newIdoc->toArray())
             ->assertRedirect("app/idocs/{$idoc->id}");
 
         $this->get('/app/idocs')

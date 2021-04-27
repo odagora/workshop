@@ -11,7 +11,7 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row m-t-10 m-b-10">
 	<h3 class="text-center text-uppercase"><strong>Certificado de Control Calidad @if($qdoc->status == 'cancelled')<span class="text-danger">- ANULADO -</span>@endif </strong></h3>
 </div>
 <div class="row well quote">
@@ -103,7 +103,7 @@
 	</div>
 </div>
 <div class="row well quote">
-	<h4 class="text-center text-uppercase" style="margin: 0"><strong>Puntos de control</strong></h4>
+	<h4 class="text-center text-uppercase"><strong>Puntos de control</strong></h4>
 </div>
 <div class="row well quote table-items">
 	<div class="col-xs-6 col-sm-6 col-md-6">
@@ -290,7 +290,7 @@
 </div>
 <div class="row well quote">
 	<div class="col-xs-6 col-sm-6 col-md-6 ">
-		<h5 class="text-center"><strong>Conformidad factura/trabajos:</strong></h5>
+		<h6 class="text-center"><strong>Conformidad factura/trabajos:</strong></h6>
 		<div class="showSig sig-pdf" id="sig-employee">
 			<div class="sig sigWrapper">
 				<canvas class="pad" width="280" height="170">
@@ -303,11 +303,11 @@
 	</div>
 	<div class="col-xs-6 col-sm-6 col-md-6 ">
 		<div class="col-xs-12 col-sm-12 col-md-12">	
-			<div class="col-xs-8 col-sm-8 col-md-8 quote-title">
-				<h5><strong>Próximo mantenimiento a los:</strong></h5>
+			<div class="col-xs-8 col-sm-8 col-md-8 p-r-0">
+				<h6><strong>Próximo mantenimiento a los:</strong></h6>
 			</div>
 			<div class="col-xs-4 col-sm-4 col-md-4 text-center panel panel-default" style="padding: 0">
-				<h5>{{number_format($qdoc->n_mileage,0,",",".")}} kms</h5>
+				<h6>{{number_format($qdoc->n_mileage,0,",",".")}} kms</h6>
 			</div>
 		</div>
 		<div class="showSig sig-pdf" id="sig-client">

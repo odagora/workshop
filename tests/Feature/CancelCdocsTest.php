@@ -16,7 +16,8 @@ class CancelCdocsTest extends TestCase
         $cdoc = create('App\Cdocs');
         $newCdoc = make('App\Cdocs', ['status' => 'cancelled']);
 
-        $this->put("/app/cdocs/{$cdoc->id}", $newCdoc->toArray());
+        $this->withExceptionHandling()
+        ->put("/app/cdocs/{$cdoc->id}", $newCdoc->toArray());
 
         $this->assertEquals($newCdoc->status, 'cancelled');
     }

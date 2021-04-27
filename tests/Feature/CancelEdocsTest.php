@@ -16,7 +16,8 @@ class CancelEdocsTest extends TestCase
         $edoc = create('App\Edocs');
         $newEdoc = make('App\Edocs', ['status' => 'cancelled']);
 
-        $this->put("app/edocs/{$edoc->id}", $newEdoc->toArray());
+        $this->withExceptionHandling()
+            ->put("app/edocs/{$edoc->id}", $newEdoc->toArray());
 
         $this->assertEquals($newEdoc->status, 'cancelled');
     }
