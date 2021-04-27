@@ -21,7 +21,7 @@ jobs:
   # This workflow contains a single job called "laravel-tests"
   laravel-tests:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -45,8 +45,9 @@ jobs:
       # Installs wkhtmltopdf binary and dependencies
       - name: Install wkhtmltopdf binary
         run: |
-          sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_i386.deb
-          sudo dpkg -i wkhtmltox_0.12.5-1.bionic_i386.deb
+          sudo apt-get install xfonts-75dpi
+          sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.5-1.bionic_amd64.deb
           sudo apt -f install
 
       # Setups Laravel key
