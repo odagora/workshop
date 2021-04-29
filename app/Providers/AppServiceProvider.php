@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
         
         //Adding a new validator rule that compares numerical values to be greater than another
         Validator::extend('greater_than', function($attribute, $value, $params, $validator){
-            $other = Input::get($params[0]);
+            $other = \Request::input($params[0]);
             return intval($value) > intval($other);
         });
 
