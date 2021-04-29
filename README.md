@@ -94,7 +94,7 @@ APP_ENV=production
 
 ## Built With 🛠️
 
--   [Laravel 6.0](https://laravel.com/docs/5.7) - Framework PHP.
+-   [Laravel 6.0](https://laravel.com/docs/6.x/) - Framework PHP.
 
 ## Authors
 
