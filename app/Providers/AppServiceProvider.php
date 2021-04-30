@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('license_type', function($attribute, $value, $params, $validator){
             return preg_match('/^[a-zA-Z]{2}\d{4}|[a-zA-Z]{3}\d{3}$/u', $value);
         });
+
+        //Keep using Bootstrap pagination in Laravel v8.0
+        Paginator::useBootstrap();
     }
 
     /**
