@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use App\Exceptions\Handler;
 use Illuminate\Contracts\Debug\ExceptionHandler;
+use Throwable;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -61,9 +62,9 @@ class PassThroughHandler extends Handler
 {
     public function __construct () {}
 
-    public function report (Exception $e) {}
+    public function report (Throwable $e) {}
 
-    public function render ($request, Exception $e)
+    public function render ($request, Throwable $e)
     {
         throw $e;
     }
